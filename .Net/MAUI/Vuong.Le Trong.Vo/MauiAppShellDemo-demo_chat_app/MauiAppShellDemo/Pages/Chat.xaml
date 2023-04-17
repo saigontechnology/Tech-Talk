@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAppDemo.Pages.Chat"
+             xmlns:vm="clr-namespace:MAUIAppDemo.ViewModels"
+             xmlns:model="clr-namespace:MAUIAppDemo.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:ChatViewModel"
+             Title="{Binding Username, StringFormat='Hello {0}, welcome to chat room!'}">
+    <Grid RowDefinitions="*,60">
+        <ActivityIndicator IsRunning="{Binding IsBusy}"/>
+        <Border  Grid.Column="0" Margin="5">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+            <ScrollView Padding="5" x:Name="scrollViewMessage">
+                <CollectionView
+                x:Name="messageCollectionView"
+                ItemsUpdatingScrollMode="KeepLastItemInView"
+                Grid.Row="1"
+                ItemsSource="{Binding Messages}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ChatMessage">
+                            <VerticalStackLayout HorizontalOptions="{Binding IsSelfMessage, Converter={StaticResource IsOtherUserToHorizontalOptionConverter}}">
+                                <Label
+                                Margin="35,0,5,0"
+                                FontSize="11"
+                                HorizontalOptions="{Binding HorizontalOptions, Source={RelativeSource AncestorType={x:Type VerticalStackLayout}}}"
+                                Text="{Binding SendTime, StringFormat='{0:HH:mm}'}" />
+                                <HorizontalStackLayout
+                                HorizontalOptions="{Binding HorizontalOptions, Source={RelativeSource AncestorType={x:Type VerticalStackLayout}}}">
+                                    <Image Margin="5" Grid.Column="1" WidthRequest="25" Source="{Binding Avatar}"/>
+                                    <Border  Grid.Column="0" Padding="15,8,15,8"
+                                    BackgroundColor="{Binding IsSelfMessage, Converter={StaticResource MessageOwnerColorConverter}}">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5" />
+                                        </Border.StrokeShape>
+                                        <VerticalStackLayout>
+                                            <Label FontSize="10"  Text="{Binding UserName}"/>
+                                            <Label FontSize="14" Text="{Binding Content}"
+                                               MaxLines="1000"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Border>
+        <Grid ColumnDefinitions="7*,*" Grid.Row="1" Padding="5">
+            <Entry ReturnCommand="{Binding SendMessageCommand}" Grid.Column="0" Keyboard="Chat" Placeholder="Enter Message" Text="{Binding Text}"></Entry>
+            <Button IsVisible="{Binding IsBusy, Converter={toolkit:InvertedBoolConverter}}" Grid.Column="1"  Margin="5,0,0,0" Text="Send" Command="{Binding SendMessageCommand}"></Button>
+        </Grid>
+    </Grid>
+</ContentPage>

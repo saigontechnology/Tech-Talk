@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAppDemo.Pages.EmailPage"
+             Title="Email">
+    <VerticalStackLayout>
+        <Image Margin="0,0,0,0" Source="emailcontent.png" WidthRequest="400" HeightRequest="500"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MAUIAppDemo.ViewModels"
+             x:Class="MAUIAppDemo.Pages.LoginChatPage"
+             Title="Login"
+             x:DataType="vm:LoginChatViewModel">
+    <VerticalStackLayout VerticalOptions="Center" Padding="10">
+        <Entry ReturnCommand="{Binding LoginCommand}"  x:Name="userNameEntry" Placeholder="Insert username to join" Text="{Binding Username}" MaxLength="10"></Entry>
+        <Button Command="{Binding LoginCommand}" Text="Join chat"/>
+    </VerticalStackLayout>
+</ContentPage>
