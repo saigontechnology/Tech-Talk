@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppShellDemo.Pages.Chat"
+             xmlns:vm="clr-namespace:MauiAppShellDemo.ViewModels"
+             xmlns:model="clr-namespace:MauiAppShellDemo.Models"
+             x:DataType="vm:ChatViewModel"
+             Title="Chat">
+    <Grid RowDefinitions="*,60">
+        <ScrollView Grid.Row="0" Padding="5" x:Name="scrollViewMessage">
+            <CollectionView
+                Grid.Row="1"
+                Margin="0,10,0,10"
+                ItemsSource="{Binding Messages}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ChatMessage">
+                        <VerticalStackLayout HorizontalOptions="{Binding IsSelfMessage, Converter={StaticResource IsOtherUserToHorizontalOptionConverter}}">
+                            <Label
+                                Margin="5,0,5,0"
+                                FontSize="11"
+                                HorizontalOptions="{Binding HorizontalOptions, Source={RelativeSource AncestorType={x:Type VerticalStackLayout}}}"
+                                Text="{Binding SendTime, StringFormat='{0:HH:mm}'}" />
+                            <Border Padding="10,5,10,5"
+                                    HorizontalOptions="{Binding HorizontalOptions, Source={RelativeSource AncestorType={x:Type VerticalStackLayout}}}"
+                                    BackgroundColor="{Binding IsSelfMessage, Converter={StaticResource MessageOwnerColorConverter}}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10" />
+                                </Border.StrokeShape>
+                                <Label FontSize="14" Text="{Binding Content}"
+                                       HorizontalOptions="{Binding HorizontalOptions, Source={RelativeSource AncestorType={x:Type VerticalStackLayout}}}"/>
+                            </Border>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Grid ColumnDefinitions="7*,*" Grid.Row="1" Padding="5">
+            <Entry Grid.Column="0" Placeholder="Enter Message" Text="{Binding Text}"></Entry>
+                <Button Grid.Column="1" Margin="5,0,0,0" Text="Send" Command="{Binding SendMessageCommand}"></Button>
+        </Grid>
+    </Grid>
+</ContentPage>

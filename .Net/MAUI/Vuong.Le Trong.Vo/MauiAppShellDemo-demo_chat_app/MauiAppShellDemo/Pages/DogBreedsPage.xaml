@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MAUIAppDemo.ViewModels"
+             xmlns:model="clr-namespace:MAUIAppDemo.Models"
+             x:Class="MAUIAppDemo.Pages.DogBreedsPage"
+             x:DataType="vm:DogBreeds2ViewModel"
+             Title="DogPage">
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding DogBreeds}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Dog">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DogBreeds2ViewModel}}, Path=ShowDetailCommand}"
+                                        CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <Image Aspect="AspectFill" Source="{Binding Image.Url}"
+                                       WidthRequest="100"
+                                       HeightRequest="100"/>
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label FontAttributes="Bold" Text="{Binding Name}" />
+                                    <Label  Text="{Binding Temperament}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAppDemo.MainPage"
+             xmlns:converter="clr-namespace:MAUIAppDemo.Converters">
+    <StackLayout Padding="10">
+        <Frame BorderColor="Gray"
+       CornerRadius="10">
+            <Label Text="Frame wrapped around a Label" />
+        </Frame>
+        <!--<VerticalStackLayout  Grid.Column="0">
+            <Slider x:Name="slider"
+                            Maximum="1"
+                            Minimum="0"
+                            VerticalOptions="Center" />
+            <Label BindingContext="{x:Reference slider}"
+               Text="{Binding Value, Converter = {converter:PercentConverter}}"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        </VerticalStackLayout>
+        <ProgressBar Rotation="90" WidthRequest="300"
+                             BindingContext="{x:Reference slider}"
+                             Progress="{Binding Path=Value}"
+                             ProgressColor="Red" Grid.Column="1"  />-->
+    </StackLayout>
+
+</ContentPage>
