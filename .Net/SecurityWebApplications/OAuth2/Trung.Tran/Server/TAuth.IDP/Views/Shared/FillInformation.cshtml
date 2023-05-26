@@ -1,0 +1,55 @@
+﻿@model FillInformationViewModel
+
+<div class="register-page">
+    <div class="lead">
+        <h1>Complete Account Information</h1>
+    </div>
+
+    <partial name="_ValidationSummary" />
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Fill in your account information</h2>
+                </div>
+
+                <div class="card-body">
+                    <form method="post" asp-action="FillInformation" asp-controller="Account">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <fieldset>
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input readonly class="form-control" placeholder="Email" asp-for="Email">
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="GivenName"></label>
+                                <input class="form-control" placeholder="Given Name" asp-for="GivenName">
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="FamilyName"></label>
+                                <input class="form-control" placeholder="Family Name" asp-for="FamilyName">
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Address"></label>
+                                <input class="form-control" placeholder="Address" asp-for="Address">
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Country"></label>
+                                <select class="form-control"
+                                        asp-for="Country"
+                                        asp-items="@Model.CountryCodes"></select>
+                            </div>
+
+                            <button class="btn btn-primary" name="button" value="submit">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

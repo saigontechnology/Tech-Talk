@@ -1,0 +1,459 @@
+version: "3.8"
+
+x-logging: &default-logging
+  options:
+    max-size: "0.5m"
+    max-file: "5"
+  driver: json-file
+
+services:
+  client-app:
+    image: kafka-learning:ts-client-app-1.0
+    build:
+      context: .
+      dockerfile: t-store/Dockerfile
+    ports:
+      - target: 80
+        published: 4200
+      - target: 443
+        published: 4201
+    volumes:
+      - ./misc/client-app/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./misc/client-app/urls.json:/usr/share/nginx/html/assets/urls.json
+      - ./misc/client-app/dynamic-config.json:/usr/share/nginx/html/assets/dynamic-config.json
+    logging: *default-logging
+  
+  realtime-api:
+    image: kafka-learning:ts-realtime-api-1.0
+    build:
+      context: .
+      dockerfile: TStore.RealtimeApi/Dockerfile
+    ports:
+      - target: 80
+        published: 8000
+      - target: 443
+        published: 8001
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/ssl-cert.pfx
+    volumes:
+      - ./misc/certs:/certs:ro
+
+  system-api:
+    image: kafka-learning:ts-system-api-1.0
+    build:
+      context: .
+      dockerfile: TStore.SystemApi/Dockerfile
+    ports:
+      - target: 80
+        published: 10000
+      - target: 443
+        published: 10001
+    environment:
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - CommonAdminClientConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonAdminClientConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonAdminClientConfig__SslKeyPassword=123456
+      - CommonAdminClientConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonAdminClientConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - CommonProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonProducerConfig__SslKeyPassword=123456
+      - CommonProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/ssl-cert.pfx
+    volumes:
+      - ./misc/certs:/certs:ro
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      
+  sale-api:
+    image: kafka-learning:ts-sale-api-1.0
+    build:
+      context: .
+      dockerfile: TStore.SaleApi/Dockerfile
+    environment:
+      - ConnectionStrings__TStore=Server=host.docker.internal,1434;Database=KafkaTStore;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      # - ProductUpdatedDelay=10000
+      - CommonProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonProducerConfig__SslKeyPassword=123456
+      - CommonProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      # - CommonProducerConfig__ProduceDuplication=true
+      # - CommonProducerConfig__DefaultPoolSize=1
+      # - CommonProducerConfig__TransactionTimeoutMs=7000
+      # - CommonProducerConfig__MessageTimeoutMs=5000
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/ssl-cert.pfx
+    volumes:
+      - ./misc/certs:/certs:ro
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - system-api
+    ports:
+      - target: 80
+        published: 5000
+      - target: 443
+        published: 5001
+  
+  interaction-api:
+    image: kafka-learning:ts-interaction-api-1.0
+    build:
+      context: .
+      dockerfile: TStore.InteractionApi/Dockerfile
+    environment:
+      - ConnectionStrings__TStoreInteraction=Server=host.docker.internal,1434;Database=KafkaTStoreInteraction;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - SaveInteractionConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - SaveInteractionConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - SaveInteractionConsumerConfig__SslKeyPassword=123456
+      - SaveInteractionConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - SaveInteractionConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - CommonProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonProducerConfig__SslKeyPassword=123456
+      - CommonProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      # - CommonProducerConfig__LingerMs=10
+      - SaveByConsumers=false
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/ssl-cert.pfx
+    volumes:
+      - ./misc/certs:/certs:ro
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - system-api
+    ports:
+      - target: 80
+        published: 7000
+      - target: 443
+        published: 7001
+        
+  interaction-aggregator:
+    image: kafka-learning:ts-interaction-aggregator-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.InteractionAggregator/Dockerfile
+    environment:
+      - ConnectionStrings__TStoreInteraction=Server=host.docker.internal,1434;Database=KafkaTStoreInteraction;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - InteractionAggregatorConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - InteractionAggregatorConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - InteractionAggregatorConsumerConfig__SslKeyPassword=123456
+      - InteractionAggregatorConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - InteractionAggregatorConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - interaction-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+      
+  interaction-analysis:
+    image: kafka-learning:ts-interaction-analysis-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.InteractionAnalysis/Dockerfile
+    environment:
+      - ConnectionStrings__TStoreInteraction=Server=host.docker.internal,1434;Database=KafkaTStoreInteraction;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - InteractionAnalysisConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - InteractionAnalysisConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - InteractionAnalysisConsumerConfig__SslKeyPassword=123456
+      - InteractionAnalysisConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - InteractionAnalysisConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - interaction-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+      
+  interaction-bdl:
+    image: kafka-learning:ts-interaction-bdl-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.InteractionBigDataLoader/Dockerfile
+    environment:
+      - ConnectionStrings__TStoreInteraction=Server=host.docker.internal,1434;Database=KafkaTStoreInteraction;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - InteractionBigDataLoaderConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - InteractionBigDataLoaderConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - InteractionBigDataLoaderConsumerConfig__SslKeyPassword=123456
+      - InteractionBigDataLoaderConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - InteractionBigDataLoaderConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - interaction-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+  
+  promotion-calculator:
+    image: kafka-learning:ts-promotion-calculator-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.PromotionCalculator/Dockerfile
+    environment:
+      - ConnectionStrings__TStore=Server=host.docker.internal,1434;Database=KafkaTStore;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - PromotionCalculatorConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - PromotionCalculatorConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - PromotionCalculatorConsumerConfig__SslKeyPassword=123456
+      - PromotionCalculatorConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - PromotionCalculatorConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - CommonProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonProducerConfig__SslKeyPassword=123456
+      - CommonProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - sale-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+  
+  ship-calculator:
+    image: kafka-learning:ts-ship-calculator-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.ShipCalculator/Dockerfile
+    environment:
+      - ConnectionStrings__TStore=Server=host.docker.internal,1434;Database=KafkaTStore;Trusted_Connection=False;User Id=sa;Password=z@123456!
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      - ShipCalculatorConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - ShipCalculatorConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - ShipCalculatorConsumerConfig__SslKeyPassword=123456
+      - ShipCalculatorConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - ShipCalculatorConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - CommonProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - CommonProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - CommonProducerConfig__SslKeyPassword=123456
+      - CommonProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - CommonProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - sale-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+  
+  external-product-sync:
+    image: kafka-learning:ts-external-product-sync-1.0
+    build:
+      context: .
+      dockerfile: Consumers/TStore.Consumers.ExternalProductSync/Dockerfile
+    environment:
+      - RealtimeApiUrl=https://host.docker.internal:8001
+      - StartFromVS=false
+      # - SyncDelay=10000
+      - ExternalProductSyncConsumerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - ExternalProductSyncConsumerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - ExternalProductSyncConsumerConfig__SslKeyPassword=123456
+      - ExternalProductSyncConsumerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - ExternalProductSyncConsumerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      - ExternalProductProducerConfig__BootstrapServers=kafka-1:29093,kafka-2:29095,kafka-3:29097
+      - ExternalProductProducerConfig__SslCaLocation=/certs/kafka-broker/ca-root.crt
+      - ExternalProductProducerConfig__SslKeyPassword=123456
+      - ExternalProductProducerConfig__SslCertificateLocation=/certs/kafka-client/tstore.crt
+      - ExternalProductProducerConfig__SslKeyLocation=/certs/kafka-client/tstore.key
+      # - ExternalProductProducerConfig__DefaultPoolSize=1
+      # - ExternalProductProducerConfig__TransactionTimeoutMs=7000
+      # - ExternalProductProducerConfig__MessageTimeoutMs=5000
+    depends_on:
+      - database
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - realtime-api
+      - sale-api
+    volumes:
+      - ./misc/certs/kafka-broker/ca-root.crt:/certs/kafka-broker/ca-root.crt
+      - ./misc/certs/kafka-client:/certs/kafka-client
+  
+  reverse-proxy:
+    image: kafka-learning:ts-reverse-proxy-1.0
+    build:
+      context: .
+      dockerfile: TStore.WebReverseProxy/Dockerfile
+    ports:
+      - target: 80
+        published: 9000
+      - target: 443
+        published: 9001
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/ssl-cert.pfx
+      - ReverseProxy__Clusters__ClientApp__Destinations__Main__Address=http://host.docker.internal:4200/
+      - ReverseProxy__Clusters__SaleApi__Destinations__Main__Address=https://host.docker.internal:5001/
+      - ReverseProxy__Clusters__InteractionApi__Destinations__Main__Address=https://host.docker.internal:7001/
+      - ReverseProxy__Clusters__RealtimeApi__Destinations__Main__Address=https://host.docker.internal:8001/
+    volumes:
+      - ./misc/certs:/certs:ro
+  
+  kafka-1:
+    image: kafka-learning:kafka-linux-1.0
+    build:
+      context: .
+      dockerfile: misc/kafka/Dockerfile
+    environment:
+      - KAFKA_OPTS=${KAFKA_OPTS:--Djava.security.auth.login.config=/kafka/config-override/kafka_server_jaas.conf -Dzookeeper.sasl.client=false -Dzookeeper.ssl.hostnameVerification=false} # Setup SASL using Jaas static file
+      - BROKER_ID=1
+      - BROKER_RACK=Vietnam
+      - LOCAL_PORT=9093
+      - DOCKER_PORT=29093
+      - CREATE_ACLS=true
+    volumes:
+      - ./misc/kafka/config:/kafka/config-override
+      - ./misc/kafka/scripts:/kafka/scripts
+      - ./misc/certs/kafka-broker:/kafka/certs/broker
+      - ./misc/certs/kafka-client:/kafka/certs/client
+    ports:
+      - target: 9092
+        published: 9092
+      - target: 9093
+        published: 9093
+    cpus: 2 # Change based on your total number of CPUs
+    logging: *default-logging
+  
+  kafka-2:
+    image: kafka-learning:kafka-linux-1.0
+    build:
+      context: .
+      dockerfile: misc/kafka/Dockerfile
+    environment:
+      - KAFKA_OPTS=${KAFKA_OPTS:--Djava.security.auth.login.config=/kafka/config-override/kafka_server_jaas.conf -Dzookeeper.sasl.client=false -Dzookeeper.ssl.hostnameVerification=false} # Setup SASL using Jaas static file
+      - BROKER_ID=2
+      - BROKER_RACK=US
+      - LOCAL_PORT=9095
+      - DOCKER_PORT=29095
+    volumes:
+      - ./misc/kafka/config:/kafka/config-override
+      - ./misc/kafka/scripts:/kafka/scripts
+      - ./misc/certs/kafka-broker:/kafka/certs/broker
+      - ./misc/certs/kafka-client:/kafka/certs/client
+    ports:
+      - target: 9094
+        published: 9094
+      - target: 9095
+        published: 9095
+    cpus: 2 # Change based on your total number of CPUs
+    logging: *default-logging
+  
+  kafka-3:
+    image: kafka-learning:kafka-linux-1.0
+    build:
+      context: .
+      dockerfile: misc/kafka/Dockerfile
+    environment:
+      - KAFKA_OPTS=${KAFKA_OPTS:--Djava.security.auth.login.config=/kafka/config-override/kafka_server_jaas.conf -Dzookeeper.sasl.client=false -Dzookeeper.ssl.hostnameVerification=false} # Setup SASL using Jaas static file
+      - BROKER_ID=3
+      - BROKER_RACK=UK
+      - LOCAL_PORT=9097
+      - DOCKER_PORT=29097
+    volumes:
+      - ./misc/kafka/config:/kafka/config-override
+      - ./misc/kafka/scripts:/kafka/scripts
+      - ./misc/certs/kafka-broker:/kafka/certs/broker
+      - ./misc/certs/kafka-client:/kafka/certs/client
+    ports:
+      - target: 9096
+        published: 9096
+      - target: 9097
+        published: 9097
+    cpus: 2 # Change based on your total number of CPUs
+    logging: *default-logging
+  
+  database:
+    image: kafka-learning:ts-database-1.0
+    build:
+      context: .
+      dockerfile: misc/database/Dockerfile
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=z@123456!
+      - MSSQL_PID=Express
+    ports:
+      - target: 1433
+        published: 1434
+    mem_limit: 1.2g
+    logging: *default-logging
+    
+  # ngrok:
+    # image: ngrok/ngrok:latest
+    # command: http https://host.docker.internal:9001 --log=stdout
+    # environment:
+    # - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN} 
+    # 1. Get free NGROK account: https://dashboard.ngrok.com/signup
+    # 2. Put NGROK_AUTHTOKEN=REAL_TOKEN_HERE in .env
+    # 3. Start the docker-compose
+  
+  # certbot:
+    # image: certbot/certbot:latest
+    # volumes:
+      # - ./misc/certs/kafka-broker:/certs/kafka-broker
+      # - ./misc/certs/kafka-client:/certs/kafka-client
+    # tty: true
+    
+  # openssl:
+    # image: kafka-learning:openssl-1.0
+    # build:
+      # context: .
+      # dockerfile: misc/openssl/Dockerfile
+    # volumes:
+      # - ./misc/certs/kafka-broker:/certs/kafka-broker
+      # - ./misc/certs/kafka-client:/certs/kafka-client
+    # tty: true
+    
+networks:
+  default:
+    name: tstore-shared-network

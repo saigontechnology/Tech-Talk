@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSupplierBasicModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SupplierBasicModel>
+    <Id>1</Id>
+    <Name>supplier 1</Name>
+  </SupplierBasicModel>
+  <SupplierBasicModel>
+    <Id>2</Id>
+    <Name>supplier 2</Name>
+  </SupplierBasicModel>
+  <SupplierBasicModel>
+    <Id>3</Id>
+    <Name>supplier 3</Name>
+  </SupplierBasicModel>
+  <SupplierBasicModel>
+    <Id>4</Id>
+    <Name>supplier 4</Name>
+  </SupplierBasicModel>
+  <SupplierBasicModel>
+    <Id>5</Id>
+    <Name>supplier 5</Name>
+  </SupplierBasicModel>
+</ArrayOfSupplierBasicModel>

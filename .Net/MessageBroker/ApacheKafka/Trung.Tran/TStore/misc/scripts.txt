@@ -1,0 +1,8 @@
+# Disk usage
+du -sh *
+
+# Using bash terminal
+/bin/bash
+
+# List dirs
+ls

@@ -1,0 +1,18 @@
+﻿@model MessageViewModel
+
+<div class="message-page">
+    <div class="lead">
+        <h1>Message</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            @if (!ViewContext.ModelState.IsValid)
+            {
+                <partial name="_ValidationSummary" />
+            }
+
+            @Model.Message
+        </div>
+    </div>
+</div>

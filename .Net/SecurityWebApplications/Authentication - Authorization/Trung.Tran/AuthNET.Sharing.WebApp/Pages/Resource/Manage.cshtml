@@ -1,0 +1,14 @@
+﻿@page
+@model AuthNET.Sharing.WebApp.Pages.Resource.ManageModel
+@{
+}
+
+<partial name="_ValidationSummary" />
+
+@if (Model.Resource != null)
+{
+    <div class="text-center">
+        <h1 class="display-4">Manage Resource</h1>
+        <p>Congrats! You can <span class="text-danger">manage</span> the resource <b>@Model.Resource.Name</b>.</p>
+    </div>
+}

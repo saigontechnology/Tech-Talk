@@ -1,0 +1,20 @@
+﻿@page
+@model AuthNET.Sharing.WebApp.Pages.RoleBased.IndexModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Role-based authorization</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p><a asp-page="Employee">Must have role Employee</a></p>
+            <p><a asp-page="Admin">Must have role Admin</a></p>
+            <p><a asp-page="AdminOrEmployee">Admin or employee</a></p>
+            <p><a asp-page="AdminAndEmployee">Admin and employee</a></p>
+        </div>
+    </div>
+</div>

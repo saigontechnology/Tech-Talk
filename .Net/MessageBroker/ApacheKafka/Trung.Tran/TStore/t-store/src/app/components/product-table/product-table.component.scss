@@ -1,0 +1,10 @@
+@import "variables";
+
+.ts- {
+  &filter-form {
+    margin-bottom: $common-space;
+  }
+  &operation {
+    text-align: right;
+  }
+}

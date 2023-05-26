@@ -1,0 +1,3 @@
+#dotnet dev-certs https -ep ssl-cert.pfx -p 123456
+dotnet dev-certs https --clean --import ./ssl-cert.pfx -p 123456
+dotnet dev-certs https --trust

@@ -1,0 +1,71 @@
+<nz-spin [nzSpinning]="loading">
+  <nz-row class="ts-filter-form">
+    <nz-col nzFlex="auto">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input
+          type="text"
+          nz-input
+          placeholder="Search something"
+          [(ngModel)]="searchValue"
+          (change)="search()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+        <i
+          nz-icon
+          class="ant-input-clear-icon"
+          nzTheme="fill"
+          nzType="close-circle"
+          *ngIf="searchValue"
+          (click)="reset()"
+        ></i>
+      </ng-template>
+    </nz-col>
+  </nz-row>
+  <nz-card class="ts-operation">
+    <nz-space>
+      <button
+        *nzSpaceItem
+        nz-button
+        nzType="default"
+        (click)="clearSelection()"
+      >
+        Clear selection(s)
+      </button>
+      <button *nzSpaceItem nz-button nzType="primary" (click)="createProduct()">
+        Create New
+      </button>
+      <ng-container *ngIf="selectedProducts.length">
+        <button *nzSpaceItem nz-button nzType="primary" (click)="submitOrder()">
+          Submit Order
+        </button>
+      </ng-container>
+    </nz-space>
+  </nz-card>
+  <nz-table #nzTable [nzData]="products || []" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Add to cart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data; let index = index">
+        <td>
+          <a (click)="openProductUpdate(data)">{{ data.name }}</a>
+        </td>
+        <td>{{ data.price }}</td>
+        <td>
+          <label
+            nz-checkbox
+            [(ngModel)]="productSelections[index]"
+            (nzCheckedChange)="onSelectProduct($event, index)"
+          >
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

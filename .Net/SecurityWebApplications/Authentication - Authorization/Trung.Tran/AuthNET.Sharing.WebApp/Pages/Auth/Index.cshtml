@@ -1,0 +1,18 @@
+﻿@page
+@model AuthNET.Sharing.WebApp.Pages.Auth.IndexModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Authorization</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p><a asp-page="Assertion">Using RequireAssertion</a>: user who has 1 role only can access this page</p>
+            <p><a asp-page="UserNameContainsA">Policy: Username contains 'A'</a></p>
+        </div>
+    </div>
+</div>

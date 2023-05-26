@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  redis-learning-master:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./RedisVolume/master:/data
+    command: ["redis-server", "/data/redis.conf"]
+
+  redis-learning-rep1:
+    image: redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - ./RedisVolume/rep1:/data
+    depends_on:
+      - redis-learning-master
+    command: ["redis-server", "/data/redis.conf"]
+    
+  redis-learning-tls:
+    image: redis
+    ports:
+      - "6381:6379"
+    volumes:
+      - ./RedisVolume/tls:/data
+      - ./RedisVolume/cert:/cert
+    command: ["redis-server", "/data/redis.conf"]
+
+networks:
+  default:
+    name: redis-learning-shared

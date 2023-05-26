@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script type="text/javascript">
+        var interval = null;
+        function StartTimer() {
+            if (interval == null) {
+                var counter = 0;
+                interval = setInterval(function () {
+                    counter += 1;
+                    // Do your task.
+                    document.getElementById("lblCount").innerHTML = counter;
+                }, 1);
+            }
+        }
+
+        function StopTimer() {
+            clearInterval(interval);
+            interval = null;
+            document.getElementById("lblCount").innerHTML = '0';
+        }
+
+        function ActionAsync() {
+        $.ajax({
+            type: 'Get',
+            url: '/Home/Action',
+            async: true,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (result) {
+                //alert('Successfully received Data ');
+            },
+            error: function () {
+                //alert('Failed to receive the Data');
+            }
+        })
+    }
+
+        function TaskWhen() {
+        $.ajax({
+            type: 'Get',
+            url: '/Home/TaskWhen',
+            async: false,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (result) {
+                //alert('Successfully received Data ');
+            },
+            error: function () {
+                //alert('Failed to receive the Data');
+            }
+        })
+    }
+
+        function TaskWait() {
+        $.ajax({
+            type: 'Get',
+            url: '/Home/TaskWait',
+            async: false,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            success: function (result) {
+                //alert('Successfully received Data ');
+            },
+            error: function () {
+                //alert('Failed to receive the Data');
+            }
+        })
+    }
+
+</script>
+
+<span id="lblCount">0</span>
+<br />
+<input id="btnStart" type="button" value="Start" onclick="StartTimer();" />
+<input id="btnStop" type="button" value="Stop" onclick="StopTimer();" />
+<input id="btnAction" type="button" value="Action" onclick="ActionAsync()" />
+<input id="btnTaskWhen" type="button" value="Task When" onclick="TaskWhen()" />
+<input id="btnTaskWait" type="button" value="Task Wait" onclick="TaskWait()" />
+

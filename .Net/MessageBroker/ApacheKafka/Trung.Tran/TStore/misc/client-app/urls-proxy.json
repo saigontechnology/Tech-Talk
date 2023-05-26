@@ -1,0 +1,5 @@
+{
+    "saleApiUrl": "https://localhost:9001/proxy-s",
+    "interactionApiUrl": "https://localhost:9001/proxy-i",
+    "realtimeApiUrl": "https://localhost:9001/proxy-r"
+}

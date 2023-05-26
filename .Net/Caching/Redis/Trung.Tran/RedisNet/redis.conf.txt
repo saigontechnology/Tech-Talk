@@ -1,0 +1,46 @@
+# --- MASTER ---
+requirepass "123456"
+save 60 10
+
+dir "/data"
+appendonly yes
+
+user default off
+user admin on #8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92 ~* &* +@all
+
+#logfile /data/redis-master.log
+
+# --- REPLICA ---
+dir "/data"
+save ""
+
+replicaof redis-learning-master 6379
+masterauth "123456"
+requirepass "123456"
+replica-read-only yes
+repl-diskless-sync yes
+repl-diskless-load on-empty-db
+
+user default off
+user admin on #8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92 ~* &* +@all
+
+#replica-announce-ip redis-learning-rep1
+replica-announce-port 6380
+
+#logfile /data/redis-rep.log
+
+# --- TLS ---
+requirepass "123456"
+save 60 10
+
+dir "/data"
+appendonly yes
+
+user default off
+user admin on #8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92 ~* &* +@all
+
+port 0
+tls-port 6379
+tls-cert-file /cert/server.crt
+tls-key-file /cert/server.key
+tls-ca-cert-file /cert/ca.crt

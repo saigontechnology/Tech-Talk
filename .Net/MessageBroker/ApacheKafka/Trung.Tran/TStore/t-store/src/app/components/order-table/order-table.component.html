@@ -1,0 +1,35 @@
+<nz-spin [nzSpinning]="loading">
+  <nz-table
+    #nzTable
+    [nzData]="orders || []"
+    [nzFrontPagination]="false"
+    (nzQueryParams)="onQueryParamsChange($event)"
+    [nzTotal]="total"
+    nzTableLayout="fixed"
+  >
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Items</th>
+        <th>Total</th>
+        <th>Discount</th>
+        <th>Ship amount</th>
+        <th>Created time</th>
+        <th>User name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of nzTable.data; let index = index">
+        <td>{{ data.id }}</td>
+        <td>
+          <div *ngFor="let item of data.items">+ {{ item.name }}</div>
+        </td>
+        <td>{{ data.total }}</td>
+        <td>{{ data.discount }}</td>
+        <td>{{ data.shipAmount }}</td>
+        <td>{{ data.createdTime }}</td>
+        <td>{{ data.userName }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

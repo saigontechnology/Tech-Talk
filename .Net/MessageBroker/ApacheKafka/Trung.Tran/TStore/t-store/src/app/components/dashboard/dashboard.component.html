@@ -1,0 +1,41 @@
+<nz-spin [nzSpinning]="loading">
+  <nz-card>
+    <nz-row [nzGutter]="16">
+      <nz-col [nzSpan]="8">
+        <nz-statistic
+          [nzValue]="(clickCount | number)!"
+          [nzTitle]="'Click count'"
+        ></nz-statistic>
+      </nz-col>
+      <nz-col [nzSpan]="8">
+        <nz-statistic
+          [nzValue]="(searchCount | number)!"
+          [nzTitle]="'Search count'"
+        ></nz-statistic>
+      </nz-col>
+      <nz-col [nzSpan]="8">
+        <nz-statistic
+          [nzValue]="(accessCount | number)!"
+          [nzTitle]="'Access count'"
+        ></nz-statistic>
+      </nz-col>
+    </nz-row>
+    <nz-divider></nz-divider>
+    <nz-row>
+      <nz-col nzFlex="auto">
+        <nz-tabset class="ts-tab-set">
+          <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.title">
+            <div class="ts-tab-content">
+              <p *ngFor="let content of tab.contents">
+                <span class="ts-log-time">
+                  [{{ content.time | date: "dd/MM/yyyy HH:mm:ss" }}]:
+                </span>
+                {{ content.content }}
+              </p>
+            </div>
+          </nz-tab>
+        </nz-tabset>
+      </nz-col>
+    </nz-row>
+  </nz-card>
+</nz-spin>
