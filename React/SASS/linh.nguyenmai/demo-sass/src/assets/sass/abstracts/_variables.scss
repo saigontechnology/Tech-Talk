@@ -1,0 +1,33 @@
+// Typography
+$font-montserrat: "Montserrat";
+$default-font-weights-list: (
+  // Type: Weight
+  "Regular": 500,
+  "Medium": 600,
+  "SemiBold": 700,
+  "Bold": 800,
+  "ExtraBold": 900
+);
+
+// Colors
+$primary-color: #f47458;
+$secondary-color: #626bea;
+$danger-color: #ff3b3b;
+
+$gray: #9d9d9d;
+$white: #ffffff;
+$black: #000000;
+
+// Border
+$default-border-radius: 10px;
+$default-border-direction: "full";
+$default-border-corners: ("top", "left", "right", "bottom");
+$default-cross-corners: ("cross-right", "cross-left");
+
+// Button
+$default-button-variants: ("text", "outlined", "filled");
+$default-button-colors: (
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "gray": $gray,
+);

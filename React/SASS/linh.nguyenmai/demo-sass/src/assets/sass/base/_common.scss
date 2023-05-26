@@ -1,0 +1,24 @@
+@use "../abstracts";
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%color-primary {
+  color: abstracts.$primary-color;
+}
+
+%color-secondary {
+  color: abstracts.$secondary-color;
+}
+
+%disabled-button {
+  pointer-events: none;
+  background-color: abstracts.$gray;
+}

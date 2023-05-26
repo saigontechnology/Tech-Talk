@@ -1,0 +1,141 @@
+@use "variables";
+
+// ==============================
+// Typography Properties
+// ==============================
+@mixin font-face($name, $file-path, $font-weight, $font-style: normal) {
+  @font-face {
+    font-family: $name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    src: url(#{$file-path}.ttf) format("truetype"),
+      url(#{$file-path}.woff) format("woff"),
+      url(#{$file-path}.woff2) format("woff2");
+  }
+}
+
+// Font size
+@mixin customize-font-size(
+  $size-value: 16,
+  $size-unit: px,
+  $weight-value: 500
+) {
+  font-weight: $weight-value;
+  font-size: $size-value + $size-unit;
+}
+
+// ==============================
+// Visual Properties
+// ==============================
+// Border radius
+@mixin customize-border-radius(
+  $radius: variables.$default-border-radius,
+  $direction: nth(variables.$default-border-direction, 1)
+) {
+  @if $direction and index(variables.$default-border-corners, $direction) {
+    @if ($direction == variables.$default-border-direction) {
+      border-#{$direction}-radius: $radius;
+    } @else {
+      @if ($direction == "top") {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+      }
+      @if ($direction == "bottom") {
+        border-bottom-right-radius: $radius;
+        border-bottom-left-radius: $radius;
+      }
+      @if ($direction == "right") {
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+      }
+      @if ($direction == "left") {
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+      }
+    }
+  } @else {
+    @if index(variables.$default-cross-corners, $direction) {
+      @if ($direction == "cross-right") {
+        border-top-right-radius: $radius;
+        border-bottom-left-radius: $radius;
+      } @else if ($direction == "cross-left") {
+        border-top-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+      } @else {
+        border-#{$direction}-radius: $radius;
+      }
+    } @else if ($direction == variables.$default-border-direction) {
+      border-radius: $radius;
+    } @else {
+      // Log a warning.
+      @warn 'Invalid direction: #{$direction}';
+    }
+  }
+}
+
+// Border
+@mixin customize-border(
+  $direction,
+  $width: 1px,
+  $style: solid,
+  $color: variables.$black
+) {
+  // Check if direction value is invalid
+  @if (index(variables.$default-border-corners, $direction)) {
+    border-#{$direction}: $width $style $color;
+  } @else {
+    border: $width $style $color;
+  }
+}
+
+// ==============================
+// Components
+// ==============================
+// Buttons
+@mixin customize-button(
+  $variant: nth(variables.$default-button-variants, 1),
+  $color: variables.$black,
+  $border-color: $color,
+  $hover-color: lighten($color, 20)
+) {
+  // If variant include in default variants list
+  @if index(variables.$default-button-variants, $variant) {
+    // Text
+    @if ($variant == "text") {
+      color: $color;
+      background-color: variables.$white;
+      border-color: variables.$white;
+
+      &:hover {
+        color: $hover-color;
+      }
+    } @else if ($variant == "outlined") {
+      // Outlined
+      color: $color;
+      background-color: variables.$white;
+      border-color: $border-color;
+
+      &:hover {
+        color: $hover-color;
+        border-color: $hover-color;
+      }
+    } @else {
+      // Filled
+      color: variables.$white;
+      background-color: $color;
+      border-color: $border-color;
+
+      &:hover {
+        background-color: $hover-color;
+        border-color: $hover-color;
+      }
+    }
+  } @else {
+    color: $color;
+    background-color: variables.$white;
+    border-color: variables.$white;
+
+    // Log a warning.
+    @warn 'Invalid variant: #{$variant}';
+  }
+}

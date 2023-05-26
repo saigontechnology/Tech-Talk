@@ -1,0 +1,23 @@
+@use "base";
+@use "abstracts";
+@use "components";
+
+body {
+  margin: 0;
+  height: 100vmin;
+  font-family: abstracts.$font-montserrat, sans-serif;
+}
+
+// Layout
+.container {
+  height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-error {
+  font-size: 14px;
+  color: abstracts.$danger-color;
+}
