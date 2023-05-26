@@ -1,0 +1,60 @@
+@use "../base/common";
+@use "../abstracts";
+
+.form {
+  padding: 40px;
+  min-width: 400px;
+  min-height: 500px;
+
+  @include abstracts.customize-border-radius(20px);
+  background-color: abstracts.$white;
+  box-shadow: 0px 19px 40px 0px #0000000d;
+
+  @extend %flex-column;
+  justify-content: space-around;
+
+  &__header {
+    font-size: 56px;
+    font-weight: 700;
+    color: abstracts.$primary-color;
+  }
+
+  &__sub-header {
+    font-size: 16px;
+    font-weight: 500;
+    color: lighten(abstracts.$black, 50);
+  }
+
+  &__body {
+    @extend %flex-column;
+    gap: 12px;
+  }
+
+  &__footer {
+    @extend %flex-row;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+.form-item {
+  @extend %flex-column;
+  gap: 12px;
+
+  &__label {
+    font-size: 16px;
+  }
+
+  &__input {
+    padding: 8px;
+    font-family: abstracts.$font-montserrat, sans-serif;
+
+    border: none;
+    @include abstracts.customize-border-radius(4px);
+    background-color: lighten(abstracts.$primary-color, 32);
+
+    &:focus {
+      outline: 1px solid abstracts.$primary-color;
+    }
+  }
+}

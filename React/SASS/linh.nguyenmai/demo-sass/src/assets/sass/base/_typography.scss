@@ -1,0 +1,12 @@
+@use "../abstracts";
+
+// Generate font-face based on font weights list
+@each $key, $value in abstracts.$default-font-weights-list {
+  @include abstracts.font-face(
+    abstracts.$font-montserrat,
+    "../../fonts/#{abstracts.$font-montserrat}-#{$key}",
+    $value
+  );
+}
+
+// Customize Font-size

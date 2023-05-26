@@ -1,0 +1,13 @@
+@use "../base/animations";
+@use "../abstracts";
+
+.loader {
+  margin: auto;
+  border: 10px solid lighten(abstracts.$primary-color, 30);
+  border-radius: 50%;
+  border-top: 10px solid abstracts.$primary-color;
+
+  width: 100px;
+  height: 100px;
+  animation: spinner 4s linear infinite;
+}

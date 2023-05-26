@@ -1,0 +1,14 @@
+@use "../abstracts";
+
+@each $color, $value in abstracts.$default-button-colors {
+  .btn-#{$color} {
+    padding: 8px 16px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include abstracts.customize-font-size(1, rem, 700);
+    @include abstracts.customize-border-radius(20px);
+    @include abstracts.customize-border("full", 2px, solid);
+    @include abstracts.customize-button("filled", $value);
+  }
+}
