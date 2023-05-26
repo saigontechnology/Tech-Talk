@@ -1,0 +1,54 @@
+﻿@page
+@model AuthNET.Sharing.WebApp.Pages.Resource.IndexModel
+
+@using Microsoft.AspNetCore.Authorization;
+
+@inject IAuthorizationService authorizationService;
+
+@{
+    var canReadResource = (await authorizationService.AuthorizeAsync(User, AuthConstants.Policies.CanReadResource)).Succeeded;
+    var canWriteResource = (await authorizationService.AuthorizeAsync(User, AuthConstants.Policies.CanWriteResource)).Succeeded;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Resource</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    @if (canReadResource)
+    {
+        <div><a asp-page="/Resource/Read">Read resource</a></div>
+    }
+    @if (canWriteResource)
+    {
+        <div><a asp-page="/Resource/Write">Write resource</a></div>
+    }
+    <hr />
+    <h4>YOUR RESOURCES</h4>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr class="d-table-row">
+                        <th class="d-table-cell">Id</th>
+                        <th class="d-table-cell">Name</th>
+                        <th class="d-table-cell">User</th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    @foreach (var item in Model.Resources)
+                    {
+                        <tr class="d-table-row">
+                            <td class="d-table-cell">
+                                <a asp-page="/Resource/Manage" asp-route-resourceId="@item.Id">@item.Id</a>
+                            </td>
+                            <td class="d-table-cell">@item.Name</td>
+                            <td class="d-table-cell">@item.UserName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

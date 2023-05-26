@@ -1,0 +1,22 @@
+<nz-layout class="ts-layout">
+  <nz-layout>
+    <nz-header>
+      <h3 nz-typography class="ts-logo">T-Store</h3>
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-item nzMatchRouter [nzMatchRouterExact]="true">
+          <a [routerLink]="['/', 'dashboard']">Dashboard</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a [routerLink]="['/', 'products']">Products</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a [routerLink]="['/', 'orders']">Orders</a>
+        </li>
+      </ul>
+    </nz-header>
+    <nz-content>
+      <router-outlet (activate)="onComponentActivate($event)"></router-outlet>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>

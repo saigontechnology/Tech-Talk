@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthNET.Sharing", "AuthNET.Sharing\AuthNET.Sharing.csproj", "{C640D6EC-8B9D-4498-B18F-B7898360A5DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthNET.Sharing.WebApp", "AuthNET.Sharing.WebApp\AuthNET.Sharing.WebApp.csproj", "{AC5F8223-5552-48CF-B4BA-D9694FD3B2B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C640D6EC-8B9D-4498-B18F-B7898360A5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C640D6EC-8B9D-4498-B18F-B7898360A5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C640D6EC-8B9D-4498-B18F-B7898360A5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C640D6EC-8B9D-4498-B18F-B7898360A5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5F8223-5552-48CF-B4BA-D9694FD3B2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5F8223-5552-48CF-B4BA-D9694FD3B2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5F8223-5552-48CF-B4BA-D9694FD3B2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5F8223-5552-48CF-B4BA-D9694FD3B2B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9C88562-2DE0-4CF7-B658-AFE873850FAD}
+	EndGlobalSection
+EndGlobal

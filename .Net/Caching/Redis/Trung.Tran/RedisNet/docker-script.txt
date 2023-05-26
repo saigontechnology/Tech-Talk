@@ -1,0 +1,13 @@
+docker run --name redis-learning-master -d -p 6379:6379 redis
+
+docker run --name redis-learning-master -v %cd%:/data -d -p 6379:6379 redis
+
+docker run --name redis-learning-master -v ${PWD}:/data -d -p 6379:6379 redis
+
+docker run --name redis-learning-master -v %cd%:/data -d -p 6379:6379 redis redis-server /data/redis.conf
+
+docker run --name redis-learning-master -v ${PWD}:/data -d -p 6379:6379 redis redis-server /data/redis.conf
+
+docker run --name redis-learning-rep1 -v ${PWD}:/data -d -p 6380:6379 redis redis-server /data/redis.conf
+
+docker-compose up -d

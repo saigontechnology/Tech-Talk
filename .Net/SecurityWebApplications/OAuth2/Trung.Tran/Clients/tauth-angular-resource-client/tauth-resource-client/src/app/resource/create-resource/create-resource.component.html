@@ -1,0 +1,13 @@
+<div class="text-center">
+    <h1 class="display-4">Create Resource</h1>
+</div>
+
+<div class="container">
+    <form role="form" method="post" [formGroup]="resourceFormGroup" (ngSubmit)="onFormSubmit()">
+        <div class="form-group">
+            <label for="resource-name">Name</label>
+            <input type="text" class="form-control" id="resource-name" formControlName="name" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

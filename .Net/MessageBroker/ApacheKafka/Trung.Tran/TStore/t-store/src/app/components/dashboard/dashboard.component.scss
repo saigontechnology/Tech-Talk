@@ -1,0 +1,17 @@
+@import "variables";
+
+.ts- {
+  &tab-set {
+    height: 445px;
+    nz-tab {
+      height: 100%;
+    }
+  }
+  &tab-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  &log-time {
+    color: $grey-color;
+  }
+}

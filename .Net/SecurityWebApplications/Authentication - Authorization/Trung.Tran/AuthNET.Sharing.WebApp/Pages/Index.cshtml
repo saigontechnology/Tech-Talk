@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="container">
+    <h4>USER INFO</h4>
+    <pre>@Model.UserInfoSerialized</pre>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr class="d-table-row">
+                        <th class="d-table-cell">Type</th>
+                        <th class="d-table-cell">Value</th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    @foreach (var item in Model.UserClaims)
+                    {
+                        <tr class="d-table-row">
+                            <td class="d-table-cell">@item.Type</td>
+                            <td class="d-table-cell">@item.Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

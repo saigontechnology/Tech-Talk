@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAuth.ResourceClient.Public</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand">TAuth.ResourceClient.Public</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item nav-item-admin" style="display: none;">
+                            <a class="nav-link text-dark" href="/admin.html">Admin</a>
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="btn btn-outline-danger" href="/logout.html">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="text-center">
+        <h1 class="display-4">Profile</h1>
+    </div>
+
+    <div class="container" id="user-profile">
+        <div class="profile-name"></div>
+        <div class="profile-address text-info">
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - TAuth.ResourceClient.Public
+        </div>
+    </footer>
+
+    <script src="lib/oidc-client/oidc-client.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/resourceService.js"></script>
+    <script src="js/identityService.js"></script>
+    <script src="js/site.js"></script>
+
+    <script>
+        const PageModel = () => {
+            const loadProfile = () => {
+                identityService.getUser((user) => {
+                    if (user && user.profile) {
+                        const profile = user.profile;
+                        const address = profile.address;
+                        $('#user-profile .profile-name').html(profile.name);
+                        $('#user-profile .profile-address').html(
+                            [address.street_address, address.locality, address.postal_code, address.country].join(', ')
+                        );
+                    }
+                });
+            }
+
+            return {
+                loadProfile
+            };
+        };
+
+        const pageModel = PageModel();
+
+        $(document).ready(() => {
+            pageModel.loadProfile();
+        });
+    </script>
+</body>
+
+</html>

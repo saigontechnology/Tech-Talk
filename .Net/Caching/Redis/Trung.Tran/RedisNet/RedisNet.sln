@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisNet.ConsoleApp", "RedisNet.ConsoleApp\RedisNet.ConsoleApp.csproj", "{6A47D6C0-E77C-41D8-AFB6-7C2C029286B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{9D179624-5A01-484E-9042-2D4A0F7920FC}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		docker-script.txt = docker-script.txt
+		gen-certs.sh = gen-certs.sh
+		redis.conf.txt = redis.conf.txt
+		tls.txt = tls.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A47D6C0-E77C-41D8-AFB6-7C2C029286B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A47D6C0-E77C-41D8-AFB6-7C2C029286B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A47D6C0-E77C-41D8-AFB6-7C2C029286B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A47D6C0-E77C-41D8-AFB6-7C2C029286B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E09FE851-C2A6-4AED-998B-DE7ABB892A03}
+	EndGlobalSection
+EndGlobal

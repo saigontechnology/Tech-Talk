@@ -1,0 +1,5 @@
+{
+    "saleApiUrl": "https://localhost:5001",
+    "interactionApiUrl": "https://localhost:7001",
+    "realtimeApiUrl": "https://localhost:8001"
+}

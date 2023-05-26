@@ -1,0 +1,6 @@
+redis-cli --tls \
+    --cert /cert/client.crt \
+    --key /cert/client.key \
+    --cacert /cert/ca.crt
+
+openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile ca.crt

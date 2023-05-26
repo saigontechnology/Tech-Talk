@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="5.1.0" />
+    <PackageReference Include="IdentityModel.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="3.1.16" />
+    <PackageReference Include="System.Net.Http.Json" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TAuth.Cross\TAuth.Cross.csproj" />
+    <ProjectReference Include="..\TAuth.Resource.Cross\TAuth.Resource.Cross.csproj" />
+  </ItemGroup>
+
+</Project>

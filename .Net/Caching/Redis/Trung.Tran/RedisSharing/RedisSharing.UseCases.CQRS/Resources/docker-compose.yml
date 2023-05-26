@@ -1,0 +1,13 @@
+﻿version: "3.8"
+services:
+  redis-cqrs-store:
+    image: redis:6.2.6-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    command: ["redis-server", "/data/redis.conf"]
+
+networks:
+  default:
+    name: redis-cqrs-shared

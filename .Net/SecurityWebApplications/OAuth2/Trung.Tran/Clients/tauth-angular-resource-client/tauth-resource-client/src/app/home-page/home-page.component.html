@@ -1,0 +1,38 @@
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="row mb-1">
+        <div class="col-12">
+            <a [routerLink]="A_ROUTING.resource.create" class="btn btn-info float-right">
+                Create
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr class="d-table-row">
+                        <th class="d-table-cell">Id</th>
+                        <th class="d-table-cell">Name</th>
+                        <th class="d-table-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <tr class="d-table-row" *ngFor="let resource of resourceList">
+                        <td class="d-table-cell">{{ resource.id }}</td>
+                        <td class="d-table-cell">{{ resource.name }}</td>
+                        <td class="d-table-cell">
+                            <a href="#" (click)="onDeleteClicked(resource)" class="btn btn-outline-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

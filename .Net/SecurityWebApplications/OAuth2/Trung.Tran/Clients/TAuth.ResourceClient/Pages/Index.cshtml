@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="row mb-1">
+        <div class="col-12">
+            @if (Model.CanCreateResource)
+            {
+                <a asp-area="" asp-page="/Create" class="btn btn-info float-right">
+                    Create
+                </a>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr class="d-table-row">
+                        <th class="d-table-cell">Id</th>
+                        <th class="d-table-cell">Name</th>
+                        <th class="d-table-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    @foreach (var item in Model.ResourceList)
+                    {
+                        <tr class="d-table-row">
+                            <td class="d-table-cell">@item.Id</td>
+                            <td class="d-table-cell">@item.Name</td>
+                            <td class="d-table-cell">
+                                <a asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
