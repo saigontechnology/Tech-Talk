@@ -1,0 +1,205 @@
+USE [master]
+GO
+/****** Object:  Database [DemoCQRS5]    Script Date: 8/30/2022 10:40:49 AM ******/
+CREATE DATABASE [DemoCQRS5]
+
+GO
+ALTER DATABASE [DemoCQRS5] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [DemoCQRS5] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [DemoCQRS5] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [DemoCQRS5] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [DemoCQRS5] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET RECOVERY FULL 
+GO
+ALTER DATABASE [DemoCQRS5] SET  MULTI_USER 
+GO
+ALTER DATABASE [DemoCQRS5] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [DemoCQRS5] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [DemoCQRS5] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [DemoCQRS5] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [DemoCQRS5] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [DemoCQRS5] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'DemoCQRS5', N'ON'
+GO
+ALTER DATABASE [DemoCQRS5] SET QUERY_STORE = OFF
+GO
+USE [DemoCQRS5]
+GO
+/****** Object:  Schema [logs]    Script Date: 8/30/2022 10:40:49 AM ******/
+CREATE SCHEMA [logs]
+GO
+/****** Object:  Schema [queries]    Script Date: 8/30/2022 10:40:49 AM ******/
+CREATE SCHEMA [queries]
+GO
+/****** Object:  Table [logs].[Aggregate]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [logs].[Aggregate](
+	[AggregateIdentifier] [uniqueidentifier] NOT NULL,
+	[AggregateType] [varchar](100) NOT NULL,
+	[AggregateClass] [varchar](200) NOT NULL,
+ CONSTRAINT [PK_Aggregate] PRIMARY KEY CLUSTERED 
+(
+	[AggregateIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [logs].[Command]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [logs].[Command](
+	[AggregateIdentifier] [uniqueidentifier] NOT NULL,
+	[CommandClass] [varchar](200) NOT NULL,
+	[CommandType] [varchar](100) NOT NULL,
+	[CommandData] [nvarchar](max) NOT NULL,
+	[CommandIdentifier] [uniqueidentifier] NOT NULL,
+	[SendStatus] [varchar](20) NULL,
+	[SendStarted] [datetimeoffset](7) NULL,
+	[SendCompleted] [datetimeoffset](7) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CommandIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [logs].[Event]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [logs].[Event](
+	[AggregateIdentifier] [uniqueidentifier] NOT NULL,
+	[AggregateVersion] [int] NOT NULL,
+	[EventTime] [datetimeoffset](7) NOT NULL,
+	[EventClass] [varchar](200) NOT NULL,
+	[EventType] [varchar](100) NOT NULL,
+	[EventData] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Event] PRIMARY KEY CLUSTERED 
+(
+	[AggregateIdentifier] ASC,
+	[AggregateVersion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [logs].[Snapshot]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [logs].[Snapshot](
+	[AggregateIdentifier] [uniqueidentifier] NOT NULL,
+	[AggregateVersion] [int] NOT NULL,
+	[AggregateState] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Snapshot] PRIMARY KEY CLUSTERED 
+(
+	[AggregateIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [queries].[AccountSummary]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [queries].[AccountSummary](
+	[AccountIdentifier] [uniqueidentifier] NOT NULL,
+	[AccountCode] [varchar](100) NULL,
+	[AccountStatus] [varchar](10) NULL,
+	[AccountBalance] [money] NOT NULL,
+	[OwnerIdentifier] [uniqueidentifier] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AccountIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [queries].[TransferSummary]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [queries].[TransferSummary](
+	[TransferIdentifier] [uniqueidentifier] NOT NULL,
+	[TransferAmount] [money] NOT NULL,
+	[TransferStatus] [varchar](10) NULL,
+	[FromAccountIdentifier] [uniqueidentifier] NOT NULL,
+	[ToAccountIdentifier] [uniqueidentifier] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TransferIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [queries].[UserSummary]    Script Date: 8/30/2022 10:40:49 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [queries].[UserSummary](
+	[UserIdentifier] [uniqueidentifier] NOT NULL,
+	[Name] [varchar](100) NULL,
+	[UserRegistered] [datetimeoffset](7) NOT NULL,
+	[OpenAccountCount] [int] NOT NULL,
+	[TotalAccountBalance] [money] NULL,
+	[LoginName] [varchar](100) NOT NULL,
+	[LoginPassword] [varchar](100) NOT NULL,
+	[UserRegistrationStatus] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserIdentifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+USE [master]
+GO
+ALTER DATABASE [DemoCQRS5] SET  READ_WRITE 
+GO

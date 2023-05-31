@@ -1,0 +1,39 @@
+﻿@page "/topicdemo"
+
+@using SBShared.Models
+@using SBSender.Services
+@inject IQueueService queue
+
+<h1>Topic Demo</h1>
+
+<EditForm Model="@person" OnValidSubmit="@PublishMessage">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <select name="number">
+            <option value="">Select a number</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <InputText id="firstName" class="form-control" @bind-Value="person.FirstName" />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <InputText id="lastName" class="form-control" @bind-Value="person.LastName" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    private PersonModel person = new PersonModel();
+
+    private async Task PublishMessage()
+    {
+        await queue.SendMessageAsync(person, "personqueue");
+        person = new PersonModel();
+    }
+}

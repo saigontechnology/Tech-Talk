@@ -1,0 +1,32 @@
+﻿@page "/"
+@using SBShared.Models
+@using SBSender.Services
+@inject IQueueService queue
+
+<h1>Simple Queue Demo</h1>
+<div class="row">
+    <div class="col">
+        <EditForm Model="@person" OnValidSubmit="@PublishMessage">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <InputText id="firstName" class="form-control" @bind-Value="person.FirstName" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <InputText id="lastName" class="form-control" @bind-Value="person.LastName" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+</div>
+@code {
+    private PersonModel person = new PersonModel();
+
+    private async Task PublishMessage()
+    {
+        await queue.SendMessageAsync(person, "simplequeue");
+        person = new PersonModel();
+    }
+}

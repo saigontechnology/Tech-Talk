@@ -1,0 +1,66 @@
+﻿@page "/sessiondemo"
+
+@using SBShared.Models
+@using SBSender.Services
+@inject IQueueService queue
+
+<h1>Big Order</h1>
+<div class="row">
+    <div class="col">
+        <EditForm Model="@person" OnValidSubmit="@PublishMessage">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group">
+                <select name="number">
+                    <option value="">Select a number</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <InputText id="firstName" class="form-control" @bind-Value="person.FirstName" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <InputText id="lastName" class="form-control" @bind-Value="person.LastName" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+    <div class="col">
+        <ul>
+            @foreach (var todo in todos)
+            {
+                <li>
+                    <input type="checkbox" @bind="todo.IsDone" />
+                    <input @bind="todo.Title" />
+                </li>
+            }
+        </ul>
+        <input placeholder="Something todo" @bind="newTodo" />
+        <button @onclick="AddTodo">Add todo</button>
+    </div>
+</div>
+@code {
+    private PersonModel person = new PersonModel();
+
+    private async Task PublishMessage()
+    {
+        await queue.SendMessageAsync(person, "personqueue");
+        person = new PersonModel();
+    }
+
+    private List<TodoItem> todos = new();
+    private string? newTodo;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new TodoItem { Title = newTodo });
+            newTodo = string.Empty;
+        }
+    }
+}
