@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SBShared": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:49791;http://localhost:49792"
+    }
+  }
+}
