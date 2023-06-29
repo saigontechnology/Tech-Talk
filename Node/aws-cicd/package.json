@@ -1,0 +1,25 @@
+{
+  "name": "my-demo-app",
+  "version": "1.0.0",
+  "description": "Demo app codepipeline",
+  "main": "index.js",
+  "scripts": {
+    "upload": "node upload-images.js",
+    "test": "jest test functions.test.js",
+    "start": "node index.js"
+    },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my-demo-app"
+  },
+  "author": "nhat.dao",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1387.0",
+    "express": "^4.18.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}

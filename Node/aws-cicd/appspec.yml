@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/myapp
+
+hooks:
+  ApplicationStop:
+    - location: deploy_scripts/application_stop.sh
+      timeout: 3000
+      runas: root
+  BeforeInstall:
+    - location: deploy_scripts/before_install.sh
+      timeout: 3000
+      runas: root
+  AfterInstall:
+    - location: deploy_scripts/after_install.sh
+      timeout: 3000
+      runas: root
+  ApplicationStart:
+    - location: deploy_scripts/application_start.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: deploy_scripts/validate_service.sh
+      timeout: 3000
+      runas: root
