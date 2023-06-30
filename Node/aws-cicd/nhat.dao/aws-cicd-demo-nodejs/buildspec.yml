@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+  pre_build:
+    commands:
+      - echo Upload images to S3 on `date`
+      - npm run upload
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run test
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - index.js
+    - index.html
+    - package.json
+    - functions.js
+    - appspec.yml
+    - deploy_scripts/*
