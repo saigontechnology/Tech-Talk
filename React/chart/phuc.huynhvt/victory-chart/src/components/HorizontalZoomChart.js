@@ -1,7 +1,7 @@
-import React from 'react';
-import { VictoryChart, VictoryLine, VictoryZoomContainer } from 'victory';
+import React from "react";
+import { VictoryChart, VictoryLine, VictoryZoomContainer } from "victory";
 
-const data = [
+const dataHorizontalZoom = [
   { x: 1, y: 2 },
   { x: 2, y: 3 },
   { x: 3, y: 5 },
@@ -31,16 +31,22 @@ const data = [
 function HorizontalZoomChart() {
   return (
     <div>
+      {/* Title for the chart */}
       <h2>Chart with Horizontal Zoom</h2>
+
+      {/* The VictoryChart component to visualize the data. */}
       <VictoryChart
         containerComponent={
-          <VictoryZoomContainer 
-            zoomDimension="x" 
-            allowZoom={true}
+          // The VictoryZoomContainer allows interaction on the chart.
+          // It can provide zoom capabilities to the VictoryChart.
+          <VictoryZoomContainer
+            zoomDimension="x" // Specifies that only the x-axis is zoomable.
+            allowZoom={true} // Enables the zoom feature.
           />
         }
       >
-        <VictoryLine data={data} />
+        {/* The VictoryLine component displays the data as a line chart. */}
+        <VictoryLine data={dataHorizontalZoom} />
       </VictoryChart>
     </div>
   );
