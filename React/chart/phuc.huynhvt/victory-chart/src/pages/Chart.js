@@ -61,6 +61,7 @@ const Chart = () => {
         </div>
       ))}
       <div className="item" style={commonStyle}>
+      <h1>Line chart with fetch data per seconds</h1>
         <VictoryChart theme={VictoryTheme.material}>
           <VictoryLine data={chartData} />
         </VictoryChart>
