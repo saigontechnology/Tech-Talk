@@ -56,58 +56,56 @@ const BrushableChart = () => {
     <div>
       {!isFetching && (
         <div>
+          {/* Main Chart */}
           <VictoryChart
-            theme={VictoryTheme.material}
-            width={600}
-            height={350}
-            scale={{ x: "time" }}
-            padding={{ left: 80, top: 40, right: 80, bottom: 60 }}
-            containerComponent={
+            theme={VictoryTheme.material}   // Using the Material theme from Victory
+            width={600} height={350}   // Dimensions of the chart
+            scale={{ x: "time" }}   // x-axis is time-based
+            padding={{ left: 80, top: 40, right: 80, bottom: 60 }}   // Padding for the chart
+            containerComponent={  // Custom container to add Zoom & Voronoi functionalities
               <VictoryZoomVoronoiContainer
-                labels={(d) =>
-                  {console.log(d)}
-                  // `${convertTimestampToDate(d.x)} \n $${numberFormat.format(
-                  //   d.y
-                  // )}`
-                }
-                labelComponent={
+                labels={(d) => console.log(d)}   // Just logging the label data for now
+                labelComponent={  // Configures the tooltip
                   <VictoryTooltip dy={15} pointerLength={4} cornerRadius={3} />
                 }
-                responsive={true}
-                allowZoom={false}
-                zoomDimension="x"
-                zoomDomain={zoomDomain}
-                onZoomDomainChange={handleZoom}
+                responsive={true}   // Adjusts container responsively
+                allowZoom={false}   // Disables zooming functionality
+                zoomDimension="x"   // Zoom is only allowed in the x-axis
+                zoomDomain={zoomDomain}   // Sets the zoom domain
+                onZoomDomainChange={handleZoom}   // Handler when zoom domain changes
               />
             }
           >
+            {/* X-Axis */}
             <VictoryAxis
-              style={{ tickLabels: { angle: -45, textAnchor: "end" } }}
-              tickCount={10}
-              tickFormat={(t) => convertTimestampToDate(t)}
+              style={{ tickLabels: { angle: -45, textAnchor: "end" } }}   // Rotates the tick labels for better visibility
+              tickCount={10}   // Specifies the number of ticks on the axis
+              tickFormat={(t) => convertTimestampToDate(t)}   // Converts the UNIX timestamp to a readable date
             />
+            {/* Y-Axis */}
             <VictoryAxis
-              dependentAxis
+              dependentAxis   // Y-axis is dependent on data
               tickCount={10}
-              tickFormat={(t) => `$${numberFormat.format(t)}`}
+              tickFormat={(t) => `$${numberFormat.format(t)}`}   // Formats the tick to display as currency
             />
-            <VictoryLine data={data.map((e) => ({ x: e.time, y: e.close }))} />
+            {/* Line Chart */}
+            <VictoryLine data={data.map((e) => ({ x: e.time, y: e.close }))} /> 
           </VictoryChart>
 
+          {/* Brush Chart (For selecting a domain on the main chart) */}
           <VictoryLine
             theme={VictoryTheme.material}
-            width={600}
-            height={50}
+            width={600} height={50}   // Dimensions of the brush chart
             padding={{ left: 80, top: 0, right: 80, bottom: 0 }}
             containerComponent={
               <VictoryBrushContainer
                 responsive={true}
-                brushDimension="x"
-                brushDomain={selectedDomain}
-                onBrushDomainChange={handleBrush}
+                brushDimension="x"   // Brushing is allowed only on the x-axis
+                brushDomain={selectedDomain}   // Domain that is selected by brushing
+                onBrushDomainChange={handleBrush}   // Handler when brush domain changes
               />
             }
-            data={data.map((e) => ({ x: e.time, y: e.close }))}
+            data={data.map((e) => ({ x: e.time, y: e.close }))}   // Maps the fetched data to the line chart
           />
         </div>
       )}
