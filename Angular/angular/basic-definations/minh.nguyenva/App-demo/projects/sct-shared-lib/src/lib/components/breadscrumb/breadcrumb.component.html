@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+    <ng-container *ngFor="let breadcrumb of breadcrumbs$ | async; 
+      first as isFirst;
+      last as isLast">
+      <ng-container>
+        <ng-container *ngIf="!breadcrumb?.disableClick && isFirst; else textBlock">
+          <li class="breadcrumb-item breadcrum-default">
+            <a [routerLink]="[breadcrumb.path]">{{ breadcrumb.displayName$ | async }}</a>
+          </li>
+        </ng-container>
+      </ng-container>
+      <ng-template #textBlock>
+        <li class="breadcrumb-item active">
+          {{ breadcrumb.displayName$ | async }}
+        </li>
+      </ng-template>
+    </ng-container>
+  </ol>

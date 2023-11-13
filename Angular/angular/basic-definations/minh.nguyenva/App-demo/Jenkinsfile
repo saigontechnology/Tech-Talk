@@ -1,0 +1,353 @@
+#!/usr/bin/env groovy
+import com.sicpa.jenkinsworkflowlib.Version
+import com.sicpa.jenkinsworkflowlib.web.WebComponent
+import groovy.transform.Field
+// Environments to containerize in Docker
+@Field
+String[] DOCKER_ENVS = ["sqa", "prod"] // exclude Dev environment
+// Environments to compress into tar artifacts
+@Field
+String[] ARTIFACT_ENVS = ["prod"]
+// Supported customizations/projects
+@Field
+String[] CUSTOMIZATIONS = ["sct"] //sct-sqa
+// Targets that will skip the Build/Release process. Target must be in the format "{customization}-{environment}"
+@Field
+String[] SKIP_TARGETS = []
+@Field
+String DOCKER_REPO = "docker-repos.artifactory.sicpa.com";
+@Field
+String DOCKER_REGISTRY_URL = "https://docker-repos.artifactory.sicpa.com";
+@Field
+String AGENT_LABEL = 'nodejs-npm-slave-16'
+@Field
+String DOCKER_PUSHER_AGENT_LABEL = 'docker-native-openstack'
+/**
+ * Obtain a closure containing Jenkins Pipeline stage block for a specific project/customization and environment. This
+ * stage is solely in charge of executing ng build command which generates the artifact needed for deployment.
+ *
+ * @param releaseName
+ */
+def getBuildStage(String customization, String environment) {
+  return {
+    def releaseName = "${customization}-${environment}"
+    stage("Build ${releaseName}") {
+      node(AGENT_LABEL) {
+        unstash 'app'
+        sh """
+              ng build ${customization} -c=${environment}
+            """
+        stash name: releaseName, includes: "**/dist/**"
+      }
+    }
+  }
+}
+/**
+ * Helper method to invoke a closure for all customizations' environment(s).
+ *
+ * @param environments list of environments to iterate
+ * @param closure
+ */
+def iterateCustomizationEnvironments(environments,  Closure closure) {
+  for (customization in CUSTOMIZATIONS) {
+    for (environment in environments) {
+      if (SKIP_TARGETS.contains("${customization}-${environment}")) {
+        stage("Skip Docker target ${customization}-${environment}") {}
+        continue;
+      }
+      closure(customization, environment)
+    }
+  }
+}
+def iterateSqaTargets(Closure closure) {
+  iterateCustomizationEnvironments(["sqa"], closure)
+}
+def getDevelopBuildStages() {
+  def buildStages = [:]
+  iterateSqaTargets { customization, environment ->
+    def releaseName = "${customization}-${environment}"
+    buildStages.put(releaseName, getBuildStage(customization, environment))
+  }
+  return buildStages;
+}
+/**
+ * Invokes a closure for each release target. The customization(s) that are targeted depends on getReleaseCustomizations
+ * which is obtained from the Git branch suffix. The environment(s) that are targeted is the unique union of DOCKER_ENVS
+ * and ARTIFACT_ENVS.
+ *
+ * @param closure callback
+ */
+def iterateReleaseTargets(Closure closure) {
+  def customizations = getReleaseCustomizations()
+  for (customization in customizations) {
+    def environments = (DOCKER_ENVS + ARTIFACT_ENVS).toUnique()
+    for (environment in environments) {
+      if (SKIP_TARGETS.contains("${customization}-${environment}")) {
+        stage("Skip Release target ${customization}-${environment}") {}
+        continue;
+      }
+      closure(customization, environment)
+    }
+  }
+}
+def getReleaseBuildStages() {
+  def buildStages = [:]
+  iterateReleaseTargets({ customization, environment ->
+    def releaseName = "${customization}-${environment}"
+    buildStages.put(releaseName, getBuildStage(customization, environment))
+  })
+  return buildStages;
+}
+/**
+ * Get release customization targets from branch name. e.g. release/0.0.1-xk,ug will derive ['xk','ug']
+ */
+def getReleaseCustomizations() {
+  if (!util.isReleaseBranch()) {
+    throw new RuntimeException("Not in release branch ${env.BRANCH_NAME}")
+  }
+  def suffix = env.BRANCH_NAME.tokenize('-').last();
+  def customizations = suffix.split(',');
+  for (String customization : customizations) {
+    if (!CUSTOMIZATIONS.contains(customization)) {
+      throw new RuntimeException("${customization} is not part of valid customization: ${CUSTOMIZATIONS}. Please suffix branch name with a valid customization, e.g. release/0.0.1-xk")
+    }
+  }
+  return customizations;
+}
+def getReleaseVersion() {
+  if (!util.isReleaseBranch()) {
+    throw new RuntimeException("Not in release branch ${env.BRANCH_NAME}")
+  }
+  String branchName = env.BRANCH_NAME
+  def (_, version) = (branchName =~ /^release\/(\d{1,3}\.\d{1,3}\.\d{1,3}.*)-[a-z,]+$/)[0]
+  if (version == null) {
+    throw new RuntimeException("""
+Could not determine version in branch ${branchName}. Please use a valid branch name, e.g.:-
+  release/1.0.0-ph,ug 
+  release/1.0.0-ug
+  release/1.0.0_1-ug
+  release/1.0.0_RC1-ug
+""")
+  }
+  return version
+}
+def isTagExists(String tag) {
+  sh "git fetch --tags"
+  def result = sh(script: "git tag -l '$tag'", returnStdout: true)
+  return result.contains(tag)
+}
+def buildAndPushDockerImage(imageName, distFolderPath) {
+  docker.withRegistry(DOCKER_REGISTRY_URL, 'docker-pusher') {
+    def image = docker.build(imageName, ". --build-arg DIST_FOLDER_PATH=${distFolderPath}")
+    image.push()
+  }
+}
+def uploadToArtifactory() {
+  def server = Artifactory.server '1011457306@1460034159065'
+  def uploadSpec = """{
+                            "files": [{
+                              "pattern": "web-client-*.tgz",
+                              "target": "npm-local"
+                            }]
+                         }"""
+  server.upload(uploadSpec)
+  archiveArtifacts artifacts: '*.tgz'
+}
+pipeline {
+  agent { label 'master' }
+  environment {
+    BRANCH = env.BRANCH_NAME.replace("/", "-")
+    IDENTIFIER = "${BRANCH}-${env.BUILD_NUMBER}"
+    BUILD_NUMBER = "${env.BUILD_NUMBER}"
+  }
+  stages {
+    // TODO: Add test stage
+    // Build stage without any customization. Currently serves only to catch compilation errors.
+    stage("Build") {
+      when {
+        beforeAgent true
+        not {
+          anyOf {
+            branch "develop"
+            branch "release/*"
+          }
+        }
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          sh """
+            cd ${WORKSPACE}
+            npm ci
+            ng build
+          """
+        }
+      }
+    }
+    stage("Install dependencies") {
+      when {
+        beforeAgent true
+        branch "develop"
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          sh """
+            cd ${WORKSPACE}
+            npm ci
+          """
+          stash name: 'app', includes: '**'
+          // Run build stages in parallel
+          parallel(getDevelopBuildStages())
+        }
+      }
+    }
+    stage('Upload Docker Image') {
+      agent { label DOCKER_PUSHER_AGENT_LABEL }
+      when {
+        beforeAgent true
+        branch "develop"
+      }
+      steps {
+        script {
+          // Create a Summary section for Docker Images
+          def summary = createSummary(icon: "star-gold.png")
+          summary.appendText("<h3>Docker images</h3>")
+          // Build only SQA docker images in develop branches
+          iterateSqaTargets { customization, environment ->
+            String releaseName = "${customization}-${environment}"
+            unstash releaseName
+            String dockerImageName = "${DOCKER_REPO}/${customization}/web-client:${IDENTIFIER}-${environment}"
+            buildAndPushDockerImage(dockerImageName, releaseName)
+            summary.appendText("${dockerImageName}<br>")
+          }
+        }
+      }
+    }
+    stage("Validate release") {
+      when {
+        beforeAgent true
+        branch "release/*"
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          def releaseVersion = getReleaseVersion()
+          println "Release version: ${releaseVersion}"
+          def webComponent = new WebComponent(steps)
+          def baseVersion = webComponent.getBaseVersion(".")
+          if (baseVersion != releaseVersion) {
+            throw new RuntimeException("Branch should have same version as module: module version(${baseVersion}) but branch version(${releaseVersion})")
+          }
+          def releaseCustomizations = getReleaseCustomizations()
+          println "Release customizations: ${releaseCustomizations}"
+        }
+      }
+    }
+    stage("Install Dependencies") {
+      when {
+        beforeAgent true
+        branch "release/*"
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          sh """
+            cd ${WORKSPACE}
+            npm ci
+          """
+          stash name: 'app', includes: '**'
+          // Run build stages in parallel
+          parallel(getReleaseBuildStages())
+        }
+      }
+    }
+    stage("Upload to Docker") {
+      when {
+        beforeAgent true
+        branch "release/*"
+      }
+      agent { label DOCKER_PUSHER_AGENT_LABEL }
+      steps {
+        script {
+          // Create a Summary section for Docker Images
+          def summary = createSummary(icon: "star-gold.png")
+          summary.appendText("<h3>Docker images</h3>")
+          def releaseVersion = getReleaseVersion()
+          iterateReleaseTargets({customization, environment ->
+            String releaseName = "${customization}-${environment}"
+            unstash releaseName
+            if (DOCKER_ENVS.contains(environment)) {
+              // Upload To Docker
+              String dockerImageName = "${DOCKER_REPO}/${customization}/web-client:${releaseVersion}-${environment}-${env.BUILD_NUMBER}"
+              buildAndPushDockerImage(dockerImageName, releaseName)
+              summary.appendText("${dockerImageName}<br>")
+            }
+          })
+        }
+      }
+    }
+    stage("Upload to Artifactory") {
+      when {
+        beforeAgent true
+        branch "release/*"
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          iterateReleaseTargets({customization, environment ->
+            String releaseName = "${customization}-${environment}"
+            unstash releaseName
+            if (ARTIFACT_ENVS.contains(environment)) {
+              sh """
+                tar cvzf web-client-${releaseName}-${releaseVersion}-${BUILD_NUMBER}.tgz dist/${releaseName}/
+              """
+            }
+          })
+          // Batch upload to Artifactory
+          uploadToArtifactory()
+        }
+      }
+    }
+    stage("Release") {
+      when {
+        beforeAgent true
+        branch "release/*"
+      }
+      agent { label AGENT_LABEL }
+      steps {
+        script {
+          source.withGitPrivilegedUser([:]) {
+            def releaseVersion = getReleaseVersion()
+            def version = new Version(releaseVersion, releaseVersion, null)
+            if (isTagExists("v$releaseVersion")) {
+              // Allow skipping the Release stage since there might come a time where we want to release for another
+              // customization using a previous released version
+              stage("Skip duplicate release tag: v$releaseVersion") {
+                job.keepCurrentBuildForever()
+                source.deleteReleaseBranch version: version
+              }
+              return
+            }
+            // check if it's support release
+            if (source.isSupportReleaseBranchDetected([:])) {
+              confirm.shouldContinueWithSupportRelease()
+            }
+            confirm.ifReleaseApproved {
+              println "Release approved"
+              source.tagRelease version: version
+              job.keepCurrentBuildForever()
+              if (util.shouldMerge()) {
+                source.mergeToMaster version: version
+                def webComponent = new WebComponent(steps)
+                webComponent.nextDevVersionBranch('.', releaseVersion, [''])
+                source.tryMergeNextDevVersionToDevelop([version: version])
+              }
+              source.deleteReleaseBranch version: version
+            }
+          }
+        }
+      }
+    }
+  }
+}

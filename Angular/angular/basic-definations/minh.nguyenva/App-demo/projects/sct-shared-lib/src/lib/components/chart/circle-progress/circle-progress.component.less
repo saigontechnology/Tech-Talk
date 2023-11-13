@@ -1,0 +1,41 @@
+@import 'style.variable.less';
+.progress-wrapper {
+    position: relative;
+    .progress-number {
+        p {
+            position: absolute;
+            top: 50%;
+            bottom: auto;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+    }
+}
+
+.title {
+    font-size: 22px;
+    line-height: 24px;
+    word-spacing: 1px;
+}
+.quantity-text{
+    color:rgba(82,85,86,0.6)
+}
+
+.content-rounded{
+    @media @xs-mobile{
+        font-size: 16px;
+        .progress-name{
+            padding:0;
+            span{
+                margin: 0;
+                font-size: 16px;
+            }
+        }
+        .progress-number{
+            p{
+                font-size: 12px;
+            }
+
+        }
+    }
+}

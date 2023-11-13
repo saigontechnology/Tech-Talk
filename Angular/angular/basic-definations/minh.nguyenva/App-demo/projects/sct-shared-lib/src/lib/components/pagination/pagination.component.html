@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between py-2">
+    <ngb-pagination [collectionSize]="totalElements" [page]="page" [pageSize]="pageSize" (pageChange)="onPageChange($event)"></ngb-pagination>
+
+    <select class="form-select  select-pagination" [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)">
+        <ng-container *ngFor="let option of itemPerPage">
+            <option [ngValue]="option.value">{{option.displayName}}</option>
+        </ng-container>
+    </select>
+</div>

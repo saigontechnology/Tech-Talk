@@ -1,0 +1,30 @@
+<div class="outer">
+    <div class="modal-body">
+        <h4 class="modal-title">{{modalHeader}}</h4>
+        <div class="modal-mesage" [ngClass]="{'box-vertical loading loading-page':showLoading}">
+            {{modalMessage }}
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <div *ngIf="showFullButtons; else agreeButton" class="d-flex align-items-center justify-content-end">
+            <div class="ms-3">
+                <button type="button" class="btn btn-secondary" (click)="close(MODAL_STATUS.CANCEL)">{{cancelText}}</button>
+            </div>
+            <div class="ms-3">
+                <ng-container *ngIf="yesText.toUpperCase() === MODAL_STATUS.DELETE; else normalButton">
+                    <button type="button" class="btn btn-danger" (click)="close(MODAL_STATUS.YES)">{{yesText}}</button>
+                </ng-container>
+                <ng-template  #normalButton>
+                    <button type="button" class="btn btn-primary" (click)="close(MODAL_STATUS.YES)">{{yesText}}</button>
+                </ng-template>
+            </div>
+        </div>
+        <ng-template #agreeButton>
+            <div class="ms-3 w-100 text-center">
+                <button type="button button-sole" class="btn btn-primary" (click)="close(MODAL_STATUS.OK)">{{'OK'}}</button>
+            </div>
+        </ng-template>
+
+    </div>
+
+</div>

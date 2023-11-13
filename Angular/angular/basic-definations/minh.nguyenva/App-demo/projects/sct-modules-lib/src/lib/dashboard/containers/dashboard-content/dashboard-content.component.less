@@ -1,0 +1,24 @@
+@import 'style.variable.less';
+.row-container {
+  min-height: 150px;
+    .col {
+        padding: 0;
+    }
+    .col:first-child {
+        padding-right: 0;
+    }
+    .col:last-child {
+        padding-left: 0;
+    }
+    @media @tablet {
+        .col {
+            padding: 0;
+        }
+        .col:first-child {
+            padding-right: 10px;
+        }
+        .col:last-child {
+            padding-left: 10px;
+        }
+      }
+}

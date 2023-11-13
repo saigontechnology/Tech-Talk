@@ -1,0 +1,6 @@
+<div class="input-group flex-nowrap-picker">
+    <input class="form-control date-picker-input" placeholder="Please Select" name="dp" [ngModel]="selected"
+        (ngModelChange)="onChangeSelect($event)" ngbDatepicker="ngbDatepicker" #d="ngbDatepicker"
+        (blur)="onTouched()" />
+    <button class=" btn date-picker-button text-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+</div>

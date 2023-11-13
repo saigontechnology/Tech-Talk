@@ -1,0 +1,63 @@
+<div class="configuaration">
+    <div class="content-rounded config-content">
+        <div class="title mb-5">
+            <p>Set The Nation Stock Level</p>
+        </div>
+        <div class="form-content">
+            <form *ngIf="form" [formGroup]="form" novalidate>
+                <div class="row mb-5">
+                    <div class="form-item col-12 col-md-10">
+                        <label class="text-nowrap text-secondary" for="gasolineThreshold">National Gasoline Fuel Threshold</label>
+                        <sct-validated-field [fieldChange]="gasolineThreshold?.touched || gasolineThreshold?.dirty" [errors]="gasolineThreshold?.errors">
+                            <div class="input-group">
+                                <input type="text" class="form-control " formControlName="gasolineThreshold"  placeholder="500000">
+                            </div>
+                            <small message>
+                                <sct-common-message [messageInfo]="gasolineThreshold?.errors"></sct-common-message>
+                            </small>
+                        </sct-validated-field>
+                    </div>
+                    <div class="form-item red-shadow col-2">
+                        <label class="text-secondary" for="gasolineUnit"></label>
+                        <ng-container *ngIf="(gasoline_unit$ | async) as gasoline_unit">
+                          <sct-validated-field [fieldChange]="gasolineUnit?.touched || gasolineUnit?.dirty" [errors]="gasolineUnit?.errors">
+                            <sct-select  [options]="gasoline_unit.options" [formControlName]="'gasolineUnit'"></sct-select>
+                            <small message>
+                              <sct-common-message [messageInfo]="gasolineUnit?.errors"></sct-common-message>
+                          </small>  
+                          </sct-validated-field>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-item col-12 col-md-10">
+                        <label class="text-nowrap text-secondary" for="dieselThreshold">National Diesel Fuel Threshold</label>
+                        <sct-validated-field [fieldChange]="dieselThreshold?.touched || dieselThreshold?.dirty" [errors]="dieselThreshold?.errors">
+                            <div class="input-group">
+                                <input type="text" class="form-control " formControlName="dieselThreshold"  placeholder="500000">
+                            </div>
+                            <small message>
+                                <sct-common-message [messageInfo]="dieselThreshold?.errors"></sct-common-message>
+                            </small>
+                        </sct-validated-field>
+                    </div>
+                    <div class="form-item blue-shadow col-2">
+                        <label class="text-secondary" for="dieselUnit"></label>
+                        <ng-container *ngIf="(gasoline_unit$ | async) as gasoline_unit">
+                          <sct-validated-field [fieldChange]="dieselUnit?.touched || dieselUnit?.dirty" [errors]="dieselUnit?.errors">
+                            <sct-select  [options]="gasoline_unit.options" [formControlName]="'dieselUnit'"></sct-select>
+                            <small message>
+                              <sct-common-message [messageInfo]="dieselUnit?.errors"></sct-common-message>
+                          </small>  
+                          </sct-validated-field>
+                        </ng-container>
+                    </div>
+                </div>
+            </form>
+						<div class="button-group text-center">
+							<button routerLink=".." class="btn btn-secondary" >Reset</button>
+							<button [disabled]="!form.valid" class="btn btn-primary" (click)="onSubmit()">Done</button>
+						</div>
+        </div>
+    </div>
+</div>

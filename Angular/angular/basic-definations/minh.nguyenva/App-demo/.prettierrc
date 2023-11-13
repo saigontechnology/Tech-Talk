@@ -1,0 +1,35 @@
+{
+  "bracketSpacing": true,
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 140,
+  "singleQuote": true,
+  "useTabs": false,
+  "trailingComma": "es5",
+
+  "overrides": [
+    {
+      "files": [".*.json", "*.json", ".prettierrc"],
+      "options": {
+        "parser": "json",
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.tpl"],
+      "options": {
+        "parser": "angular",
+        "bracketSpacing": true,
+        "singleQuote": true,
+        "tabWidth": 1,
+        "useTabs": false
+      }
+    },
+    {
+      "files": [".less"],
+      "options": {
+        "parser": "less"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+<div class="container ms-0">
+    <p class="text-secondary fs-20">Settings</p>
+    <form *ngIf="form" [formGroup]="form" novalidate>
+        <div class="row mb-4">
+            <div class="col-12 ">
+                <div class="content-rounded h-100">
+                    <p class=" text-secondary section-name">Account Password</p>
+                    <div class="password-container section-container">
+                        <div class="password-content">
+                            <form class="row g-3">
+                                <div class="col-md-6 form-item ">
+                                    <label [style.font-size.px]="20"  class="text-secondary">First Name</label>
+                                    <sct-validated-field [fieldChange]="firstName?.touched || firstName?.dirty" [errors]="firstName?.errors">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" formControlName="firstName" placeholder="Michael">
+                                        </div>
+                                        <small [style.color]="'blue'" message>
+                                            <sct-common-message [messageInfo]="firstName?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                                <div class="col-md-6 form-item ">
+                                    <label class="text-secondary">Last Name</label>
+                                    <sct-validated-field [fieldChange]="lastName?.touched || lastName?.dirty" [errors]="lastName?.errors">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" formControlName="lastName" placeholder="Reacher">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="lastName?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                                <div class="col-md-6 form-item">
+                                    <label class="text-secondary">Email</label>
+                                    <sct-validated-field [fieldChange]="email?.touched || email?.dirty" [errors]="email?.errors">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control " formControlName="email" placeholder="michaelreacher@gmail.com">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="email?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+
+                                </div>
+                                <div class="col-md-6 form-item">
+                                    <label class="text-secondary">Mobile Number</label>
+                                    <sct-validated-field [fieldChange]="mobileNumber?.touched || mobileNumber?.dirty" [errors]="mobileNumber?.errors">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control " formControlName="mobileNumber" placeholder="0123456789">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="mobileNumber?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                                <div class="col-md-6 form-item">
+                                        <label class="text-secondary" for="country">Country</label>
+                                        <ng-container *ngIf="(countryOption$ | async) as countryOption">
+                                            <sct-validated-field [fieldChange]="country?.touched || country?.dirty" [errors]="country?.errors">
+                                                <sct-select [options]="countryOption.options" [formControlName]="'country'"></sct-select>
+                                                <small message>
+                                                    <sct-common-message [messageInfo]="country?.errors"></sct-common-message>
+                                                </small>
+                                            </sct-validated-field>
+                                        </ng-container>
+                                    </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 col-12 col-lg-6 settings-section">
+                <div class="content-rounded h-100">
+                    <p class=" text-secondary section-name">Change Password</p>
+                    <div class="password-container section-container">
+                        <div class="password-content">
+                            <form>
+                                <div class="form-item  mb-3">
+                                    <label class="text-secondary">Current Password</label>
+                                    <sct-validated-field [fieldChange]="currentPassword?.touched || currentPassword?.dirty" [errors]="currentPassword?.errors">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control " formControlName="currentPassword" placeholder="*****">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="currentPassword?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                                <div class="form-item  mb-3">
+                                    <label class="text-secondary">New Password</label>
+                                  <sct-validated-field [fieldChange]="newPassWord?.touched || newPassWord?.dirty" [errors]="newPassWord?.errors">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control " formControlName="newPassWord" placeholder="*****">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="newPassWord?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                                <div class="form-item mb-3">
+                                    <label class="text-secondary">New Password Confirm</label>
+                                  <sct-validated-field [fieldChange]="newPassWordConfirm?.touched || newPassWordConfirm?.dirty" [errors]="newPassWordConfirm?.errors">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control " formControlName="newPassWordConfirm" placeholder="*****">
+                                        </div>
+                                        <small message>
+                                            <sct-common-message [messageInfo]="newPassWordConfirm?.errors"></sct-common-message>
+                                        </small>
+                                    </sct-validated-field>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 col-12 col-lg-6 settings-section">
+                <div class="content-rounded h-100">
+                    <p class=" text-secondary section-name">Notifications</p>
+                    <div class="switch-container section-container">
+                        <div class="switch-content content-rounded">
+                            <div class="switch-item">
+                                <ng-container *ngFor="let switch of SWICHES">
+                                    <sct-switch [formControlName]="switch.name" [switch]="switch"></sct-switch>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="button-group text-end">
+        <button routerlink=".." class="btn btn-secondary">Cancel</button>
+        <button class="btn btn-primary ms-3" (click)="onSubmit()">Save</button>
+    </div>
+</div>

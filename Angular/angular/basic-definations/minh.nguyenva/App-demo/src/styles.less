@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/ui-style/style.variable.less';
+@import './app/ui-style/_mixin.less';
+@import './app/ui-style/navbar.less';
+@import './app/ui-style/sidenav.less';
+@import './app/ui-style/button.less';
+@import './app/ui-style/table.less';
+@import './app/ui-style/collapse.less';
+@import './app/ui-style/select.less';
+@import './app/ui-style/form.less';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter';
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: 'Inter';
+  src: local('Inter'), url(/assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+:root {
+  --bs-primary: @color-primary;
+  --bs-primary-rgb: @color-primary-rba;
+  --bs-secondary: @color-secondary;
+  --bs-secondary-rgb: @color-secondary-rba;
+}
+
+.img-rounded {
+  height: 22px;
+  width: 22px;
+}
+.sct-icon {
+  font-size: 20px;
+}
+
+// fs
+.fs {
+  &-20 {
+    font-size: 20px;
+  }
+  &-16 {
+    font-size: 16px;
+  }
+  &-14 {
+    font-size: 14px;
+  }
+  &-12 {
+    font-size: 12px;
+  }
+}
+//text
+.text {
+  &-grey-light {
+    color: @color-text-light-grey;
+  }
+}
+
+// tag
+.content-rounded {
+  border: solid 1px @color-border;
+  border-radius: 7px;
+}
+
+.data-list {
+  &-section {
+    padding: 5px 0;
+  }
+}
+
+// span{
+//   color: blue;
+// }
