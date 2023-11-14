@@ -1,0 +1,98 @@
+<div class="section-left">
+  <div class="navigation">
+    <button mat-button [matMenuTriggerFor]="menu1">Menu 1</button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu2">Menu 2</button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu3">Menu 3</button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+
+  <div class="content-list">
+    <mat-card class="example-card" *ngFor="let item of infoList">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>{{ item.subTitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <p>
+          {{ item.descriptions }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button (click)="openDialog(true)">SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div class="section-right">
+  <div class="navigation" [@scaleUpCenter]>
+    <button mat-button [matMenuTriggerFor]="menu1">Menu 1</button>
+    <mat-menu #menu1="matMenu" (click)="isOpen = !isOpen">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu2">Menu 2</button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu3">Menu 3</button>
+    <mat-menu #menu3="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+
+  <div class="content-list">
+    <mat-card
+      class="example-card"
+      *ngFor="let item of infoList"
+      [@scaleUpCenter]
+      [@wobbleVerticalLeft]="item.state"
+      (mouseenter)="onMouseEnter(item)"
+      (mouseleave)="onMouseLeave(item)"
+    >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-subtitle>{{ item.subTitle }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <p>
+          {{ item.descriptions }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button (click)="openDialog(false)">SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

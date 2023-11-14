@@ -1,0 +1,28 @@
+<h1>To Do List</h1>
+<button mat-button color="primary" (click)="addItem()" class="btn btn-success">
+  Add
+</button>
+<button mat-button color="warn" (click)="removeItem()" class="btn btn-danger">
+  Delete
+</button>
+<div
+  class="card"
+  *ngFor="let list of itemList"
+  @addItem
+  [@jelloDiagonalAnimation]="list.state"
+  (@jelloDiagonalAnimation.start)="animationRunning = true"
+  (@jelloDiagonalAnimation.done)="animationRunning = false"
+  (click)="toggleAnimation(list)"
+>
+  {{ list.name }}
+</div>
+<p *ngIf="animationRunning">Animation is running...</p>
+
+<div class="div-img">
+  <img
+    src="https://picsum.photos/id/959/250/250"
+    [@maskHover]="hoverState"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  />
+</div>

@@ -1,0 +1,79 @@
+<!-- <button type="button" (click)="isOpen = !isOpen">
+  Toggle {{ isOpen ? "open" : "closed" }}
+</button> -->
+
+<!-- <div [@openClose]="isOpen ? 'open' : 'closed'">
+  <p>The box is now {{ isOpen ? "Open" : "Closed" }}!</p>
+</div>
+
+<div [@multiStep]="isOpen ? 'open' : 'closed'">
+  This is a multi-step animation example
+</div> -->
+
+<!-- <div [@fade]="isOpen ? 'open' : 'closed'">
+  This element will have an animation with a state defined by a wildcard.
+</div> -->
+
+<!-- <div
+  class="container"
+  *ngIf="isOpen"
+  [@fadeInOutVoid]="isOpen ? 'open' : 'closed'"
+>
+  <p>This element will have animation when appearing and disappearing.</p>
+</div>
+
+<div *ngIf="isOpen" [@fadeInOut]="isOpen ? 'open' : 'closed'">
+  This element uses :enter and :leave
+</div> -->
+
+<!-- multi transition --- -->
+<!-- <button type="button" (click)="number = 0">open</button>
+<button type="button" (click)="number = 1">inProgress</button>
+<button type="button" (click)="number = 2">closed</button>
+
+<div
+  [@openCloseMulti]="
+    number === 0 ? 'open' : number === 1 ? 'inProgress' : 'closed'
+  "
+>
+  This element use wildcard state with multiple transition states.
+</div> -->
+
+<!-- disabled an animation -->
+<!-- <div [@.disabled]="true" [@openClose]="isOpen ? 'open' : 'closed'">
+  <p>The box is now {{ isOpen ? "Open" : "Closed" }}!</p>
+</div> -->
+
+<!-- Multiple animation triggers  -->
+<!-- <div [@parentAnimation]="parentState" class="multiple-trigger">
+  <button
+    (click)="
+      parentState = parentState === 'expanded' ? 'collapsed' : 'expanded'
+    "
+  >
+    Toggle Parent - {{ parentState }}
+  </button>
+  <div *ngFor="let item of items" [@childAnimation]="item.state">
+    {{ item.name }}
+    <button
+      (click)="item.state = item.state === 'visible' ? 'hidden' : 'visible'"
+    >
+      Toggle Child - {{ item.state }}
+    </button>
+  </div>
+</div> -->
+<!-- --------------- -->
+
+<button (click)="toggleState()">Animate</button> State: {{ state }}
+<hr />
+<div [@theParentAnimation]="state" class="parent">
+  <div [@theChildAnimation]="state" class="child"></div>
+</div>
+
+<!-- animation callback -->
+<!-- <div
+  [@openClose]="isOpen ? 'open' : 'closed'"
+  (@openClose.start)="onAnimationEvent($event)"
+  (@openClose.done)="onAnimationEvent($event)"
+  class="open-close-container"
+></div> -->
