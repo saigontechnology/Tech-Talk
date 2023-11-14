@@ -1,0 +1,125 @@
+// Define variables for colors and font families
+$font-family: Arial, Helvetica, sans-serif;
+$light-bg: #fff;
+$dark-bg: #333;
+$dark-text: #8dc63f;
+$light-text: #333;
+$header-bg: #333;
+$header-text: #fff;
+$header-hover: #555;
+$row-hover: #f5f5f5;
+$border-color: #ddd;
+$padding: 10px;
+$font-size: 14px;
+
+// Define common styles
+@mixin common-styles {
+  font-family: $font-family;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: $font-size;
+}
+
+// Define table styles
+
+
+.App{
+  padding: 2rem;
+  .wrap{
+    display: flex;
+    .btn-wrap{
+      align-self: center;
+    }
+  }
+}
+// Light mode table
+.light-mode {
+  background-color: $light-bg;
+  color: $light-text;
+  table {
+    @include common-styles;
+    width: 100%;
+    .header{
+        background-color: yellow;
+    }
+
+    th {
+      background-color: $header-bg;
+      color: $header-text;
+      font-weight: bold;
+      padding: $padding;
+      text-align: left;
+      cursor: pointer;
+    
+      &:hover {
+        background-color: $header-hover;
+      }
+    }
+    td {
+      border: 1px solid $border-color;
+      padding: $padding;
+    }
+    tr:hover {
+      background-color: $row-hover;
+    }
+  }
+}
+
+// Dark mode table
+.dark-mode {
+  background-color: $dark-bg;
+  color: $dark-text;
+  table {
+    @include common-styles;
+    width: 100%;
+    th {
+      background-color: $header-bg;
+      color: $header-text;
+      font-weight: bold;
+      padding: $padding;
+      text-align: left;
+      cursor: pointer;
+    
+      &:hover {
+        background-color: $header-hover;
+      }
+    }
+    td {
+      border: 1px solid $border-color;
+      padding: $padding;
+    }
+    tr:hover {
+      background-color: $row-hover;
+    }
+  }
+}
+
+.button {
+  background-color: $dark-text;
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.dragdropbox{
+  width: 100%;
+  height: 100px; 
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.webView{
+ 
+}

@@ -1,0 +1,79 @@
+$header-text-color: #fff;
+$header-padding: 10px;
+$header-flex: space-between;
+$header-align: center;
+$header-h1-margin: 0;
+$header-h1-padding: 0;
+$nav-list-style: none;
+$nav-list-padding: 0;
+$nav-list-display: flex;
+$nav-list-item-margin: 20px;
+$nav-link-decoration: none;
+$nav-link-color: #fff;
+$nav-link-font-weight: bold;
+$nav-link-hover-decoration: underline;
+$dark-text: #fff;
+$light-text: #8dc63f;
+
+.header {
+  &.light-mode{
+    a{
+      color: $light-text;
+    }
+  }
+  &.dark-mode{
+    a{
+      color: $dark-text;
+    }
+  }
+  display: flex;
+  justify-content: $header-flex;
+  align-items: $header-align;
+
+  h1 {
+    margin: $header-h1-margin;
+    padding: $header-h1-padding;
+  }
+  .online-text{
+    color: $light-text;
+  }
+  .offline-text{
+    color: red;
+  }
+
+  nav {
+    ul {
+      list-style: $nav-list-style;
+      padding: $nav-list-padding;
+      display: $nav-list-display;
+
+      li {
+        margin-right: $nav-list-item-margin;
+
+        a {
+          text-decoration: $nav-link-decoration;
+          font-weight: $nav-link-font-weight;
+
+          &:hover {
+            text-decoration: $nav-link-hover-decoration;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff; /* Change the color to match your design */
+}
+.light-mode-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  // color: #fff; /* Change the color to match your design */
+}
