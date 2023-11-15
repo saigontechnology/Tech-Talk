@@ -1,0 +1,13 @@
+<header>
+  <img src="../assets/logo.svg" alt="Saigon Technology Logo" srcset="">
+  <h1>Web Worker Example</h1>
+  <div class="buttons">
+    <button (click)="applyFilter()">Apply Filter</button>
+    <button (click)="applyFilterWithoutWorker()">Apply Filter w\o Worker</button>
+  </div>
+</header>
+<main>
+  <input type="file" (change)="loadImage($event)" value="Select File" />
+
+  <canvas id="imageCanvas" #imageCanvas></canvas>
+</main>
