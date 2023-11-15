@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    Execution Context
+  </head>
+  <body>
+    <script>
+      var n = 5;
+      function square(n) {
+        var ans = n * n;
+        return ans;
+      }
+      var square1 = square(n);
+      var square2 = square(8);
+
+      getName();
+      function getName() {
+        return "hello";
+      }
+    </script>
+  </body>
+</html>
