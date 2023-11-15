@@ -26,3 +26,54 @@ table {
   background-color: #04AA6D;
   color: white;
 }
+
+/* Add these styles to your CSS file */
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Table header styles */
+table th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Table header hover effect */
+table th:hover {
+  background-color: #555;
+}
+
+/* Table cell styles */
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+table thead{
+  border: 1px solid #ddd;
+}
+
+/* Table row hover effect */
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.light-table {
+  background-color: #fff;
+  color: #333;
+  /* Add other light mode styles here */
+}
+
+.dark-table {
+  background-color: #333;
+  color: #8dc63f;
+  /* Add other dark mode styles here */
+}
