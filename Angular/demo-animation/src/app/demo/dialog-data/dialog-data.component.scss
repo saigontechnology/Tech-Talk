@@ -1,0 +1,24 @@
+:host {
+  height: 500px;
+  width: 800px;
+  display: block;
+  padding: 20px;
+}
+
+.div-img {
+  padding: 10px; /* control the space for the gradient */
+  background: repeating-linear-gradient(45deg, #ff6b6b 0 10px, #4ecdc4 0 20px);
+  -webkit-mask: radial-gradient(#000 70%, #0000 71%) content-box 50% /
+      var(--mask-size, 150% 150%) no-repeat,
+    linear-gradient(#000 0 0);
+  width: 250px;
+  height: 250px;
+  // -webkit-mask-composite: xor;
+  // mask-composite: exclude;
+  // transition: 0.5s;
+  // cursor: pointer;
+}
+
+.image2 {
+  background: repeating-linear-gradient(-45deg, #8a9b0f 0 10px, #e97f02 0 20px);
+}

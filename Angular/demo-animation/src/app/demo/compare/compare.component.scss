@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  gap: 20px;
+
+  .section-left,
+  .section-right {
+    width: 48%;
+    border-right: 1px solid red;
+
+    .navigation {
+      height: 50px;
+      width: 100%;
+      background: rgb(182, 235, 182);
+      display: flex;
+      align-items: center;
+
+      button {
+        height: 100%;
+      }
+    }
+
+    .content-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px;
+
+      .mat-mdc-card {
+        max-width: 150px;
+      }
+
+      .example-header-image {
+        background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+        background-size: cover;
+      }
+    }
+  }
+}
