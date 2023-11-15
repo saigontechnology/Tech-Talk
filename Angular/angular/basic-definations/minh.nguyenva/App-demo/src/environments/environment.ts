@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  realm: 'fuel-integrity-solution',
+  realm: 'fuel',
   production: false,
   appConfig: {
-    apiUrl: 'http://app-sct-dev.ogptsqa.dev.sicpa.io/api',
-    keyCloakUrl: 'http://app-sct-dev.ogptsqa.dev.sicpa.io/auth/',
+    apiUrl: '',
+    keyCloakUrl: '',
     defaultCoordinates: {
       latitude: 4.621116,
       longitude: 118.534400,
