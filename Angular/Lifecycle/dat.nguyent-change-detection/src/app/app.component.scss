@@ -1,0 +1,14 @@
+:host {
+  .app-root {
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid rgb(22, 148, 13);
+  }
+
+  .level-1 {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    padding: 10px;
+  }
+}

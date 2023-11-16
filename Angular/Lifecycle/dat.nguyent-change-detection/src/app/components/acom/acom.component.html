@@ -1,0 +1,15 @@
+<!-- <div (click)="divClick()" style="margin-bottom: 20px">
+  ngzone demo:
+
+  <button (click)="a()">A Click</button>
+</div> -->
+
+<div>
+  A component:
+
+  <button #aButton (click)="a()">A Click</button>
+
+  <div style="margin-left: 15px">value: {{ value.join() }}</div>
+</div>
+
+<app-bcom [value]="value"></app-bcom>
