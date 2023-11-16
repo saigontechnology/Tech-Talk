@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row-container row row-cols-1 row-cols-sm-1 row-cols-md-2 gy-3 mb-3">
+        <ng-container *ngIf="(levelProgressData$ | async) as levelProgressData">
+            <ng-container *ngFor="let levelProgress of levelProgressData">
+                <div class="col">
+                    <sct-level-progress [progressName]="levelProgress.progressName"
+                        [progressData]="levelProgress"></sct-level-progress>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class=" row-container row row-cols-1 row-cols-sm-1 row-cols-md-2 gy-3 mb-3">
+        <ng-container *ngIf="(circleProgressData$ | async) as circleProgressData">
+            <ng-container *ngFor="let circleProgess of circleProgressData">
+                <div class="col">
+                    <sct-circle-progress [progressName]="circleProgess.progressName"
+                        [progressColor]="circleProgess.color" [progressIcon]="circleProgess.icon"
+                        [progressData]="circleProgess"></sct-circle-progress>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="row mb-3">
+        <div class="d-block p-0">
+            <ng-container *ngIf="(importChart$ | async) as importChart">
+                <sct-chart (scheduleChange)="onScheduleChangeImport($event)" [chartName]="importChart.chartName"
+                    [chartConfig]="importChart.config"></sct-chart>
+            </ng-container>
+            <ng-container *ngIf="(exportChart$ | async) as exportChart">
+                <sct-chart (scheduleChange)="onScheduleChangeExport($event)" [chartName]="exportChart.chartName"
+                    [chartConfig]="exportChart.config">
+                </sct-chart>
+            </ng-container>
+        </div>
+    </div>
+</div>

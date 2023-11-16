@@ -1,0 +1,54 @@
+@import 'style.variable.less';
+:host button{
+    // box-shadow: blue 0px 7px 29px 0px;
+}
+.configuaration {
+    .config-content {
+        padding: 30px;
+        min-height: 500px;
+        position: relative;
+        overflow: auto;
+        .title {
+            p {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+        .form-content {
+            width: 100%;
+        }
+        .button-group {
+            margin-top: 10%;
+            white-space: pre-wrap;
+            button {
+                margin:5px;
+                height: 40px;
+                width: 200px;
+            }
+        }
+
+        @media @desktop {
+            .form-content {
+                width: 50%;
+            }
+            .button-group{
+                white-space: nowrap
+            }
+        }
+    }
+
+}
+:host ::ng-deep sct-select .select {
+    .form-select {
+        width: 75px;
+        option {
+            text-align: center !important;
+        }
+    }
+}
+
+// :host ::ng-deep p{
+//     color: red;
+
+// } 
+

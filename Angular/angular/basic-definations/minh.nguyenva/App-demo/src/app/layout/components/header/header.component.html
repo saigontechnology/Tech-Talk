@@ -1,0 +1,61 @@
+<div class="sct-header-container mt-3">
+    <nav class="navbar navbar-expand-lg" id="navbar-header">
+        <div class="container-fluid p-0">
+            <div class="w-100 row row-cols-1 row-cols-sm-2 gy-1">
+                <div class="my-2 my-lg-0 ">
+                    <div class="ms-0 breadscrumb">
+                        <ng-container *ngIf="isShowWelcome; else breadscrumb">
+                            <div class="breadscrumb-welcome">
+                                <p class="m-0">Welcome to the your Dashboard</p>
+                                <p class="m-0 text-secondary">
+                                    <span>{{time}}</span> at <span>{{date}}</span>
+                                </p>
+                            </div>
+                        </ng-container>
+                        <ng-template #breadscrumb>
+                            <sct-breadcrumb></sct-breadcrumb>
+                        </ng-template>
+
+                    </div>
+                </div>
+                <div class=" my-2 my-lg-0 pe-0  d-flex align-items-lg-center justify-content-end">
+                    <!-- notification  -->
+                    <div class="notification mx-2">
+                        <div class="rounded square-border">
+                            <a class="" href="#">
+                                <i class="sct-icon bi bi-bell"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="country  mx-2">
+                        <div class="rounded square-border">
+                            <a class="" href="#">
+                                <img class="img-rounded" src="../../../../assets/images/country/england.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="account  mx-2">
+                        <div class="app-account d-flex align-items-center">
+                            <div class=" dropdown">
+                                <div class="dropdown-toggle d-flex align-items-center" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="account-info me-2">
+                                        <span class="pb-0 mb-0 fs-14">{{userName}}</span>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Activity</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,36 @@
+<div class="content-rounded mb-3">
+    <div class="chart-info d-flex justify-content-between align-items-center">
+        <div>
+            <p class="chart-name mb-2">{{chartName.displayName}}</p>
+        </div>
+
+        <div class="group-button">
+            <ng-content select="[schedule]"></ng-content>
+            <div schedule class="radio-toolbar d-flex justify-content-end">
+                <form [formGroup]="form">
+                    <div class="toolbar-container d-flex flex-no-wrap">
+                        <ng-container *ngFor="let scheduleType of scheduleTypes ; let i=index">
+                            <input [formControlName]="chartName.name" type="radio" [attr.id]="chartName.displayName +i" [name]="chartName.name" [value]="scheduleType.name">
+                            <label [attr.for]="chartName.displayName+i">{{scheduleType.label}}</label>
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="chart">
+        <canvas id="barChart" #barChart height="100"></canvas>
+
+        <div id="legend" class="justify-content-start">
+            <ul class="d-flex p-0">
+                <ng-container *ngFor="let legend of chartLegend">
+                    <li class="ms-3 d-flex align-items-center flex-no-wrap" (click)="onClickLegend($event , legend.datasetIndex)">
+                        <span [style.background-color]="legend.bgColor" class="color-box d-inline-block"></span>
+                        <p [class.hide]="!chart.isDatasetVisible(legend.datasetIndex)" class="m-0">{{legend.text}}</p>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+
+    </div>
+</div>

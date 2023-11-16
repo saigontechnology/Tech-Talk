@@ -1,0 +1,27 @@
+@import '_mixin';
+.date-picker {
+  .select_basic();
+  border:none;
+  &-input {
+    border-right: none;
+    border: solid 1px @color-border;
+    &:focus {
+      box-shadow: none;
+      border-right: none;
+    }
+  }
+  &-button {
+    background-color: white;
+    border: solid 1px @color-border;
+    border-left: none;
+    &:focus, &:active{
+      background-color: white;
+      border-left:none;
+      border-color: @color-border;
+    }
+  }
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid  @color-border;
+}

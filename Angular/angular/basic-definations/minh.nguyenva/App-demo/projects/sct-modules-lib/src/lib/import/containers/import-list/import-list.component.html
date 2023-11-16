@@ -1,0 +1,65 @@
+<div class="data-list">    
+<div class="data-list-section container-fluid">
+    <div class="data-filter d-md-flex justify-content-between">
+        <div class="data-filter-select data-fillter-select--lg">
+            <ng-container  *ngIf="(refineryOptions$ | async) as refineryOptions">
+                <sct-select [options]="refineryOptions.options" [formControl]="filterRefinery"></sct-select>
+            </ng-container>
+        </div>
+        <div class="data-filter-options d-flex justify-content-center">
+            <div class="data-filter-item me-2">
+                <button class="btn btn-filter btn-primary--light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseImportFilter" aria-expanded="false" aria-controls="collapseImportFilter">
+                    <i class="bi bi-funnel me-2"></i>Filter
+                </button>
+            </div>
+            <div class="data-filter-item">
+                <button class="btn btn-primary" [routerLink]="PATH.IMPORT_CREATE.route">
+                    <i class="bi bi-plus-square"></i>
+                    New Import
+                </button>
+                <button class="ms-2 btn btn-primary" (click)="importInfo()">
+                    <i class="bi bi-question-circle"></i>
+                    Import Info
+                </button>
+                <button class="ms-2 btn btn-primary" (click)="clearimportInfo()">
+                Clear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="data-list-section container-fluid">
+    <div class="collapse" id="collapseImportFilter">
+        <div class="card card-body filter-container w-100 border-0">
+            <ng-container *ngIf="(filterGroupData$ | async) as filterGroupData">
+                <sct-filter  [controls]="filterGroupData" (changed)="getfilterFormGroupValue($event)"></sct-filter>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="dynamic-progress">
+    <ng-container #dynamicInfo>
+    </ng-container>
+</div>
+
+
+<div class="data-list-section container-fluid ">
+    <sct-table [tableName]="tableName" [columns]="columns" [dataSource]="tableDataSource" (sortChange)="onSort($event)">
+        <ng-template [sct-table-template]="'importPoint'" let-data>
+            <div class=" d-flex flex-column">
+                <p class="td-content">{{data['importPoint'].station}}</p>
+                <span class="td-subtitle">{{data['importPoint'].location}}</span>
+            </div>
+        </ng-template>
+        <ng-template [sct-table-template]="'actions'" let-data>
+            <a class="btn-edit text-secondary" data-test="edit-btn"><i class="bi bi-eye-fill" aria-hidden="true" (click)="onView(data)"></i></a>
+        </ng-template>
+    </sct-table>
+    
+    <sct-pagination [page]="page" [pageSize]="pageSize" [totalElements]="totalElements" (paginationChange)="onPaginationChange($event)"></sct-pagination>
+    
+</div>
+</div>
+

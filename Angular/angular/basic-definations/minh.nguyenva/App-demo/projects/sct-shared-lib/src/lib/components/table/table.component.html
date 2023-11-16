@@ -1,0 +1,120 @@
+<div class="content-rounded table-responsive">
+    <p class="table-name">{{tableName}}</p>
+    <table class="table">
+        <thead>
+            <ng-container *ngIf="!headerTemplate; else headerTemplateOuter">
+               <tr>
+                  <ng-container *ngFor="let col of columns; let i = index">
+                     <th scope="col" class="text-nowrap">
+                           <ng-container [ngSwitch]="col.displayType">
+                              <ng-container *ngSwitchCase="ColumnDataType.OBSERVABLE" [ngTemplateOutlet]="ObservableData" 
+                              [ngTemplateOutletContext]="{$implicit: col.displayName, colName:col.name, pipeFormat: col.displayFormat , sort: col.sort}">
+                              </ng-container>
+                              <ng-container  *ngSwitchDefault [ngTemplateOutlet]="StringDataColumn" 
+                              [ngTemplateOutletContext]="{$implicit: col.displayName, colName:col.name, pipeFormat: col.displayFormat, sort: col.sort}">
+                              </ng-container>
+                           </ng-container>
+                     </th>
+                  </ng-container>
+               </tr>
+            </ng-container>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="dataSource && dataSource.length > 0 ; else noResult">
+                <ng-container *ngIf="!rowTemplate;else rowTemplateOuter">
+                    <tr *ngFor="let data of dataSource; index as i">
+                       <ng-container *ngFor="let col of columns">
+                            <td>
+                                 <ng-container *ngIf="columnsTemplates[col.name]; else templateAvailable ">
+                                       <ng-container [ngTemplateOutlet]="columnsTemplates[col.name]"  [ngTemplateOutletContext]="{ $implicit: data.rowData, rowIndex: i }">
+                                       </ng-container>  
+                                 </ng-container>
+                     
+                                 <ng-template #templateAvailable>
+                                    <span [ngClass]="data[col.name].ngClass" [ngStyle]="data[col.name].ngStyle">
+                                        <ng-container [ngSwitch]="data[col.name].type">
+                                          <ng-container *ngSwitchCase="ColumnDataType.OBSERVABLE" [ngTemplateOutlet]="ObservableData"
+                                                [ngTemplateOutletContext]="{$implicit: data[col.name].data, pipeFormat: data[col.name].pipeFormat }">
+                                          </ng-container>
+                                          <ng-container *ngSwitchDefault [ngTemplateOutlet]="StringData"
+                                                [ngTemplateOutletContext]="{$implicit: data[col.name].data, pipeFormat: data[col.name].pipeFormat }">
+                                          </ng-container>
+                                       </ng-container>
+                                 </span>
+                                 </ng-template>
+                            </td>
+                       </ng-container>
+                    </tr>   
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #ObservableData let-data let-pipeFormat = "pipeFormat">
+    <ng-container *ngIf="!pipeFormat; else ObsHasPipe" >
+        {{data | async}} 
+    </ng-container>
+    <ng-template #ObsHasPipe>
+        <ng-container [ngTemplateOutlet]="dataForFormat" [ngTemplateOutletContext]="{$implicit:data, pipeFormat:pipeFormat}"></ng-container>
+    </ng-template>
+</ng-template>
+
+<ng-template #StringDataColumn let-colName="colName" let-data let-pipeFormat="pipeFormat" let-sort="sort">
+    <ng-container *ngIf="!pipeFormat; else StringDataHasPipe">
+        <ng-container *ngIf="sort === SORT_TYPE.EMPTY; else SortColumn">
+            {{data}} 
+        </ng-container>
+        <ng-template #SortColumn>
+            <th [sortable]="colName" (sort)="onSort($event)">
+                {{data}}
+            </th>
+        </ng-template>
+    </ng-container>
+    <ng-template #StringDataHasPipe>
+        <ng-container  [ngTemplateOutlet]="dataForFormat" [ngTemplateOutletContext]="{$implicit: data, pipeFormat : pipeFormat}"></ng-container>
+    </ng-template>
+</ng-template>
+
+<ng-template #StringData let-data let-pipeFormat="pipeFormat" let-sort="sort">
+    <ng-container *ngIf="!pipeFormat; else StringDataHasPipe">
+            {{data}}
+    </ng-container>
+    <ng-template #StringDataHasPipe>
+        <ng-container  [ngTemplateOutlet]="dataForFormat" [ngTemplateOutletContext]="{$implicit: data, pipeFormat : pipeFormat}"></ng-container>
+    </ng-template>
+</ng-template>
+
+
+<ng-template #dataForFormat let-data let-pipeFormat="pipeFormat">
+    {{data | dynamicPipe: pipeFormat}}
+</ng-template>
+
+
+<ng-template #headerTemplateOuter>
+    <tr>
+        <ng-container [ngTemplateOutlet]="headerTemplate" 
+        [ngTemplateOutletContext]="{$implicit: columns}">
+        </ng-container>
+    </tr>
+</ng-template>
+
+<ng-template #rowTemplateOuter>
+    <ng-container *ngFor="let data of dataSource; index as i;">
+      <ng-container [ngTemplateOutlet]="rowTemplate" [ngTemplateOutletContext]="{
+            $implicit: data,
+            rowIndex: i,
+            columns: columns
+          }"></ng-container>
+    </ng-container>
+  </ng-template>
+
+
+<ng-template #noResult>
+    <tr class="tr-no-result">
+      <th class="text-nowrap">
+        {{'No results found.'}}
+      </th>
+    </tr>
+  </ng-template>
+  

@@ -1,0 +1,36 @@
+<div class="sidenav" [ngClass]="{ expanded: isExpanded }">
+    <div class="sidenav-header mt-3">
+        <h1 class="title side-nav-logo">
+            <span class="logo-shortcut" class="text-primary">DEMO</span>
+            <p>APP</p>
+        </h1>
+        <div class="toggle" (click)="handleSidebarToggle()">
+            <span class="chevron"></span>
+        </div>
+    </div>
+    <div class="sidenav-body mt-3">
+        <ng-container *ngFor="let row of sideNavRows">
+            <div class="link">
+                <div class="content" [routerLink]="row.navLink" [routerLinkActive]="'active'">
+                    <a class="link-item btn">
+                        <i [class]="row.icon"></i>
+                        <div class="title text-nowrap fs-14">{{row.title}}</div>
+                    </a>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="sidenav-footer my-3">
+        <div class="footer-content">
+            <div class="link">
+                <div class="content">
+                    <a class="link-item btn border-none" (click)="onLogout()">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <span class="title text-nowrap">Log out</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

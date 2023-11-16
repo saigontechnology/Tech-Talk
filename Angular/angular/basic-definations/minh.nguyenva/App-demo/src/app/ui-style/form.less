@@ -1,0 +1,73 @@
+//form-control 
+.form-control {
+  &:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+  }
+  &--border-right-0 {
+    border-right-color: white;
+    &:focus {
+      border-right-color: white;
+    }
+  }
+}
+
+
+//validation
+.is-invalid {
+    border: solid 1px @color-danger;
+    border-radius: 7px;
+  .form-control {
+    border: none;
+  }
+  .input-group {
+    .form-control {
+      border: none;
+    }
+    .input-group-text {
+      border: none;
+    }
+    .date-picker-button{
+      border:none;
+    }
+  }
+  select, input{
+    border:none;
+  }
+}
+
+input.ng-invalid.ng-touched{
+  border:1px solid @color-danger;;
+}
+
+
+.date-picker {
+  .select_basic();
+  border:none;
+  &-input {
+    border-right: none;
+    border: solid 1px @color-border;
+    &:focus {
+      box-shadow: none;
+      border-right: none;
+    }
+  }
+  &-button, .btn {
+    background-color: white;
+    border: solid 1px @color-border;
+    border-left: none;
+    &:focus, &:active{
+      background-color: white;
+      border-left:none;
+      border-color: @color-border;
+    }
+    &:hover{
+      border-color:@color-border;
+      border-left-color: white;
+    }
+  }
+}
+// modal in form
+.modal-content{
+  margin-top:50%; 
+}

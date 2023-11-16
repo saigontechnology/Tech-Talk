@@ -1,0 +1,6 @@
+<div [class.is-invalid]="errors && fieldChange">
+    <ng-content></ng-content>
+</div>
+<small class="invalid-feedback">
+    <ng-content select="[message]"></ng-content>
+</small>

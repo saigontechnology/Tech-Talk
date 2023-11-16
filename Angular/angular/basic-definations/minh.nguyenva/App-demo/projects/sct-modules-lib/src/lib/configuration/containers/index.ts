@@ -1,0 +1,1 @@
+export * from './configuration-form/configuration-form.component';

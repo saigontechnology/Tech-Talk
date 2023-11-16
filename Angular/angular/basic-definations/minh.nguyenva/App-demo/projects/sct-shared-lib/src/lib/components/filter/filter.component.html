@@ -1,0 +1,26 @@
+<form *ngIf="form" [formGroup]="form" class="pt-2 pb-2 row row-cols-1  row-cols-md-2  row-cols-lg-3 row-cols-xl-5 gy-3">
+    <div *ngFor="let filter of controls ">
+        <label  class="filter-label" [attr.for]="">{{filter.label}}</label>
+        <ng-container [ngSwitch]="filter.controlType">
+          
+            <sct-validated-field [fieldChange]="form.get(filter.key)?.touched || form.get(filter.key)?.dirty" [errors]="form.get(filter.key)?.errors">
+                <ng-container *ngSwitchCase="controlType.SELECT" [ngTemplateOutlet]="controlTypeSelect" [ngTemplateOutletContext]="{$implicit:filter}"></ng-container>
+                <ng-container *ngSwitchCase="controlType.DATETIME" [ngTemplateOutlet]="controlTypeDateTime" [ngTemplateOutletContext]="{$implicit:filter}"></ng-container>
+                
+                <small message>
+                    <sct-common-message [messageInfo]="form.get(filter.key)?.errors"></sct-common-message>
+                </small>
+            </sct-validated-field>
+        </ng-container>
+    </div>
+
+
+    <ng-template #controlTypeSelect let-filter>
+        <sct-select [options]="filter.options" [formControlName]="filter.key"></sct-select>
+    </ng-template>
+    
+    <ng-template #controlTypeDateTime let-filter>
+        <sct-date-picker [formControlName]="filter.key"></sct-date-picker>
+    </ng-template>
+    
+</form>

@@ -1,0 +1,21 @@
+<div class="p-3 content-rounded">
+  <div class="row">
+    <div class="col col-12 col-xs-4 col-sm-4 progress-name align-self-start d-flex align-items-center flex-wrap">
+      <img [src]="progressIcon" alt="">
+      <span class="title ms-2">{{progressName}}
+      </span>
+    </div>
+    <div class="col col-6 col-xs-4 col-sm-4 progress-wrapper">
+      <round-progress [current]="progressData.percentVolume" [responsive]="true" [rounded]="true" [radius]="90"
+        [stroke]="20" [max]="100" [color]="progressColor" [background]="'#eaeaea'">
+      </round-progress>
+      <div class="progress-number">
+        <p>{{progressData.percentVolume}}%</p>
+      </div>
+    </div>
+    <div class="col col-6 col-xs-4 col-sm-4 progress-info text-center align-self-center">
+      <p class="quantity-text"> Quantity</p>
+      <p>{{progressData.currentVolume}} m³</p>
+    </div>
+  </div>
+</div>

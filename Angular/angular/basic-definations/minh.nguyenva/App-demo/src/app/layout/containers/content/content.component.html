@@ -1,0 +1,15 @@
+<main class="d-flex">
+    <sct-side-nav [isExpanded]="sideNavExpanded" (toggleSidebar)="sideNavExpanded =!sideNavExpanded"></sct-side-nav>
+    <div class="sct-content">
+        <div class="sct-header  px-2">
+            <sct-header></sct-header>
+        </div>
+        <div class="loader">
+            <app-loader [isShow]="isShowLoader"></app-loader>
+        </div>
+        <div class="sct-module container-fluid mt-3  px-2">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>
+

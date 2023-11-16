@@ -1,0 +1,11 @@
+<div class="switch">
+    <div class="form-check form-switch d-flex justify-content-between align-items-center p-3">
+        <div class="form-check-label switch-info">
+            <p class="switch-name m-0 text-secondary">{{switch.displayName}}</p>
+            <p class="switch-detail m-0">{{switch.detail}}
+            </p>
+        </div>
+        <div>
+            <input  [ngModel]="selected" (ngModelChange)="onChangeSelect($event)" (blur)="onTouched()" class="form-check-input switch-input" type="checkbox" role="switch" checked="checked"></div>
+        </div>
+</div>

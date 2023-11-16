@@ -1,0 +1,28 @@
+button.dropdown-toggle {
+  height: 35px;
+  width: 111px;
+  border-radius: 7px;
+  background-color: @color-bg-grey;
+  border-color: @color-bg-grey;
+  color: #000;
+}
+.btn {
+  &-primary {
+    background-color: @color-primary;
+    color: white;
+    &--light{
+      background-color: @color-primary-light;
+      color:@color-primary;
+      &:hover{
+        background-color: @color-primary-light;
+        color:@color-primary;
+      }
+      &:active{
+        border-color:white!important;
+      }
+    }
+  }
+}
+ .btn-edit{
+  cursor: pointer;
+ }

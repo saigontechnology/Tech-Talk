@@ -1,0 +1,23 @@
+<div class="col-xs-12 text-center" *ngIf="title">{{title}}</div>
+<div class="map-wrapper" >
+  <div #map class="simple-map"></div>
+  <div class="map-control" *ngIf="searchable && !disabled">
+    <div class="coordinate-control" [formGroup]="searchForm">
+      <div class="input-group">
+        <input type="text" class="form-control" formControlName="coordinateText" id="coordinate-search"
+          [placeholder]="'e.g: '+ defaultCoordinates[1]+','+defaultCoordinates[0]" (keyup.enter)="gotoCoordinate()">
+        <ng-container *ngIf="!!searchForm.valid">
+          <button class="icon-clear" (click)="clearForm()" type="button">
+            <i class="fa fa-times"></i>
+          </button>
+        </ng-container>
+        <div class="input-group-append">
+          <button [disabled]="searchForm.invalid" class="btn" (click)="gotoCoordinate()" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="latlng-text" *ngIf="showLatlngText">Lat, Lng: {{viewCenterLatLng}}</div>
+</div>

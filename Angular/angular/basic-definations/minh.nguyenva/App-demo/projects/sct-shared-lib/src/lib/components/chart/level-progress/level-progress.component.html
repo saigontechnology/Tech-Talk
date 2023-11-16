@@ -1,0 +1,16 @@
+<div class="level-progress content-rounded" >
+    <p class="progress-name mt-3 ms-4 text-light fs-16">{{progressName}}</p>
+    <div class="wrapper">
+        <div class="progress progress-head">
+            <div class="progress-bar progress-bar--primary" role="progressbar" [style.width.%]="progressData.percentVolume"  [attr.aria-valuenow]="progressData.percentVolume" aria-valuemin="0" aria-valuemax="100">{{progressData.percentVolume}} %</div>
+        </div>
+        <div class="progress-tail">
+            <div class="progress-tail-child">
+                <span class="label-max">MAX</span>
+                <span class="num-max">{{progressData.maxVolume}} {{progressData.unitType}} </span>
+                <span class="volume">{{progressData.currentVolume}} {{progressData.unitType}} </span>
+            
+            </div>
+        </div>
+    </div>
+</div>

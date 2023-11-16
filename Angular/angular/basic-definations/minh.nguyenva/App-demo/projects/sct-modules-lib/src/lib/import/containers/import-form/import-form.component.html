@@ -1,0 +1,131 @@
+<div class="detail content-rounded container-fluid">
+    <div class="detail-name">
+        <span *ngIf="isUpdateMode; else createMode">
+            Update Import List
+        </span>
+        <ng-template #createMode>
+            Declare New Import
+        </ng-template>
+    </div>
+    <div class="detail-content row row -cols-1 row-cols-lg-2 rows-col-xl-2 gy-3">
+        <div class="detail-form">
+            <form *ngIf="form" [formGroup]="form" novalidate>
+                <div class="form-item">
+                    <label class="text-secondary" for="countryOfOrigin">Country of Origin</label>
+                    <!-- <ng-container *ngIf="(countryOption$ | async) as countryOption">
+                        <sct-validated-field [fieldChange]="countryOfOrigin?.touched || countryOfOrigin?.dirty" [errors]="countryOfOrigin?.errors">
+                            <sct-select [options]="countryOption.options" [formControlName]="'countryOfOrigin'"></sct-select>
+                            <small message>
+                                <sct-common-message [messageInfo]="countryOfOrigin?.errors"></sct-common-message>
+                            </small>
+                        </sct-validated-field>
+                    </ng-container> -->
+                    <sct-validated-field [fieldChange]="countryOfOrigin?.touched || countryOfOrigin?.dirty" [errors]="countryOfOrigin?.errors">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control--border-right-0 " formControlName="countryOfOrigin"  placeholder="Country">
+                            <span class="input-group-text bg-white">
+                                <!-- <i class="bi bi-geo-alt"></i> -->
+                            </span>
+                        </div>
+                        <small message>
+                            <sct-common-message [messageInfo]="countryOfOrigin?.errors"></sct-common-message>
+                        </small>
+                    </sct-validated-field>
+                    
+                </div>
+                <div class="form-item">
+                    <label class="text-secondary" for="importPoint">Name of Import Point</label>
+                    <sct-validated-field [fieldChange]="importPoint?.touched || importPoint?.dirty" [errors]="importPoint?.errors">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control--border-right-0 " formControlName="importPoint"  placeholder="KIC Refinery Kuala Lumpur">
+                            <span class="input-group-text bg-white">
+                                <i class="bi bi-geo-alt"></i>
+                            </span>
+                        </div>
+                        <small message>
+                            <sct-common-message [messageInfo]="importPoint?.errors"></sct-common-message>
+                        </small>
+                    </sct-validated-field>
+                </div>
+                <div class="form-item">
+                    <label class="text-secondary" for="date">Date</label>
+                    <sct-validated-field [fieldChange]="date?.touched || date?.dirty" [errors]="date?.errors">
+
+                        <div class="input-group flex-nowrap date-picker">
+                            <input
+                                class="form-control date-picker-input"
+                                placeholder="Please select"
+                                name="dp"
+                                ngbDatepicker
+                                #d="ngbDatepicker"
+                                formControlName="date"
+                            />
+                            <button class="btn  date-picker-button text-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                        </div>
+                        <small message>
+                            <sct-common-message [messageInfo]="date?.errors"></sct-common-message>
+                        </small>
+                    </sct-validated-field>
+                </div>
+                <div class="form-item">
+                    <label class="text-secondary" for="fuelType">Fuel Type</label>
+                    <ng-container *ngIf="(fuelTypeOptions$ | async) as fuelTypeOption">
+                        <!-- <sct-validated-field [fieldChange]="fuelType?.touched || fuelType?.dirty" [errors]="fuelType?.errors">
+                            <sct-select [options]="fuelTypeOption.options" [formControlName]="'fuelType'"></sct-select>
+                            <small message>
+                                <sct-common-message [messageInfo]="fuelType?.errors"></sct-common-message>
+                            </small>
+                        </sct-validated-field> -->
+                        <sct-validated-field [fieldChange]="fuelType?.touched || fuelType?.dirty" [errors]="fuelType?.errors">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control--border-right-0 " formControlName="fuelType"  placeholder="KIC Refinery Kuala Lumpur">
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-geo-alt"></i>
+                                </span>
+                            </div>
+                            <small message>
+                                <sct-common-message [messageInfo]="fuelType?.errors"></sct-common-message>
+                            </small>
+                        </sct-validated-field>
+                    </ng-container>
+                </div>
+                <div class="form-item">
+                    <label class="text-secondary" for="fuelVolume">Fuel Volume</label>
+                    <sct-validated-field [fieldChange]="fuelVolume?.touched || fuelVolume?.dirty" [errors]="fuelVolume?.errors">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control--border-right-0" formControlName="fuelVolume" placeholder="40000">
+                            <span class="input-group-text bg-white">
+                                <i role="button" (click)="changeVoulumeType()">
+                                    {{unitType}}
+                                </i>
+                            </span>
+                        </div>
+                        <small message>
+                            <sct-common-message [messageInfo]="fuelVolume?.errors"></sct-common-message>
+                        </small>
+                    </sct-validated-field>
+                </div>
+                <div class="button-group text-end">
+                    <ng-container *ngIf="isUpdateMode; else btncreateMode">
+                        <button class="btn btn-danger" (click)="onDelete()" >Delete</button>
+                        <button [disabled]="!form.valid" class="btn btn-primary ms-3" (click)="onSubmit()">Update</button>
+                    </ng-container>
+                    <ng-template #btncreateMode>
+                        <button routerLink=".." class="btn btn-secondary" >Cancel</button>
+                        <button [disabled]="!form.valid" class="btn btn-primary ms-3" (click)="onSubmit()">Create</button>
+                    </ng-template>
+                </div>
+            </form>
+        </div>
+
+        <div class="detail-map">
+            <div class="map-label">
+                <p>Drag the pin to the location on the Map.
+                </p>
+            </div>
+            
+            <div class="map-content ">
+                <sct-simple-map #map [mapId]="'map'"  [modes]="[MapMode.MOVE_CENTER]" [center]="centerCoordinates"></sct-simple-map>
+             </div>
+    </div>
+</div>
