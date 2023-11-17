@@ -1,0 +1,40 @@
+<div>
+  Product Component Content:
+  <div>Number of Product (Provide in Product Module):</div>
+  <div>{{ numOfProductInfo }}</div>
+
+  <div class="child-component-container">
+    Child Component 1 Content: (Self + Optional)
+    <app-child-product> </app-child-product>
+  </div>
+
+  <br />
+
+  <div class="child-component-container">
+    Child Component 2 Content: (SkipSelf)
+    <app-child-product2> </app-child-product2>
+  </div>
+
+  <br />
+
+  <div class="child-component-container">
+    Child Component 3 Content: (Host)
+    <app-child-product3> </app-child-product3>
+  </div>
+
+  <br />
+
+  <div class="child-component-container">
+    Child Component 4 Content: (Content Projection + Host)
+    <app-child-product4>
+      <app-grand-child-product4></app-grand-child-product4>
+    </app-child-product4>
+  </div>
+
+  <br />
+
+  <div class="child-component-container">
+    Child Component 5 Content: (Directive + Host)
+    <app-child-product5> </app-child-product5>
+  </div>
+</div>

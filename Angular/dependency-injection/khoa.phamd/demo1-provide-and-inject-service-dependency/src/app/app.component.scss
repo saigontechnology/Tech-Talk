@@ -1,0 +1,15 @@
+.root-module-container {
+  border: 3px solid red;
+  padding: 5px;
+
+  .child-module-container {
+    border: 3px solid blue;
+    padding: 5px;
+  }
+}
+
+.title-center {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
