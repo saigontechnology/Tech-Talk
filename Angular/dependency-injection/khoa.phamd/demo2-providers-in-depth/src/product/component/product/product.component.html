@@ -1,0 +1,24 @@
+<div>
+  Product Component Content: (use NgModule Providers):
+  <div>Get From ProductBService: {{ numOfProductBInfo }}</div>
+
+  <div>Get From ProductCService (useClass): {{ numOfProductCInfo }}</div>
+  <div>Get From ProductDService (useExisting): {{ numOfProductDInfo }}</div>
+  <div>Get From ProductEService (useValue): {{ numOfProductEInfo }}</div>
+  <div>Get From ProductGService (useFactory): {{ numOfProductGInfo }}</div>
+  <div>
+    Get From ProductFService (useValue + multi=true):
+    <div>
+      {{ numOfProductFInfo | json }}
+    </div>
+  </div>
+
+  <br />
+
+  <!-- <div>
+    <app-child-product appProduct>
+      <app-content-projection></app-content-projection>
+    </app-child-product>
+  </div>
+  <br /> -->
+</div>

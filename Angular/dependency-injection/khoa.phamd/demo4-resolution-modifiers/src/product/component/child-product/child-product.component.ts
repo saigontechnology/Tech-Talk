@@ -1,0 +1,22 @@
+import { Component, OnInit, Optional, Self } from '@angular/core';
+import { Product } from '../../../app/model/product.model';
+import { ProductBService } from '../../service/productB.service';
+import { ProductCService } from '../../service/productC.service';
+
+@Component({
+  selector: 'app-child-product',
+  templateUrl: './child-product.component.html',
+  styleUrls: ['./child-product.component.scss'],
+  // providers: [ProductBService],
+})
+export class ChildProductComponent implements OnInit {
+  numOfProductInfo: string;
+
+  constructor(@Self() @Optional() private productService: ProductBService) {}
+
+  ngOnInit() {
+    this.numOfProductInfo = this.productService
+      ? this.productService.numOfProductInfo
+      : '--No Info--';
+  }
+}
