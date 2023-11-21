@@ -1,0 +1,52 @@
+:host {
+    display: block;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 64px;
+    padding: 24px 80px;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+h1 {
+    margin: 0px 20px;
+}
+
+button {
+    font-style: 18px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    color: white;
+    margin-left: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+main {
+    padding: 20px;
+    min-height: calc(100vh - 64px);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    #imageCanvas {
+        width: 100%;
+    }
+}
