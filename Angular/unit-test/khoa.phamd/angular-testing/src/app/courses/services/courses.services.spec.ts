@@ -5,7 +5,7 @@ import {COURSES, findLessonsForCourse} from '../../../../server/db-data';
 import {Course} from '../model/course';
 import {HttpErrorResponse} from '@angular/common/http';
 
-/* COMMENT FOR NOT SHOWING DEMO
+// COMMENT FOR NOT SHOWING DEMO
 describe('CourseModule - CoursesService', () => {
 
     let coursesService: CoursesService,
@@ -152,7 +152,6 @@ describe('CourseModule - CoursesService', () => {
     });
 
 });
-*/
 
 
 

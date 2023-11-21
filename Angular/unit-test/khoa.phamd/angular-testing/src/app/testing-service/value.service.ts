@@ -15,10 +15,14 @@ export class ValueService {
   getObservableValue() { return of('observable value'); }
   getObservableValue2() { return of('observable value 2'); }
 
-  getPromiseValue() { return Promise.resolve('promise value'); }
-
-  getObservableDelayValue() {
-    return of('observable delay value').pipe(tap(()=> {setTimeout(()=>{},4000)}));
+  getPromiseValue() { 
+    return Promise.resolve('promise value'); 
   }
 
+  getObservableDelayValue() {
+    return of('observable delay value')
+            .pipe(
+              tap(()=>{setTimeout(()=>{},4000)})
+            );
+  }
 }

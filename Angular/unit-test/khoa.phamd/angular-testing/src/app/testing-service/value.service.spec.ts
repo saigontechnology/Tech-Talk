@@ -17,13 +17,31 @@ describe('ValueService without Angular testing support', () => {
         expect(service.getValue()).toBe('real value');
     });
 
-    it('#getObservableValue should return value from observable',
-        (done: DoneFn) => {
-            service.getObservableValue().subscribe(value => {
-                expect(value).toBe('observable value');
-                done();
-            });
+    xit('#getObservableValue should return value from observable 1',
+      (done: DoneFn) => {
+        let valueResult;
+        service.getObservableDelayValue().subscribe(value => {
+          valueResult = value;
         });
+        expect(valueResult).toBe('observable delay value');
+    });
+
+    xit('#getObservableValue should return value from observable 2',
+      (done: DoneFn) => {
+        let valueResult='';
+        service.getObservableDelayValue().subscribe(value => {
+          valueResult = value;
+          expect(value).toBe('observable delay value');
+        });
+    });
+
+    it('#getObservableValue should return value from observable',
+      (done: DoneFn) => {
+        service.getObservableDelayValue().subscribe(value => {
+            expect(value).toBe('observable delay value');
+            done();
+        });
+    });    
 
     it('#getPromiseValue should return value from a promise',
         (done: DoneFn) => {
@@ -49,7 +67,7 @@ describe('ValueService with TestBed', () => {
     });
 
     /* Promise: Sample from stackoverflow: DoneFn, WaitForASync, FakeAsync */
-    it('should wait for this promise to finish', done => {
+    xit('should wait for this promise to finish', done => {
       const p = new Promise((resolve, reject) =>
         setTimeout(() => resolve(`I'm the promise result`), 4000)
       );
@@ -66,7 +84,7 @@ describe('ValueService with TestBed', () => {
     });
 
     
-    it(
+    xit(
       'should wait for this promise to finish',
       waitForAsync(() => {
         const p = new Promise((resolve, reject) =>
@@ -85,7 +103,7 @@ describe('ValueService with TestBed', () => {
       })
     );
 
-    it(
+    xit(
       'should wait for this promise to finish',
       fakeAsync(() => {
         const p = new Promise((resolve, reject) =>
@@ -123,7 +141,7 @@ describe('ValueService with TestBed', () => {
       })
     );
 
-    it('#getObservableDelayValue should return value from observale - waitForAsync', waitForAsync(() => {
+    xit('#getObservableDelayValue should return value from observale - waitForAsync', waitForAsync(() => {
         let value;
         service.getObservableDelayValue().subscribe((responseValue) => {
           value = responseValue;

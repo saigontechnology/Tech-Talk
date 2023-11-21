@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import {AppComponent} from '../app.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from '../about/about.component';
-import {CourseComponent} from './course/course.component';
 import {CoursesCardListComponent} from './courses-card-list/courses-card-list.component';
-import {CourseDialogComponent} from './course-dialog/course-dialog.component';
 import {BrowserModule} from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -33,9 +31,7 @@ import {courseResolver} from './services/course.resolver';
     declarations: [
         HomeComponent,
         AboutComponent,
-        CourseComponent,
         CoursesCardListComponent,
-        CourseDialogComponent
     ],
     imports: [
         CommonModule,
@@ -62,9 +58,7 @@ import {courseResolver} from './services/course.resolver';
     exports: [
         HomeComponent,
         AboutComponent,
-        CourseComponent,
         CoursesCardListComponent,
-        CourseDialogComponent
     ],
     providers: [
         CoursesService

@@ -8,10 +8,7 @@ import {Course, Lesson} from "./model";
     providedIn:'root'
 })
 export class CoursesService {
-
-    constructor(private http:HttpClient) {
-
-    }
+    constructor(private http:HttpClient) {}
 
     findCourseById(courseId: number): Observable<Course> {
         return this.http.get<Course>(`/api/courses/${courseId}`);
@@ -43,5 +40,4 @@ export class CoursesService {
             map(res =>  res["payload"])
         );
     }
-
 }
