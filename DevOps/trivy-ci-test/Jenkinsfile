@@ -1,0 +1,43 @@
+#!/usr/bin/env groovy
+pipeline {
+    agent any
+    environment {
+        IMAGE_FULL_NAME = credentials('IMAGE_FULL_NAME')
+        SEVERITY = credentials('SEVERITY')
+        EXIT_CODE = credentials('EXIT_CODE')
+    }
+    stages {
+        stage('Build images') {
+            steps {
+                sh '''
+                    docker build -t $IMAGE_FULL_NAME .
+                    docker images
+                '''
+            }
+        }
+        stage('Trivy vulnerability scan') {
+            steps {
+                sh "bash trivy-image-scan.sh $IMAGE_FULL_NAME $SEVERITY $EXIT_CODE"
+                publishHTML target : [
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'results',
+                    reportFiles: 'trivyScan.html',
+                    reportName: 'Trivy Scan',
+                    reportTitles: 'Trivy Scan'
+                ]
+            }
+        }
+        stage('Push images to registry') {
+            steps {
+                echo "Push to registry"
+            }
+        }
+        stage('Release') {
+            steps {
+                echo "Release"
+            }
+        }
+    }
+}
