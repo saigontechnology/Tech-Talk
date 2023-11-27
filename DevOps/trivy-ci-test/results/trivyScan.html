@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      .group-header th {
+        font-size: 200%;
+      }
+      .sub-header th {
+        font-size: 150%;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        white-space: nowrap;
+        padding: .3em;
+      }
+      table {
+        margin: 0 auto;
+      }
+      .severity {
+        text-align: center;
+        font-weight: bold;
+        color: #fafafa;
+      }
+      .severity-LOW .severity { background-color: #5fbb31; }
+      .severity-MEDIUM .severity { background-color: #e9c600; }
+      .severity-HIGH .severity { background-color: #ff8800; }
+      .severity-CRITICAL .severity { background-color: #e40000; }
+      .severity-UNKNOWN .severity { background-color: #747474; }
+      .severity-LOW { background-color: #5fbb3160; }
+      .severity-MEDIUM { background-color: #e9c60060; }
+      .severity-HIGH { background-color: #ff880060; }
+      .severity-CRITICAL { background-color: #e4000060; }
+      .severity-UNKNOWN { background-color: #74747460; }
+      table tr td:first-of-type {
+        font-weight: bold;
+      }
+      .links a,
+      .links[data-more-links=on] a {
+        display: block;
+      }
+      .links[data-more-links=off] a:nth-of-type(1n+5) {
+        display: none;
+      }
+      a.toggle-more-links { cursor: pointer; }
+    </style>
+    <title>trivy-ci-test:latest (alpine 3.17.0) - Trivy Report - 2023-11-24 03:59:33.086254889 +0000 UTC m=+14.709265715 </title>
+    <script>
+      window.onload = function() {
+        document.querySelectorAll('td.links').forEach(function(linkCell) {
+          var links = [].concat.apply([], linkCell.querySelectorAll('a'));
+          [].sort.apply(links, function(a, b) {
+            return a.href > b.href ? 1 : -1;
+          });
+          links.forEach(function(link, idx) {
+            if (links.length > 3 && 3 === idx) {
+              var toggleLink = document.createElement('a');
+              toggleLink.innerText = "Toggle more links";
+              toggleLink.href = "#toggleMore";
+              toggleLink.setAttribute("class", "toggle-more-links");
+              linkCell.appendChild(toggleLink);
+            }
+            linkCell.appendChild(link);
+          });
+        });
+        document.querySelectorAll('a.toggle-more-links').forEach(function(toggleLink) {
+          toggleLink.onclick = function() {
+            var expanded = toggleLink.parentElement.getAttribute("data-more-links");
+            toggleLink.parentElement.setAttribute("data-more-links", "on" === expanded ? "off" : "on");
+            return false;
+          };
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>trivy-ci-test:latest (alpine 3.17.0) - Trivy Report - 2023-11-24 03:59:33.086281426 +0000 UTC m=+14.709292258</h1>
+    <table>
+      <tr class="group-header"><th colspan="6">alpine</th></tr>
+      <tr class="sub-header">
+        <th>Package</th>
+        <th>Vulnerability ID</th>
+        <th>Severity</th>
+        <th>Installed Version</th>
+        <th>Fixed Version</th>
+        <th>Links</th>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2022-3996</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.7-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/security/cve/CVE-2022-3996">https://access.redhat.com/security/cve/CVE-2022-3996</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3996">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3996</a>
+          <a href="https://github.com/openssl/openssl/commit/7725e7bfe6f2ce8146b6552b44e0d226be7638e7">https://github.com/openssl/openssl/commit/7725e7bfe6f2ce8146b6552b44e0d226be7638e7</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-3996">https://nvd.nist.gov/vuln/detail/CVE-2022-3996</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-3996">https://www.cve.org/CVERecord?id=CVE-2022-3996</a>
+          <a href="https://www.openssl.org/news/secadv/20221213.txt">https://www.openssl.org/news/secadv/20221213.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2022-4450</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4450">https://access.redhat.com/security/cve/CVE-2022-4450</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4450.html">https://linux.oracle.com/cve/CVE-2022-4450.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4450">https://nvd.nist.gov/vuln/detail/CVE-2022-4450</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0010.html">https://rustsec.org/advisories/RUSTSEC-2023-0010.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4450">https://www.cve.org/CVERecord?id=CVE-2022-4450</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0215</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0215">https://access.redhat.com/security/cve/CVE-2023-0215</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0215.html">https://linux.oracle.com/cve/CVE-2023-0215.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0215">https://nvd.nist.gov/vuln/detail/CVE-2023-0215</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0009.html">https://rustsec.org/advisories/RUSTSEC-2023-0009.html</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230427-0007/">https://security.netapp.com/advisory/ntap-20230427-0007/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230427-0009/">https://security.netapp.com/advisory/ntap-20230427-0009/</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-1">https://ubuntu.com/security/notices/USN-5845-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-2">https://ubuntu.com/security/notices/USN-5845-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0215">https://www.cve.org/CVERecord?id=CVE-2023-0215</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0216</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0216">https://access.redhat.com/security/cve/CVE-2023-0216</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=934a04f0e775309cadbef0aa6b9692e1b12a76c6">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=934a04f0e775309cadbef0aa6b9692e1b12a76c6</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0216.html">https://linux.oracle.com/cve/CVE-2023-0216.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0216">https://nvd.nist.gov/vuln/detail/CVE-2023-0216</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0011.html">https://rustsec.org/advisories/RUSTSEC-2023-0011.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0216">https://www.cve.org/CVERecord?id=CVE-2023-0216</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0217</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0217">https://access.redhat.com/security/cve/CVE-2023-0217</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=23985bac83fd50c8e29431009302b5442f985096">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=23985bac83fd50c8e29431009302b5442f985096</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0217.html">https://linux.oracle.com/cve/CVE-2023-0217.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0217">https://nvd.nist.gov/vuln/detail/CVE-2023-0217</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0012.html">https://rustsec.org/advisories/RUSTSEC-2023-0012.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0217">https://www.cve.org/CVERecord?id=CVE-2023-0217</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0286</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0286">https://access.redhat.com/security/cve/CVE-2023-0286</a>
+          <a href="https://access.redhat.com/security/cve/cve-2023-0286">https://access.redhat.com/security/cve/cve-2023-0286</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt">https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt</a>
+          <a href="https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig">https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d</a>
+          <a href="https://github.com/pyca/cryptography">https://github.com/pyca/cryptography</a>
+          <a href="https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5">https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0286.html">https://linux.oracle.com/cve/CVE-2023-0286.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0286">https://nvd.nist.gov/vuln/detail/CVE-2023-0286</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0006.html">https://rustsec.org/advisories/RUSTSEC-2023-0006.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-1">https://ubuntu.com/security/notices/USN-5845-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-2">https://ubuntu.com/security/notices/USN-5845-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0286">https://www.cve.org/CVERecord?id=CVE-2023-0286</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0401</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0401">https://access.redhat.com/security/cve/CVE-2023-0401</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=d3b6dfd70db844c4499bec6ad6601623a565e674">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=d3b6dfd70db844c4499bec6ad6601623a565e674</a>
+          <a href="https://github.com/alexcrichton/openssl-src-rs">https://github.com/alexcrichton/openssl-src-rs</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0401.html">https://linux.oracle.com/cve/CVE-2023-0401.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0401">https://nvd.nist.gov/vuln/detail/CVE-2023-0401</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0013.html">https://rustsec.org/advisories/RUSTSEC-2023-0013.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0401">https://www.cve.org/CVERecord?id=CVE-2023-0401</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0464</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r1</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0464">https://access.redhat.com/security/cve/CVE-2023-0464</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0464">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0464</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0464.html">https://linux.oracle.com/cve/CVE-2023-0464.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0464">https://nvd.nist.gov/vuln/detail/CVE-2023-0464</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.couchbase.com/alerts/">https://www.couchbase.com/alerts/</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0464">https://www.cve.org/CVERecord?id=CVE-2023-0464</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230322.txt">https://www.openssl.org/news/secadv/20230322.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-5363</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.12-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/10/24/1">http://www.openwall.com/lists/oss-security/2023/10/24/1</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-5363">https://access.redhat.com/security/cve/CVE-2023-5363</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5363">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5363</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0df40630850fb2740e6be6890bb905d3fc623b2d">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0df40630850fb2740e6be6890bb905d3fc623b2d</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=5f69f5c65e483928c4b28ed16af6e5742929f1ee">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=5f69f5c65e483928c4b28ed16af6e5742929f1ee</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5363">https://nvd.nist.gov/vuln/detail/CVE-2023-5363</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0010/">https://security.netapp.com/advisory/ntap-20231027-0010/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-5363">https://www.cve.org/CVERecord?id=CVE-2023-5363</a>
+          <a href="https://www.debian.org/security/2023/dsa-5532">https://www.debian.org/security/2023/dsa-5532</a>
+          <a href="https://www.openssl.org/news/secadv/20231024.txt">https://www.openssl.org/news/secadv/20231024.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2022-4203</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4203">https://access.redhat.com/security/cve/CVE-2022-4203</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c927a3492698c254637da836762f9b1f86cffabc">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c927a3492698c254637da836762f9b1f86cffabc</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4203.html">https://linux.oracle.com/cve/CVE-2022-4203.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4203">https://nvd.nist.gov/vuln/detail/CVE-2022-4203</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0008.html">https://rustsec.org/advisories/RUSTSEC-2023-0008.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4203">https://www.cve.org/CVERecord?id=CVE-2022-4203</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2022-4304</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4304">https://access.redhat.com/security/cve/CVE-2022-4304</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4304.html">https://linux.oracle.com/cve/CVE-2022-4304.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4304">https://nvd.nist.gov/vuln/detail/CVE-2022-4304</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0007.html">https://rustsec.org/advisories/RUSTSEC-2023-0007.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4304">https://www.cve.org/CVERecord?id=CVE-2022-4304</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0465</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0465">https://access.redhat.com/security/cve/CVE-2023-0465</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0465">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0465</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=10325176f3d3e98c6e2b3bf5ab1e3b334de6947a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=10325176f3d3e98c6e2b3bf5ab1e3b334de6947a</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1dd43e0709fece299b15208f36cc7c76209ba0bb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1dd43e0709fece299b15208f36cc7c76209ba0bb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=b013765abfa80036dc779dd0e50602c57bb3bf95">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=b013765abfa80036dc779dd0e50602c57bb3bf95</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=facfb1ab745646e97a1920977ae4a9965ea61d5c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=facfb1ab745646e97a1920977ae4a9965ea61d5c</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0465.html">https://linux.oracle.com/cve/CVE-2023-0465.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0465">https://nvd.nist.gov/vuln/detail/CVE-2023-0465</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230414-0001/">https://security.netapp.com/advisory/ntap-20230414-0001/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0465">https://www.cve.org/CVERecord?id=CVE-2023-0465</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230328.txt">https://www.openssl.org/news/secadv/20230328.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-0466</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r3</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/28/4">http://www.openwall.com/lists/oss-security/2023/09/28/4</a>
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0466">https://access.redhat.com/security/cve/CVE-2023-0466</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0466">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0466</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0d16b7e99aafc0b4a6d729eec65a411a7e025f0a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0d16b7e99aafc0b4a6d729eec65a411a7e025f0a</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=51e8a84ce742db0f6c70510d0159dad8f7825908">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=51e8a84ce742db0f6c70510d0159dad8f7825908</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=73398dea26de9899fb4baa94098ad0a61f435c72">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=73398dea26de9899fb4baa94098ad0a61f435c72</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc814a30fc4f0bc54fcea7d9a7462f5457aab061">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc814a30fc4f0bc54fcea7d9a7462f5457aab061</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0466.html">https://linux.oracle.com/cve/CVE-2023-0466.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0466">https://nvd.nist.gov/vuln/detail/CVE-2023-0466</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230414-0001/">https://security.netapp.com/advisory/ntap-20230414-0001/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0466">https://www.cve.org/CVERecord?id=CVE-2023-0466</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230328.txt">https://www.openssl.org/news/secadv/20230328.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-1255</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r4</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-1255">https://access.redhat.com/security/cve/CVE-2023-1255</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-1255">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-1255</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=02ac9c9420275868472f33b01def01218742b8bb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=02ac9c9420275868472f33b01def01218742b8bb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bc2f61ad70971869b242fc1cb445b98bad50074a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bc2f61ad70971869b242fc1cb445b98bad50074a</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-1255.html">https://linux.oracle.com/cve/CVE-2023-1255.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-1255">https://nvd.nist.gov/vuln/detail/CVE-2023-1255</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230908-0006/">https://security.netapp.com/advisory/ntap-20230908-0006/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6119-1">https://ubuntu.com/security/notices/USN-6119-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-1255">https://www.cve.org/CVERecord?id=CVE-2023-1255</a>
+          <a href="https://www.openssl.org/news/secadv/20230419.txt">https://www.openssl.org/news/secadv/20230419.txt</a>
+          <a href="https://www.openssl.org/news/secadv/20230420.txt">https://www.openssl.org/news/secadv/20230420.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-2650</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/05/30/1">http://www.openwall.com/lists/oss-security/2023/05/30/1</a>
+          <a href="https://access.redhat.com/errata/RHSA-2023:6330">https://access.redhat.com/errata/RHSA-2023:6330</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-2650">https://access.redhat.com/security/cve/CVE-2023-2650</a>
+          <a href="https://bugzilla.redhat.com/1858038">https://bugzilla.redhat.com/1858038</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2650">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2650</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-6330.html">https://errata.almalinux.org/9/ALSA-2023-6330.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=423a2bc737a908ad0c77bda470b2b59dc879936b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=423a2bc737a908ad0c77bda470b2b59dc879936b</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=853c5e56ee0b8650c73140816bb8b91d6163422c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=853c5e56ee0b8650c73140816bb8b91d6163422c</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9e209944b35cf82368071f160a744b6178f9b098">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9e209944b35cf82368071f160a744b6178f9b098</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db779b0e10b047f2585615e0b8f2acdf21f8544a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db779b0e10b047f2585615e0b8f2acdf21f8544a</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-2650.html">https://linux.oracle.com/cve/CVE-2023-2650.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-6330.html">https://linux.oracle.com/errata/ELSA-2023-6330.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2650">https://nvd.nist.gov/vuln/detail/CVE-2023-2650</a>
+          <a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0009">https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0009</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230703-0001/">https://security.netapp.com/advisory/ntap-20230703-0001/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0009/">https://security.netapp.com/advisory/ntap-20231027-0009/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6119-1">https://ubuntu.com/security/notices/USN-6119-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6188-1">https://ubuntu.com/security/notices/USN-6188-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-2650">https://www.cve.org/CVERecord?id=CVE-2023-2650</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230530.txt">https://www.openssl.org/news/secadv/20230530.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-2975</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/15/1">http://www.openwall.com/lists/oss-security/2023/07/15/1</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/5">http://www.openwall.com/lists/oss-security/2023/07/19/5</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-2975">https://access.redhat.com/security/cve/CVE-2023-2975</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2975">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2975</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=00e2f5eea29994d19293ec4e8c8775ba73678598">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=00e2f5eea29994d19293ec4e8c8775ba73678598</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a83f0c958811f07e0d11dfc6b5a6a98edfd5bdc">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a83f0c958811f07e0d11dfc6b5a6a98edfd5bdc</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2975">https://nvd.nist.gov/vuln/detail/CVE-2023-2975</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230725-0004/">https://security.netapp.com/advisory/ntap-20230725-0004/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-2975">https://www.cve.org/CVERecord?id=CVE-2023-2975</a>
+          <a href="https://www.openssl.org/news/secadv/20230714.txt">https://www.openssl.org/news/secadv/20230714.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-3446</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r3</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/4">http://www.openwall.com/lists/oss-security/2023/07/19/4</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/5">http://www.openwall.com/lists/oss-security/2023/07/19/5</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/6">http://www.openwall.com/lists/oss-security/2023/07/19/6</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/31/1">http://www.openwall.com/lists/oss-security/2023/07/31/1</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-3446">https://access.redhat.com/security/cve/CVE-2023-3446</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1fa20cf2f506113c761777127a38bce5068740eb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1fa20cf2f506113c761777127a38bce5068740eb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8780a896543a654e757db1b9396383f9d8095528">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8780a896543a654e757db1b9396383f9d8095528</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9a0a4d3c1e7138915563c0df4fe6a3f9377b839c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9a0a4d3c1e7138915563c0df4fe6a3f9377b839c</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc9867c1e03c22ebf56943be205202e576aabf23">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc9867c1e03c22ebf56943be205202e576aabf23</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3446">https://nvd.nist.gov/vuln/detail/CVE-2023-3446</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230803-0011/">https://security.netapp.com/advisory/ntap-20230803-0011/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-1">https://ubuntu.com/security/notices/USN-6435-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-2">https://ubuntu.com/security/notices/USN-6435-2</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-3446">https://www.cve.org/CVERecord?id=CVE-2023-3446</a>
+          <a href="https://www.openssl.org/news/secadv/20230719.txt">https://www.openssl.org/news/secadv/20230719.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libcrypto3</td>
+        <td>CVE-2023-3817</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.10-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://seclists.org/fulldisclosure/2023/Jul/43">http://seclists.org/fulldisclosure/2023/Jul/43</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/31/1">http://www.openwall.com/lists/oss-security/2023/07/31/1</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/22/11">http://www.openwall.com/lists/oss-security/2023/09/22/11</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/22/9">http://www.openwall.com/lists/oss-security/2023/09/22/9</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/11/06/2">http://www.openwall.com/lists/oss-security/2023/11/06/2</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-3817">https://access.redhat.com/security/cve/CVE-2023-3817</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a1eb62c29db6cb5eec707f9338aee00f44e26f5">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a1eb62c29db6cb5eec707f9338aee00f44e26f5</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=869ad69aadd985c7b8ca6f4e5dd0eb274c9f3644">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=869ad69aadd985c7b8ca6f4e5dd0eb274c9f3644</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9002fd07327a91f35ba6c1307e71fa6fd4409b7f">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9002fd07327a91f35ba6c1307e71fa6fd4409b7f</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=91ddeba0f2269b017dc06c46c993a788974b1aa5">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=91ddeba0f2269b017dc06c46c993a788974b1aa5</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3817">https://nvd.nist.gov/vuln/detail/CVE-2023-3817</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230818-0014/">https://security.netapp.com/advisory/ntap-20230818-0014/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0008/">https://security.netapp.com/advisory/ntap-20231027-0008/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-1">https://ubuntu.com/security/notices/USN-6435-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-2">https://ubuntu.com/security/notices/USN-6435-2</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-3817">https://www.cve.org/CVERecord?id=CVE-2023-3817</a>
+          <a href="https://www.openssl.org/news/secadv/20230731.txt">https://www.openssl.org/news/secadv/20230731.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2022-3996</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.7-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/security/cve/CVE-2022-3996">https://access.redhat.com/security/cve/CVE-2022-3996</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3996">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3996</a>
+          <a href="https://github.com/openssl/openssl/commit/7725e7bfe6f2ce8146b6552b44e0d226be7638e7">https://github.com/openssl/openssl/commit/7725e7bfe6f2ce8146b6552b44e0d226be7638e7</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-3996">https://nvd.nist.gov/vuln/detail/CVE-2022-3996</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-3996">https://www.cve.org/CVERecord?id=CVE-2022-3996</a>
+          <a href="https://www.openssl.org/news/secadv/20221213.txt">https://www.openssl.org/news/secadv/20221213.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2022-4450</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4450">https://access.redhat.com/security/cve/CVE-2022-4450</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=63bcf189be73a9cc1264059bed6f57974be74a83</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bbcf509bd046b34cca19c766bbddc31683d0858b</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4450.html">https://linux.oracle.com/cve/CVE-2022-4450.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4450">https://nvd.nist.gov/vuln/detail/CVE-2022-4450</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0010.html">https://rustsec.org/advisories/RUSTSEC-2023-0010.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4450">https://www.cve.org/CVERecord?id=CVE-2022-4450</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0215</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0215">https://access.redhat.com/security/cve/CVE-2023-0215</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8818064ce3c3c0f1b740a5aaba2a987e75bfbafd</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9816136fe31d92ace4037d5da5257f763aeeb4eb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c3829dd8825c654652201e16f8a0a0c46ee3f344</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0215.html">https://linux.oracle.com/cve/CVE-2023-0215.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0215">https://nvd.nist.gov/vuln/detail/CVE-2023-0215</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0009.html">https://rustsec.org/advisories/RUSTSEC-2023-0009.html</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230427-0007/">https://security.netapp.com/advisory/ntap-20230427-0007/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230427-0009/">https://security.netapp.com/advisory/ntap-20230427-0009/</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-1">https://ubuntu.com/security/notices/USN-5845-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-2">https://ubuntu.com/security/notices/USN-5845-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0215">https://www.cve.org/CVERecord?id=CVE-2023-0215</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0216</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0216">https://access.redhat.com/security/cve/CVE-2023-0216</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=934a04f0e775309cadbef0aa6b9692e1b12a76c6">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=934a04f0e775309cadbef0aa6b9692e1b12a76c6</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0216.html">https://linux.oracle.com/cve/CVE-2023-0216.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0216">https://nvd.nist.gov/vuln/detail/CVE-2023-0216</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0011.html">https://rustsec.org/advisories/RUSTSEC-2023-0011.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0216">https://www.cve.org/CVERecord?id=CVE-2023-0216</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0217</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0217">https://access.redhat.com/security/cve/CVE-2023-0217</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=23985bac83fd50c8e29431009302b5442f985096">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=23985bac83fd50c8e29431009302b5442f985096</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0217.html">https://linux.oracle.com/cve/CVE-2023-0217.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0217">https://nvd.nist.gov/vuln/detail/CVE-2023-0217</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0012.html">https://rustsec.org/advisories/RUSTSEC-2023-0012.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0217">https://www.cve.org/CVERecord?id=CVE-2023-0217</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0286</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0286">https://access.redhat.com/security/cve/CVE-2023-0286</a>
+          <a href="https://access.redhat.com/security/cve/cve-2023-0286">https://access.redhat.com/security/cve/cve-2023-0286</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt">https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.6.2-relnotes.txt</a>
+          <a href="https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig">https://ftp.openbsd.org/pub/OpenBSD/patches/7.2/common/018_x509.patch.sig</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2c6c9d439b484e1ba9830d8454a34fa4f80fdfe9</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2f7530077e0ef79d98718138716bc51ca0cad658</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fd2af07dc083a350c959147097003a14a5e8ac4d</a>
+          <a href="https://github.com/pyca/cryptography">https://github.com/pyca/cryptography</a>
+          <a href="https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5">https://github.com/pyca/cryptography/security/advisories/GHSA-x4qr-2fvf-3mr5</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0286.html">https://linux.oracle.com/cve/CVE-2023-0286.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0286">https://nvd.nist.gov/vuln/detail/CVE-2023-0286</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0006.html">https://rustsec.org/advisories/RUSTSEC-2023-0006.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-1">https://ubuntu.com/security/notices/USN-5845-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-5845-2">https://ubuntu.com/security/notices/USN-5845-2</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0286">https://www.cve.org/CVERecord?id=CVE-2023-0286</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0401</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0401">https://access.redhat.com/security/cve/CVE-2023-0401</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=d3b6dfd70db844c4499bec6ad6601623a565e674">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=d3b6dfd70db844c4499bec6ad6601623a565e674</a>
+          <a href="https://github.com/alexcrichton/openssl-src-rs">https://github.com/alexcrichton/openssl-src-rs</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0401.html">https://linux.oracle.com/cve/CVE-2023-0401.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0401">https://nvd.nist.gov/vuln/detail/CVE-2023-0401</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0013.html">https://rustsec.org/advisories/RUSTSEC-2023-0013.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0401">https://www.cve.org/CVERecord?id=CVE-2023-0401</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0464</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r1</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0464">https://access.redhat.com/security/cve/CVE-2023-0464</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0464">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0464</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2017771e2db3e2b96f89bbe8766c3209f6a99545</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=2dcd4f1e3115f38cefa43e3efbe9b801c27e642e</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=879f7080d7e141f415c79eaa3a8ac4a3dad0348b</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=959c59c7a0164117e7f8366466a32bb1f8d77ff1</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0464.html">https://linux.oracle.com/cve/CVE-2023-0464.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0464">https://nvd.nist.gov/vuln/detail/CVE-2023-0464</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.couchbase.com/alerts/">https://www.couchbase.com/alerts/</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0464">https://www.cve.org/CVERecord?id=CVE-2023-0464</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230322.txt">https://www.openssl.org/news/secadv/20230322.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-5363</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.12-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/10/24/1">http://www.openwall.com/lists/oss-security/2023/10/24/1</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-5363">https://access.redhat.com/security/cve/CVE-2023-5363</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5363">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5363</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0df40630850fb2740e6be6890bb905d3fc623b2d">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0df40630850fb2740e6be6890bb905d3fc623b2d</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=5f69f5c65e483928c4b28ed16af6e5742929f1ee">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=5f69f5c65e483928c4b28ed16af6e5742929f1ee</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-5363">https://nvd.nist.gov/vuln/detail/CVE-2023-5363</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0010/">https://security.netapp.com/advisory/ntap-20231027-0010/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-5363">https://www.cve.org/CVERecord?id=CVE-2023-5363</a>
+          <a href="https://www.debian.org/security/2023/dsa-5532">https://www.debian.org/security/2023/dsa-5532</a>
+          <a href="https://www.openssl.org/news/secadv/20231024.txt">https://www.openssl.org/news/secadv/20231024.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2022-4203</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:0946">https://access.redhat.com/errata/RHSA-2023:0946</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4203">https://access.redhat.com/security/cve/CVE-2022-4203</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164488">https://bugzilla.redhat.com/2164488</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/2164497">https://bugzilla.redhat.com/2164497</a>
+          <a href="https://bugzilla.redhat.com/2164499">https://bugzilla.redhat.com/2164499</a>
+          <a href="https://bugzilla.redhat.com/2164500">https://bugzilla.redhat.com/2164500</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-0946.html">https://errata.almalinux.org/9/ALSA-2023-0946.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c927a3492698c254637da836762f9b1f86cffabc">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c927a3492698c254637da836762f9b1f86cffabc</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4203.html">https://linux.oracle.com/cve/CVE-2022-4203.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-12152.html">https://linux.oracle.com/errata/ELSA-2023-12152.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4203">https://nvd.nist.gov/vuln/detail/CVE-2022-4203</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0008.html">https://rustsec.org/advisories/RUSTSEC-2023-0008.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4203">https://www.cve.org/CVERecord?id=CVE-2022-4203</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2022-4304</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2165">https://access.redhat.com/errata/RHSA-2023:2165</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-4304">https://access.redhat.com/security/cve/CVE-2022-4304</a>
+          <a href="https://bugzilla.redhat.com/1960321">https://bugzilla.redhat.com/1960321</a>
+          <a href="https://bugzilla.redhat.com/2164440">https://bugzilla.redhat.com/2164440</a>
+          <a href="https://bugzilla.redhat.com/2164487">https://bugzilla.redhat.com/2164487</a>
+          <a href="https://bugzilla.redhat.com/2164492">https://bugzilla.redhat.com/2164492</a>
+          <a href="https://bugzilla.redhat.com/2164494">https://bugzilla.redhat.com/2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144000">https://bugzilla.redhat.com/show_bug.cgi?id=2144000</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144003">https://bugzilla.redhat.com/show_bug.cgi?id=2144003</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144006">https://bugzilla.redhat.com/show_bug.cgi?id=2144006</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144008">https://bugzilla.redhat.com/show_bug.cgi?id=2144008</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144010">https://bugzilla.redhat.com/show_bug.cgi?id=2144010</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144012">https://bugzilla.redhat.com/show_bug.cgi?id=2144012</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144015">https://bugzilla.redhat.com/show_bug.cgi?id=2144015</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144017">https://bugzilla.redhat.com/show_bug.cgi?id=2144017</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2144019">https://bugzilla.redhat.com/show_bug.cgi?id=2144019</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2145170">https://bugzilla.redhat.com/show_bug.cgi?id=2145170</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2158412">https://bugzilla.redhat.com/show_bug.cgi?id=2158412</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164440">https://bugzilla.redhat.com/show_bug.cgi?id=2164440</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164487">https://bugzilla.redhat.com/show_bug.cgi?id=2164487</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164488">https://bugzilla.redhat.com/show_bug.cgi?id=2164488</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164492">https://bugzilla.redhat.com/show_bug.cgi?id=2164492</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164494">https://bugzilla.redhat.com/show_bug.cgi?id=2164494</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164497">https://bugzilla.redhat.com/show_bug.cgi?id=2164497</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164499">https://bugzilla.redhat.com/show_bug.cgi?id=2164499</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2164500">https://bugzilla.redhat.com/show_bug.cgi?id=2164500</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4203</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4304</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4450</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0215</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0216</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0217</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0286</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0401</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2165.html">https://errata.almalinux.org/9/ALSA-2023-2165.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:0946">https://errata.rockylinux.org/RLSA-2023:0946</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-4304.html">https://linux.oracle.com/cve/CVE-2022-4304.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2932.html">https://linux.oracle.com/errata/ELSA-2023-2932.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4304">https://nvd.nist.gov/vuln/detail/CVE-2022-4304</a>
+          <a href="https://rustsec.org/advisories/RUSTSEC-2023-0007.html">https://rustsec.org/advisories/RUSTSEC-2023-0007.html</a>
+          <a href="https://ubuntu.com/security/notices/USN-5844-1">https://ubuntu.com/security/notices/USN-5844-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-4304">https://www.cve.org/CVERecord?id=CVE-2022-4304</a>
+          <a href="https://www.openssl.org/news/secadv/20230207.txt">https://www.openssl.org/news/secadv/20230207.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0465</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0465">https://access.redhat.com/security/cve/CVE-2023-0465</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0465">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0465</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=10325176f3d3e98c6e2b3bf5ab1e3b334de6947a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=10325176f3d3e98c6e2b3bf5ab1e3b334de6947a</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1dd43e0709fece299b15208f36cc7c76209ba0bb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1dd43e0709fece299b15208f36cc7c76209ba0bb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=b013765abfa80036dc779dd0e50602c57bb3bf95">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=b013765abfa80036dc779dd0e50602c57bb3bf95</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=facfb1ab745646e97a1920977ae4a9965ea61d5c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=facfb1ab745646e97a1920977ae4a9965ea61d5c</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0465.html">https://linux.oracle.com/cve/CVE-2023-0465.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0465">https://nvd.nist.gov/vuln/detail/CVE-2023-0465</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230414-0001/">https://security.netapp.com/advisory/ntap-20230414-0001/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0465">https://www.cve.org/CVERecord?id=CVE-2023-0465</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230328.txt">https://www.openssl.org/news/secadv/20230328.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-0466</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r3</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/28/4">http://www.openwall.com/lists/oss-security/2023/09/28/4</a>
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-0466">https://access.redhat.com/security/cve/CVE-2023-0466</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0466">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-0466</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0d16b7e99aafc0b4a6d729eec65a411a7e025f0a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=0d16b7e99aafc0b4a6d729eec65a411a7e025f0a</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=51e8a84ce742db0f6c70510d0159dad8f7825908">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=51e8a84ce742db0f6c70510d0159dad8f7825908</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=73398dea26de9899fb4baa94098ad0a61f435c72">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=73398dea26de9899fb4baa94098ad0a61f435c72</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc814a30fc4f0bc54fcea7d9a7462f5457aab061">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc814a30fc4f0bc54fcea7d9a7462f5457aab061</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-0466.html">https://linux.oracle.com/cve/CVE-2023-0466.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-0466">https://nvd.nist.gov/vuln/detail/CVE-2023-0466</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230414-0001/">https://security.netapp.com/advisory/ntap-20230414-0001/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6039-1">https://ubuntu.com/security/notices/USN-6039-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-0466">https://www.cve.org/CVERecord?id=CVE-2023-0466</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230328.txt">https://www.openssl.org/news/secadv/20230328.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-1255</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.8-r4</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:3722">https://access.redhat.com/errata/RHSA-2023:3722</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-1255">https://access.redhat.com/security/cve/CVE-2023-1255</a>
+          <a href="https://bugzilla.redhat.com/2181082">https://bugzilla.redhat.com/2181082</a>
+          <a href="https://bugzilla.redhat.com/2182561">https://bugzilla.redhat.com/2182561</a>
+          <a href="https://bugzilla.redhat.com/2182565">https://bugzilla.redhat.com/2182565</a>
+          <a href="https://bugzilla.redhat.com/2188461">https://bugzilla.redhat.com/2188461</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-1255">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-1255</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-3722.html">https://errata.almalinux.org/9/ALSA-2023-3722.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=02ac9c9420275868472f33b01def01218742b8bb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=02ac9c9420275868472f33b01def01218742b8bb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bc2f61ad70971869b242fc1cb445b98bad50074a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bc2f61ad70971869b242fc1cb445b98bad50074a</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-1255.html">https://linux.oracle.com/cve/CVE-2023-1255.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-3722.html">https://linux.oracle.com/errata/ELSA-2023-3722.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-1255">https://nvd.nist.gov/vuln/detail/CVE-2023-1255</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230908-0006/">https://security.netapp.com/advisory/ntap-20230908-0006/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6119-1">https://ubuntu.com/security/notices/USN-6119-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-1255">https://www.cve.org/CVERecord?id=CVE-2023-1255</a>
+          <a href="https://www.openssl.org/news/secadv/20230419.txt">https://www.openssl.org/news/secadv/20230419.txt</a>
+          <a href="https://www.openssl.org/news/secadv/20230420.txt">https://www.openssl.org/news/secadv/20230420.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-2650</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/05/30/1">http://www.openwall.com/lists/oss-security/2023/05/30/1</a>
+          <a href="https://access.redhat.com/errata/RHSA-2023:6330">https://access.redhat.com/errata/RHSA-2023:6330</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-2650">https://access.redhat.com/security/cve/CVE-2023-2650</a>
+          <a href="https://bugzilla.redhat.com/1858038">https://bugzilla.redhat.com/1858038</a>
+          <a href="https://bugzilla.redhat.com/2207947">https://bugzilla.redhat.com/2207947</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2650">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2650</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-6330.html">https://errata.almalinux.org/9/ALSA-2023-6330.html</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=423a2bc737a908ad0c77bda470b2b59dc879936b">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=423a2bc737a908ad0c77bda470b2b59dc879936b</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=853c5e56ee0b8650c73140816bb8b91d6163422c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=853c5e56ee0b8650c73140816bb8b91d6163422c</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9e209944b35cf82368071f160a744b6178f9b098">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9e209944b35cf82368071f160a744b6178f9b098</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db779b0e10b047f2585615e0b8f2acdf21f8544a">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db779b0e10b047f2585615e0b8f2acdf21f8544a</a>
+          <a href="https://linux.oracle.com/cve/CVE-2023-2650.html">https://linux.oracle.com/cve/CVE-2023-2650.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-6330.html">https://linux.oracle.com/errata/ELSA-2023-6330.html</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html">https://lists.debian.org/debian-lts-announce/2023/06/msg00011.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2650">https://nvd.nist.gov/vuln/detail/CVE-2023-2650</a>
+          <a href="https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0009">https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2023-0009</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230703-0001/">https://security.netapp.com/advisory/ntap-20230703-0001/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0009/">https://security.netapp.com/advisory/ntap-20231027-0009/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6119-1">https://ubuntu.com/security/notices/USN-6119-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6188-1">https://ubuntu.com/security/notices/USN-6188-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-2650">https://www.cve.org/CVERecord?id=CVE-2023-2650</a>
+          <a href="https://www.debian.org/security/2023/dsa-5417">https://www.debian.org/security/2023/dsa-5417</a>
+          <a href="https://www.openssl.org/news/secadv/20230530.txt">https://www.openssl.org/news/secadv/20230530.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-2975</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r2</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/15/1">http://www.openwall.com/lists/oss-security/2023/07/15/1</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/5">http://www.openwall.com/lists/oss-security/2023/07/19/5</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-2975">https://access.redhat.com/security/cve/CVE-2023-2975</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2975">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-2975</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=00e2f5eea29994d19293ec4e8c8775ba73678598">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=00e2f5eea29994d19293ec4e8c8775ba73678598</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a83f0c958811f07e0d11dfc6b5a6a98edfd5bdc">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a83f0c958811f07e0d11dfc6b5a6a98edfd5bdc</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-2975">https://nvd.nist.gov/vuln/detail/CVE-2023-2975</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230725-0004/">https://security.netapp.com/advisory/ntap-20230725-0004/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-2975">https://www.cve.org/CVERecord?id=CVE-2023-2975</a>
+          <a href="https://www.openssl.org/news/secadv/20230714.txt">https://www.openssl.org/news/secadv/20230714.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-3446</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.9-r3</td>
+        <td class="links" data-more-links="off">
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/4">http://www.openwall.com/lists/oss-security/2023/07/19/4</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/5">http://www.openwall.com/lists/oss-security/2023/07/19/5</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/19/6">http://www.openwall.com/lists/oss-security/2023/07/19/6</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/31/1">http://www.openwall.com/lists/oss-security/2023/07/31/1</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-3446">https://access.redhat.com/security/cve/CVE-2023-3446</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1fa20cf2f506113c761777127a38bce5068740eb">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=1fa20cf2f506113c761777127a38bce5068740eb</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8780a896543a654e757db1b9396383f9d8095528">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=8780a896543a654e757db1b9396383f9d8095528</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9a0a4d3c1e7138915563c0df4fe6a3f9377b839c">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9a0a4d3c1e7138915563c0df4fe6a3f9377b839c</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc9867c1e03c22ebf56943be205202e576aabf23">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=fc9867c1e03c22ebf56943be205202e576aabf23</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3446">https://nvd.nist.gov/vuln/detail/CVE-2023-3446</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230803-0011/">https://security.netapp.com/advisory/ntap-20230803-0011/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-1">https://ubuntu.com/security/notices/USN-6435-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-2">https://ubuntu.com/security/notices/USN-6435-2</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-3446">https://www.cve.org/CVERecord?id=CVE-2023-3446</a>
+          <a href="https://www.openssl.org/news/secadv/20230719.txt">https://www.openssl.org/news/secadv/20230719.txt</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">libssl3</td>
+        <td>CVE-2023-3817</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">3.0.7-r0</td>
+        <td>3.0.10-r0</td>
+        <td class="links" data-more-links="off">
+          <a href="http://seclists.org/fulldisclosure/2023/Jul/43">http://seclists.org/fulldisclosure/2023/Jul/43</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/07/31/1">http://www.openwall.com/lists/oss-security/2023/07/31/1</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/22/11">http://www.openwall.com/lists/oss-security/2023/09/22/11</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/09/22/9">http://www.openwall.com/lists/oss-security/2023/09/22/9</a>
+          <a href="http://www.openwall.com/lists/oss-security/2023/11/06/2">http://www.openwall.com/lists/oss-security/2023/11/06/2</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2023-3817">https://access.redhat.com/security/cve/CVE-2023-3817</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a1eb62c29db6cb5eec707f9338aee00f44e26f5">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=6a1eb62c29db6cb5eec707f9338aee00f44e26f5</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=869ad69aadd985c7b8ca6f4e5dd0eb274c9f3644">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=869ad69aadd985c7b8ca6f4e5dd0eb274c9f3644</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9002fd07327a91f35ba6c1307e71fa6fd4409b7f">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=9002fd07327a91f35ba6c1307e71fa6fd4409b7f</a>
+          <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=91ddeba0f2269b017dc06c46c993a788974b1aa5">https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=91ddeba0f2269b017dc06c46c993a788974b1aa5</a>
+          <a href="https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html">https://lists.debian.org/debian-lts-announce/2023/08/msg00019.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-3817">https://nvd.nist.gov/vuln/detail/CVE-2023-3817</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230818-0014/">https://security.netapp.com/advisory/ntap-20230818-0014/</a>
+          <a href="https://security.netapp.com/advisory/ntap-20231027-0008/">https://security.netapp.com/advisory/ntap-20231027-0008/</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-1">https://ubuntu.com/security/notices/USN-6435-1</a>
+          <a href="https://ubuntu.com/security/notices/USN-6435-2">https://ubuntu.com/security/notices/USN-6435-2</a>
+          <a href="https://ubuntu.com/security/notices/USN-6450-1">https://ubuntu.com/security/notices/USN-6450-1</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2023-3817">https://www.cve.org/CVERecord?id=CVE-2023-3817</a>
+          <a href="https://www.openssl.org/news/secadv/20230731.txt">https://www.openssl.org/news/secadv/20230731.txt</a>
+        </td>
+      </tr>
+      <tr><th colspan="6">No Misconfigurations found</th></tr>
+      <tr class="group-header"><th colspan="6">node-pkg</th></tr>
+      <tr class="sub-header">
+        <th>Package</th>
+        <th>Vulnerability ID</th>
+        <th>Severity</th>
+        <th>Installed Version</th>
+        <th>Fixed Version</th>
+        <th>Links</th>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="pkg-name">http-cache-semantics</td>
+        <td>CVE-2022-25881</td>
+        <td class="severity">HIGH</td>
+        <td class="pkg-version">4.1.0</td>
+        <td>4.1.1</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:2655">https://access.redhat.com/errata/RHSA-2023:2655</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-25881">https://access.redhat.com/security/cve/CVE-2022-25881</a>
+          <a href="https://bugzilla.redhat.com/2165824">https://bugzilla.redhat.com/2165824</a>
+          <a href="https://bugzilla.redhat.com/2168631">https://bugzilla.redhat.com/2168631</a>
+          <a href="https://bugzilla.redhat.com/2171935">https://bugzilla.redhat.com/2171935</a>
+          <a href="https://bugzilla.redhat.com/2172190">https://bugzilla.redhat.com/2172190</a>
+          <a href="https://bugzilla.redhat.com/2172204">https://bugzilla.redhat.com/2172204</a>
+          <a href="https://bugzilla.redhat.com/2172217">https://bugzilla.redhat.com/2172217</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2165824">https://bugzilla.redhat.com/show_bug.cgi?id=2165824</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2168631">https://bugzilla.redhat.com/show_bug.cgi?id=2168631</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2171935">https://bugzilla.redhat.com/show_bug.cgi?id=2171935</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2172190">https://bugzilla.redhat.com/show_bug.cgi?id=2172190</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2172204">https://bugzilla.redhat.com/show_bug.cgi?id=2172204</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2172217">https://bugzilla.redhat.com/show_bug.cgi?id=2172217</a>
+          <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2178076">https://bugzilla.redhat.com/show_bug.cgi?id=2178076</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25881">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-25881</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4904">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-4904</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23918">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23918</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23920">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23920</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23936">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23936</a>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24807">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-24807</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-2655.html">https://errata.almalinux.org/9/ALSA-2023-2655.html</a>
+          <a href="https://errata.rockylinux.org/RLSA-2023:2655">https://errata.rockylinux.org/RLSA-2023:2655</a>
+          <a href="https://github.com/kornelski/http-cache-semantics">https://github.com/kornelski/http-cache-semantics</a>
+          <a href="https://github.com/kornelski/http-cache-semantics/blob/master/index.js%23L83">https://github.com/kornelski/http-cache-semantics/blob/master/index.js%23L83</a>
+          <a href="https://github.com/kornelski/http-cache-semantics/commit/560b2d8ef452bbba20ffed69dc155d63ac757b74">https://github.com/kornelski/http-cache-semantics/commit/560b2d8ef452bbba20ffed69dc155d63ac757b74</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-25881.html">https://linux.oracle.com/cve/CVE-2022-25881.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-2655.html">https://linux.oracle.com/errata/ELSA-2023-2655.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25881">https://nvd.nist.gov/vuln/detail/CVE-2022-25881</a>
+          <a href="https://security.netapp.com/advisory/ntap-20230622-0008/">https://security.netapp.com/advisory/ntap-20230622-0008/</a>
+          <a href="https://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-3253332">https://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-3253332</a>
+          <a href="https://security.snyk.io/vuln/SNYK-JS-HTTPCACHESEMANTICS-3248783">https://security.snyk.io/vuln/SNYK-JS-HTTPCACHESEMANTICS-3248783</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-25881">https://www.cve.org/CVERecord?id=CVE-2022-25881</a>
+        </td>
+      </tr>
+      <tr class="severity-MEDIUM">
+        <td class="pkg-name">semver</td>
+        <td>CVE-2022-25883</td>
+        <td class="severity">MEDIUM</td>
+        <td class="pkg-version">7.3.7</td>
+        <td>7.5.2, 6.3.1, 5.7.2</td>
+        <td class="links" data-more-links="off">
+          <a href="https://access.redhat.com/errata/RHSA-2023:5363">https://access.redhat.com/errata/RHSA-2023:5363</a>
+          <a href="https://access.redhat.com/security/cve/CVE-2022-25883">https://access.redhat.com/security/cve/CVE-2022-25883</a>
+          <a href="https://bugzilla.redhat.com/2216475">https://bugzilla.redhat.com/2216475</a>
+          <a href="https://bugzilla.redhat.com/2230948">https://bugzilla.redhat.com/2230948</a>
+          <a href="https://bugzilla.redhat.com/2230955">https://bugzilla.redhat.com/2230955</a>
+          <a href="https://bugzilla.redhat.com/2230956">https://bugzilla.redhat.com/2230956</a>
+          <a href="https://errata.almalinux.org/9/ALSA-2023-5363.html">https://errata.almalinux.org/9/ALSA-2023-5363.html</a>
+          <a href="https://github.com/advisories/GHSA-c2qf-rxjj-qqgw">https://github.com/advisories/GHSA-c2qf-rxjj-qqgw</a>
+          <a href="https://github.com/npm/node-semver">https://github.com/npm/node-semver</a>
+          <a href="https://github.com/npm/node-semver/blob/main/classes/range.js#L97-L104">https://github.com/npm/node-semver/blob/main/classes/range.js#L97-L104</a>
+          <a href="https://github.com/npm/node-semver/blob/main/classes/range.js%23L97-L104">https://github.com/npm/node-semver/blob/main/classes/range.js%23L97-L104</a>
+          <a href="https://github.com/npm/node-semver/blob/main/internal/re.js#L138">https://github.com/npm/node-semver/blob/main/internal/re.js#L138</a>
+          <a href="https://github.com/npm/node-semver/blob/main/internal/re.js#L160">https://github.com/npm/node-semver/blob/main/internal/re.js#L160</a>
+          <a href="https://github.com/npm/node-semver/blob/main/internal/re.js%23L138">https://github.com/npm/node-semver/blob/main/internal/re.js%23L138</a>
+          <a href="https://github.com/npm/node-semver/blob/main/internal/re.js%23L160">https://github.com/npm/node-semver/blob/main/internal/re.js%23L160</a>
+          <a href="https://github.com/npm/node-semver/commit/2f8fd41487acf380194579ecb6f8b1bbfe116be0">https://github.com/npm/node-semver/commit/2f8fd41487acf380194579ecb6f8b1bbfe116be0</a>
+          <a href="https://github.com/npm/node-semver/commit/717534ee353682f3bcf33e60a8af4292626d4441">https://github.com/npm/node-semver/commit/717534ee353682f3bcf33e60a8af4292626d4441</a>
+          <a href="https://github.com/npm/node-semver/commit/928e56d21150da0413a3333a3148b20e741a920c">https://github.com/npm/node-semver/commit/928e56d21150da0413a3333a3148b20e741a920c</a>
+          <a href="https://github.com/npm/node-semver/pull/564">https://github.com/npm/node-semver/pull/564</a>
+          <a href="https://github.com/npm/node-semver/pull/585">https://github.com/npm/node-semver/pull/585</a>
+          <a href="https://github.com/npm/node-semver/pull/593">https://github.com/npm/node-semver/pull/593</a>
+          <a href="https://linux.oracle.com/cve/CVE-2022-25883.html">https://linux.oracle.com/cve/CVE-2022-25883.html</a>
+          <a href="https://linux.oracle.com/errata/ELSA-2023-5363.html">https://linux.oracle.com/errata/ELSA-2023-5363.html</a>
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-25883">https://nvd.nist.gov/vuln/detail/CVE-2022-25883</a>
+          <a href="https://security.snyk.io/vuln/SNYK-JS-SEMVER-3247795">https://security.snyk.io/vuln/SNYK-JS-SEMVER-3247795</a>
+          <a href="https://www.cve.org/CVERecord?id=CVE-2022-25883">https://www.cve.org/CVERecord?id=CVE-2022-25883</a>
+        </td>
+      </tr>
+      <tr><th colspan="6">No Misconfigurations found</th></tr>
+      <tr class="group-header"><th colspan="6">dockerfile</th></tr>
+      <tr><th colspan="6">No Vulnerabilities found</th></tr>
+      <tr class="sub-header">
+        <th>Type</th>
+        <th>Misconf ID</th>
+        <th>Check</th>
+        <th>Severity</th>
+        <th>Message</th>
+      </tr>
+      <tr class="severity-HIGH">
+        <td class="misconf-type">Dockerfile Security Check</td>
+        <td>DS002</td>
+        <td class="misconf-check">Image user should not be &#39;root&#39;</td>
+        <td class="severity">HIGH</td>
+        <td class="link" data-more-links="off"  style="white-space:normal;">
+          Specify at least 1 USER command in Dockerfile with non-root user as argument
+          <br>
+            <a href="https://avd.aquasec.com/misconfig/ds002">https://avd.aquasec.com/misconfig/ds002</a>
+          </br>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
