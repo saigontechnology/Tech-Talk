@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the Account model
+model account {
+  accountId     Int           @id @default(autoincrement())
+  accountNumber String        @unique
+  balance       Float         @default(0)
+  transactions  transaction[]
+}
+
+// Define the Transaction model
+model transaction {
+  transactionId Int             @id @default(autoincrement())
+  account       account         @relation(fields: [accountId], references: [accountId])
+  accountId     Int
+  amount        Float
+  moneySource   MoneySourceType
+  timestamp     DateTime        @default(now())
+}
+
+enum MoneySourceType {
+  MOMO
+  VPBANK
+}
