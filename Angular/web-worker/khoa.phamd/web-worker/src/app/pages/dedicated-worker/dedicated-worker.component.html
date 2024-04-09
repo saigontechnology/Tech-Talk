@@ -1,0 +1,33 @@
+<div class="header">DEMO: COMPARE DEDICATED WORKER & NON-DEDICATED WORKER</div>
+<div class="description">
+  <span>Do 2 actions:</span>
+  <ul>
+    <li><span>Simple Task: Render UI from 1 to Input Number (1s / number)</span></li>
+    <li><span>Complex Task: Simulate the Background Process / Complex Calculation (10s to finish)</span></li>
+  </ul>
+</div>
+
+<div class="contain">
+  <label>Input number:</label>
+  <input [(ngModel)]="number"/>
+  <button (click)="runTask()">Run</button>
+</div>
+
+<div class="dedicated-wrapper">
+  <div class="none-dedicated">
+    <h3>Non-Dedicated Worker</h3>
+    <div class="content">
+      <ul>
+        <li *ngFor="let item of noneDedicatedWorkerResult"><span>{{item.taskName}} </span> {{item.value}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="dedicated">
+    <h3>Dedicated Worker</h3>
+    <div class="content">
+      <ul>
+        <li *ngFor="let item of dedicatedWorkerResult"><span>{{item.taskName}} </span> {{item.value}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
