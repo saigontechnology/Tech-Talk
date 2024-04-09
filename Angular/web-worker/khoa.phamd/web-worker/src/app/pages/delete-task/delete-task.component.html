@@ -1,0 +1,13 @@
+<div class="header">DEMO SHARED WORKER - Page 2: Delete Task</div>
+<div class="content">
+  <div style="display: flex; justify-content: space-between; height: 40px; align-items: center;">
+    <h3>Task list:</h3>
+  </div>
+  <ul>
+    <li *ngFor="let item of taskList">
+      <div style="display:flex; width: 100%; padding: 10px; align-items:center; justify-content:space-between;">
+        <span>{{ item.value }}</span> <button (click)="deleteTask(item.id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,18 @@
+<div class="header">DEMO SHARED WORKER - Page 1: Add Task</div>
+
+<div class="contain">
+  <label>Input TaskName:</label>
+  <input [(ngModel)]="task" />
+  <button (click)="addTask()">Add New</button>
+  <button (click)="navigateToDeletePage()">Open Page 2: Delete Task</button>
+</div>
+<div class="content">
+  <div style="display: flex; justify-content: space-between; height: 40px; align-items: center;">
+    <h3>Task list:</h3> 
+  </div>
+  <ul>
+    <li *ngFor="let item of taskList">
+      {{ item.value }}
+    </li>
+  </ul>
+</div>

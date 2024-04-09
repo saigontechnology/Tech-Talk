@@ -1,0 +1,19 @@
+.contain {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+}
+
+.content {
+  padding: 16px;
+  width: 500px;
+  ul {
+    list-style: decimal;
+  }
+}
+
+.header {
+  font-weight: bold;
+  text-align: center;
+}
