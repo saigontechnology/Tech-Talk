@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "es6",
+    "target": "es6",
+    "baseUrl": "./src"
+  },
+  "include": ["src/**/*", "public/service-worker.js"]
+}
