@@ -1,0 +1,41 @@
+{
+  "common": {
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Register",
+    "home": "Home",
+    "news": "News",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "password": "Password",
+    "email": "Email",
+    "login_remember": "Remember me",
+    "login_forgotPassword": "Forgot password?",
+    "login_haveAccount": "Don't have an account? Sign Up",
+    "backToNews":"Back to news",
+    "signup_haveAccount": "Already have an account? Sign in",
+    "signup_checkBox": "I want to receive inspiration, marketing promotions and updates via email.",
+    "country": "Country",
+    "cases": "Cases",
+    "deaths": "Deaths",
+    "recovered": "Recovered"
+
+  },
+  "home": {
+    "title": "Globally, as of <1>{{updatedAt}}</1>, there have been <3>{{cases}}</3> confirmed cases of COVID-19, including <5>{{deaths}}</5> deaths, <7>{{recovered}}</7> recovered reported to WHO",
+    "dateUpdate": "{{updateAt}}",
+    "covidCase": "total cases",
+    "titleLineChart": "Detail timeline of covid cases ",
+    "subTitleChart": "As of present",
+    "titleBarChart": "Covid case of each continents",
+    "tableTitle": "Detail of each country"
+  },
+
+  "homeDetail": {
+    "title": "In <1>{{country}}</1>, as of <3>{{updatedAt}}</3>, there have been <5>{{cases}}</5> confirmed cases of COVID-19, including <7>{{deaths}}</7> deaths, <9>{{recovered}}</9> recovered reported to WHO"
+  },
+  "error": {
+    "failLoadingMap": "Fail to load data of map",
+    "failLoadingData": "Fail to load data of chart"
+  }
+}
