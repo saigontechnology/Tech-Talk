@@ -1,0 +1,11 @@
+- `GetByIdAsync` should return a user when a user exists
+- `GetByIdAsync` should return null, when a user doesn't exist
+- `GetByIdAsync` should log the correct messages when retrieving the users
+- `GetByIdAsync` should log the correct messages when an exception is thrown
+- `CreateAsync` should create a user when user create details are valid
+- `CreateAsync` should log the correct messages when creating a user
+- `CreateAsync` should log the correct messages when an exception is thrown
+- `DeleteByIdAsync` should delete a user when the user exists
+- `DeleteByIdAsync` should not delete a user does not exist
+- `DeleteByIdAsync` should log the correct messages when deleting a user
+- `DeleteByIdAsync` should log the correct messages when an exception is thrown
