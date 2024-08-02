@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Store";
+}
+
+@model (StoreModel[] Stores, IdNameModel<ProductCategoryType>[] Categories)
+
+<h1>Store</h1>
+
+@if (Model.Categories is not null)
+{
+    <h5>Categories</h5>
+    <select>
+        @foreach (var category in Model.Categories)
+        {
+            <option>
+                @category.Name
+            </option>
+        }
+    </select>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Stores is not null && Model.Stores.Length > 0)
+        {
+            @foreach (var store in Model.Stores)
+            {
+                <tr>
+                    <td>@store.Name</td>
+                    <td>@store.Description</td>
+                    <td>@store.Category.ToString()</td>
+                    <td>
+                        @if (store.Products is not null)
+                        {
+                            @foreach (var product in store.Products.Where(p => p is not null))
+                            {
+                                <div>
+                                    @product.Name,
+                                </div>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10">
+                    Empty records
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

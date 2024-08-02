@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsAspireHost>true</IsAspireHost>
+		<UserSecretsId>a63a3ebb-71c7-4ae4-a1b5-2561cf01aaea</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
+		<PackageReference Include="Aspire.Hosting.NodeJs" Version="8.1.0" />
+		<PackageReference Include="Aspire.Hosting.Redis" Version="8.1.0" />
+		<PackageReference Include="Aspire.Hosting.SqlServer" Version="8.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\AspireToExistingDemo\Domains\Domains.csproj" IsAspireProjectResource="false" />
+	  <ProjectReference Include="..\ProductApi\ProductApi.csproj" />
+	</ItemGroup>
+</Project>

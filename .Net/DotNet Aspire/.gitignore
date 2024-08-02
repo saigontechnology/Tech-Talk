@@ -1,0 +1,6 @@
+bin
+obj
+*.sou
+.vs
+**/.vs
+node_modules

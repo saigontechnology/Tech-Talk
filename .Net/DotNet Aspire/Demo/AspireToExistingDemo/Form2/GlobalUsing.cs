@@ -1,0 +1,1 @@
+﻿global using static Form2.Program;
