@@ -1,0 +1,20 @@
+html
+    head
+        title Products
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css')
+    body
+        h1 Products
+        table.table.table-striped
+            thead
+                tr
+                    th(scope='col') Name
+                    th(scope='col') Description
+                    th(scope='col') Quantity
+                    th(scope='col') Price
+            tbody
+                each product in products
+                    tr
+                        td=product.name
+                        td=product.description
+                        td=product.quantity
+                        td=product.price
