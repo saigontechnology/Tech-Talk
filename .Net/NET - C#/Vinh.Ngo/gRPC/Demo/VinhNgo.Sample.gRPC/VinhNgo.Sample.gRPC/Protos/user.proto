@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "VinhNgo.Sample.gRPC";
+import "google/api/annotations.proto";
+
+package user;
+
+service User {
+    rpc Create (UserCreateRequest) returns (UserCreateResponse);
+    rpc GetById(UserCreateResponse) returns (UserCreateRequest);
+    rpc Gets(UserQuery) returns (UserItems);
+
+    rpc Get (UserCreateResponse) returns (UserCreateRequest) {
+        option (google.api.http) = {
+            get: "/user/{id}"
+        };
+    }
+
+    rpc StreamingUsers(UserQuery) returns (stream UserFullName);
+    
+    rpc BulkCreate(stream UserCreateRequest) returns (CountCreatedUser);
+
+    rpc BulkCreate2(stream UserCreateRequest) returns (stream CountCreatedUser);
+    
+    rpc Login(UserCreateResponse) returns (TokenModel);
+    
+    rpc GetByIdWithAuthorize(UserCreateResponse) returns (UserCreateRequest);
+}
+
+message UserCreateRequest {
+    string first_name = 1;
+    string last_name = 2;
+    string email = 3;
+    string phone_number = 4;
+    string password = 5;
+}
+
+message UserCreateResponse {
+    string id = 1;
+}
+
+message UserQuery {
+    string keyword = 1;
+}
+
+message UserItems {
+    repeated UserCreateRequest items = 1;
+}
+
+message UserFullName{
+    string name = 1;
+}
+
+message CountCreatedUser {
+    int32 count = 1;
+}
+
+message TokenModel{
+    string token = 1;
+}

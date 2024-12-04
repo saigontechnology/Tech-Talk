@@ -1,0 +1,51 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using gRPC.WebApp.Services
+@using VinhNgo.Sample.gRPC
+@inject UserService UserService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (users == null)
+{
+    <p><em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in users)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.PhoneNumber</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<UserCreateRequest> users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await UserService.Gets();
+    }
+
+}

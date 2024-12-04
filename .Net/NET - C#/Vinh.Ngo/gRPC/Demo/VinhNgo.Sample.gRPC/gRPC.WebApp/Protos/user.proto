@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "VinhNgo.Sample.gRPC";
+
+package user;
+
+service User {
+    rpc Create (UserCreateRequest) returns (UserCreateResponse);
+    rpc GetById(UserCreateResponse) returns (UserCreateRequest);
+    rpc Gets(UserQuery) returns (UserItems);
+}
+
+message UserCreateRequest {
+    string first_name = 1;
+    string last_name = 2;
+    string email = 3;
+    string phone_number = 4;
+    string password = 5;
+}
+
+message UserCreateResponse {
+    string id = 1;
+}
+
+message UserQuery {
+    string keyword = 1;
+}
+
+message UserItems {
+    repeated UserCreateRequest items = 1;
+}
