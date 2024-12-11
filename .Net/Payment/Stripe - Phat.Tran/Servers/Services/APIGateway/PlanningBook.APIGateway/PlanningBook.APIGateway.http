@@ -1,0 +1,6 @@
+@PlanningBook.APIGateway_HostAddress = http://localhost:5019
+
+GET {{PlanningBook.APIGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
