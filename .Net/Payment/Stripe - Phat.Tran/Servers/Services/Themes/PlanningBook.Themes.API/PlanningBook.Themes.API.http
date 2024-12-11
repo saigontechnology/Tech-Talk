@@ -1,0 +1,6 @@
+@PlanningBook.Themes.API_HostAddress = http://localhost:5004
+
+GET {{PlanningBook.Themes.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
