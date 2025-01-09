@@ -1,0 +1,6 @@
+@AzureDocumentIntelligenceStudio_HostAddress = http://localhost:5252
+
+GET {{AzureDocumentIntelligenceStudio_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
