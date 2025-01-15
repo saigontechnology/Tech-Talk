@@ -68,8 +68,8 @@ namespace AzureDocumentIntelligenceStudio.Helpers
                                     workExperience.Description = fieldValue;
                                     break;
 
-                                case var key when key == nameof(WorkExperience.AdditionalDetail).ToLowerInvariant():
-                                    workExperience.AdditionalDetail = fieldValue;
+                                case var key when key == nameof(WorkExperience.Region).ToLowerInvariant():
+                                    workExperience.Region = fieldValue;
                                     break;
                             }
                         }
@@ -118,7 +118,8 @@ namespace AzureDocumentIntelligenceStudio.Helpers
             resume.Educations = educations;
             #endregion Process Educations */
 
-            resume.TechnicalSkills = ExtractionFielListString(document, nameof(Resume.TechnicalSkills));
+            resume.RawTechnicalSkills = ExtractionFielListString(document, nameof(Resume.TechnicalSkills));
+            resume.TechnicalSkills = MakupDataListString(resume.RawTechnicalSkills);
             resume.Certifications = ExtractionFielListString(document, nameof(Resume.Certifications));
             resume.Awards = ExtractionFielListString(document, nameof(Resume.Awards));
 
@@ -147,6 +148,20 @@ namespace AzureDocumentIntelligenceStudio.Helpers
                     }
                 }
             }
+            return results;
+        }
+
+        private List<string> MakupDataListString(List<string> inputData)
+        {
+            var results = new List<string>();
+
+            foreach (var item in inputData)
+            {
+                var rawMakeUpData = item.Split(',').Select(str => str.TrimStart('(', ',').TrimEnd(')', ',').Trim()).Where(str => !string.IsNullOrWhiteSpace(str)).Select(str => str.Replace("\n", "\\n")).ToList();
+                if (rawMakeUpData.Any())
+                    results.AddRange(rawMakeUpData);
+            }
+
             return results;
         }
     }
