@@ -35,3 +35,9 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+# Ignore all appsettings files
+*appsettings.json
+appsettings.json
+*.appsettings.json
+appsettings.*.json
