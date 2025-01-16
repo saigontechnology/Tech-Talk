@@ -2,6 +2,7 @@
 using Azure.AI.DocumentIntelligence;
 using AzureDocumentIntelligenceStudio.Helpers;
 using AzureDocumentIntelligenceStudio.Models;
+using AzureDocumentIntelligenceStudio.Models.Utils;
 using Microsoft.Extensions.Options;
 
 namespace AzureDocumentIntelligenceStudio.Services

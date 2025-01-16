@@ -1,10 +1,12 @@
 using Azure;
 using Azure.AI.DocumentIntelligence;
+using Azure.Identity;
 using AzureDocumentIntelligenceStudio.Helpers;
-using AzureDocumentIntelligenceStudio.Models;
+using AzureDocumentIntelligenceStudio.Models.Utils;
 using AzureDocumentIntelligenceStudio.Services;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using Azure.AI.OpenAI;
+using OpenAI.Chat;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,9 +27,19 @@ builder.Services.AddSingleton(sp =>
         new AzureKeyCredential(options.ApiKey));
 });
 
+builder.Services.Configure<AzureOpenAIConfig>(builder.Configuration.GetRequiredSection("AzureOpenAI"));
+builder.Services.AddSingleton(sp =>
+{
+    var options = sp.GetRequiredService<IOptions<AzureOpenAIConfig>>().Value;
+    var azureOpAIClient = new AzureOpenAIClient(new Uri(options.EndPoint), new AzureKeyCredential(options.ApiKey));
+    var chatClient = azureOpAIClient.GetChatClient(options.ModelName);
+    return chatClient;
+});
+
 builder.Services.AddSingleton<IFileHelper, FileHelper>();
 builder.Services.AddSingleton<IResumeHelpers, ResumeHelpers>();
 builder.Services.AddScoped<IAzureDocumentIntelligenceService, AzureDocumentIntelligenceService>();
+builder.Services.AddScoped<IAzureOpenAIService, AzureOpenAIService>();
 // Add services to the container.
 
 
