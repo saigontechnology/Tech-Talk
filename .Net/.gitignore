@@ -38,6 +38,5 @@ msbuild.wrn
 
 # Ignore all appsettings files
 *appsettings.json
-appsettings.json
 *.appsettings.json
 appsettings.*.json

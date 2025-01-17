@@ -1,0 +1,6 @@
+@AzureAIVisionResearch_HostAddress = http://localhost:5236
+
+GET {{AzureAIVisionResearch_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
