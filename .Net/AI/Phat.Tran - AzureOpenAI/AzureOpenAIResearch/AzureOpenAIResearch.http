@@ -1,0 +1,6 @@
+@AzureOpenAIResearch_HostAddress = http://localhost:5055
+
+GET {{AzureOpenAIResearch_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
