@@ -3,6 +3,28 @@ import { parseEther } from 'viem';
 import { useWriteContract, useAccount } from 'wagmi';
 import { BASIC_STAKING_ABI, BASIC_STAKING_ADDRESS } from '../contracts/BasicStaking';
 
+/**
+ * Exercise: Implement a Staking Actions Component
+ * 
+ * This component allows users to interact with a staking smart contract.
+ * You need to implement three main functions:
+ * 1. handleStake: Stake tokens into the contract
+ * 2. handleClaimReward: Claim staking rewards
+ * 3. handleWithdraw: Withdraw staked tokens
+ * 
+ * Requirements:
+ * - Use wagmi hooks for blockchain interaction
+ * - Handle loading states during transactions
+ * - Implement proper error handling
+ * - Update UI based on transaction status
+ * 
+ * Hints:
+ * - Use useWriteContract hook for blockchain interactions
+ * - Check if user is connected before performing actions
+ * - Use parseEther for converting string amounts to wei
+ * - Implement proper error handling with try/catch
+ */
+
 interface StakingActionsProps {
   onActionStart: () => void;
   onActionEnd: () => void;
@@ -13,72 +35,62 @@ interface StakingActionsProps {
 }
 
 export function StakingActions({ onActionStart, onActionEnd, stakeInfo }: StakingActionsProps) {
+  // TODO: Implement state management for:
+  // - stake amount input
+  // - loading states for each action
   const [stakeAmount, setStakeAmount] = useState<string>('');
   const [isStaking, setIsStaking] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
+  
+  // TODO: Get user's wallet address using wagmi hook
   const { address } = useAccount();
   
+  // TODO: Initialize contract write functions using useWriteContract hook
   const { writeContract: stake } = useWriteContract();
   const { writeContract: claimReward } = useWriteContract();
   const { writeContract: withdraw } = useWriteContract();
 
+  /**
+   * Exercise 1: Implement stake function
+   * 
+   * Requirements:
+   * - Validate input amount
+   * - Convert amount to wei using parseEther
+   * - Call stake function on smart contract
+   * - Handle loading state
+   * - Handle success/error cases
+   * - Clear input on success
+   */
   const handleStake = async () => {
-    if (!stakeAmount || !address) return;
-    setIsStaking(true);
-    onActionStart();
-    try {
-      await stake({
-        address: BASIC_STAKING_ADDRESS as `0x${string}`,
-        abi: BASIC_STAKING_ABI,
-        functionName: 'stake',
-        value: parseEther(stakeAmount),
-      });
-      setStakeAmount('');
-    } catch (error) {
-      console.error('Failed to stake:', error);
-    } finally {
-      setIsStaking(false);
-      onActionEnd();
-    }
+    // TODO: Implement stake functionality
   };
 
+  /**
+   * Exercise 2: Implement claim rewards function
+   * 
+   * Requirements:
+   * - Call claimReward function on smart contract
+   * - Handle loading state
+   * - Handle success/error cases
+   */
   const handleClaimReward = async () => {
-    if (!address) return;
-    setIsClaiming(true);
-    onActionStart();
-    try {
-      await claimReward({
-        address: BASIC_STAKING_ADDRESS as `0x${string}`,
-        abi: BASIC_STAKING_ABI,
-        functionName: 'claimReward',
-      });
-    } catch (error) {
-      console.error('Failed to claim reward:', error);
-    } finally {
-      setIsClaiming(false);
-      onActionEnd();
-    }
+    // TODO: Implement claim rewards functionality
   };
 
+  /**
+   * Exercise 3: Implement withdraw function
+   * 
+   * Requirements:
+   * - Call withdraw function on smart contract
+   * - Handle loading state
+   * - Handle success/error cases
+   */
   const handleWithdraw = async () => {
-    if (!address) return;
-    setIsWithdrawing(true);
-    onActionStart();
-    try {
-      await withdraw({
-        address: BASIC_STAKING_ADDRESS as `0x${string}`,
-        abi: BASIC_STAKING_ABI,
-        functionName: 'withdraw',
-      });
-    } catch (error) {
-      console.error('Failed to withdraw:', error);
-    } finally {
-      setIsWithdrawing(false);
-      onActionEnd();
-    }
+    // TODO: Implement withdraw functionality
   };
 
+  // UI remains unchanged to focus on blockchain interaction implementation
   return (
     <div className="bg-pantone-beige rounded-xl p-6 border border-pantone-taupe shadow-sm">
       <h2 className="text-2xl font-bold text-pantone-navy mb-6">Staking Actions</h2>
