@@ -1,0 +1,10 @@
+Step 1: Go to service folder you want to run migration (../Services/<Service_name>)
+
+Step 2:  
+- Open package manager console and choose Default project: <Service_name>.Infrastructure
+
+*IF you make some change with database structure:
+Add-Migration <Migration_Record_Name> -StartupProject PlanningBook.<Service_Name>.API -Project PlanningBook.<Service_Name>.Infrastructure -v 
+
+*Apply new change for databse:
+update-database -s PlanningBook.<Service_Name>.API

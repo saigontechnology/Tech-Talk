@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Persons\Commands\CommandResults\" />
+    <Folder Include="Persons\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Presitance\Planning_book.Repository.EF\PlanningBook.Repository.EF.csproj" />
+    <ProjectReference Include="..\..\..\Frameworks\Planning_book.Domain\PlanningBook.Domain.csproj" />
+    <ProjectReference Include="..\PlanningBook.Users.Infrastructure\PlanningBook.Users.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\**" />
+    <Compile Remove="Queries\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="Queries\**" />
+    <None Remove="Commands\**" />
+    <None Remove="Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Presitance\Planning_book.Repository.EF\PlanningBook.Repository.EF.csproj" />
+    <ProjectReference Include="..\..\..\Frameworks\PlanningBook.Contants\PlanningBook.Contants.csproj" />
+    <ProjectReference Include="..\..\..\Frameworks\Planning_book.Domain\PlanningBook.Domain.csproj" />
+    <ProjectReference Include="..\PlanningBook.Identity.Infrastructure\PlanningBook.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
